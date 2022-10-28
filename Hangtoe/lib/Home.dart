@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application_1/data.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen>{
                       borderRadius: BorderRadius.circular(20)
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/scores');}, 
+                      onPressed: () {Navigator.pushNamed(context, '/gamehome');Data.chosed="hangman";}, 
                       child: const Text('Hangman',style: TextStyle(fontSize: 20,),),
                       ),
                    ),
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen>{
                       borderRadius: BorderRadius.circular(20)
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/NoPlayers');}, 
+                      onPressed: () {Navigator.pushNamed(context, '/gamehome');Data.chosed="x";}, 
                       child: const Text('Tic Tac Toe',style: TextStyle(fontSize: 20,),),
                       ),
                    ),
