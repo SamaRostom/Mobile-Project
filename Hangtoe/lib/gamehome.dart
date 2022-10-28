@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/data.dart';
 
-
-class gamehome extends StatefulWidget {
-  const gamehome({super.key});
+class Gamehome extends StatefulWidget {
+  const Gamehome({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _gamehomeState createState() => _gamehomeState();
+  _GamehomeState createState() => _GamehomeState();
 }
 
-class _gamehomeState extends State<gamehome>{
+class _GamehomeState extends State<Gamehome>{
+  // check(){
+  //    if(Data.chosed == "hangman"){
+  //       return "Hangman";
+  //    }else{
+  //       return"Tic Tac Toe";
+  //    }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,13 +30,31 @@ class _gamehomeState extends State<gamehome>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
+                  IconButton(
+                  // alignment: Alignment.topLeft,  
+                  icon: const Icon(Icons.arrow_back),
+                  color: Colors.white,
+                  onPressed: () {Navigator.pop(context); },
+                ),
                   const SizedBox(
-                    height: 170,
+                    height: 160,
                   ),
-                  const Text(
-                      'gamehome',
+                  Data.chosed == 'hangman'?
+                     const Text(
+                      'HANGMAN',
                       style: TextStyle(
-                        fontSize: 60,
+                        fontSize: 50,
+                        color: Colors.white,
+                        // fontWeight: FontWeight.w300,
+                        letterSpacing: 3.0,
+                        // fonts.asset('fonts/FiraMono-Bold.ttf'),
+                        fontFamily: 'FiraMono',
+                      ),
+                    ):
+                     const Text(
+                      'TICTACTOE',
+                      style: TextStyle(
+                        fontSize: 50,
                         color: Colors.white,
                         // fontWeight: FontWeight.w300,
                         letterSpacing: 3.0,
@@ -39,46 +65,42 @@ class _gamehomeState extends State<gamehome>{
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                mainAxisSize: MainAxisSize.max,
-                children:[
-                  Image.asset(
-                      'assets/game.png',
-                      ),
-                ],
-              ),
-              const SizedBox(
-                height: 100,
-              ),
-              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const[
-                   Text(
-                      'Lets play',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                    ),
+                // mainAxisSize: MainAxisSize.max,
+                children:[
+                  Data.chosed == 'hangman'?
+                  Image.asset(
+                      'assets/gallow.png',
+                      width: 200,
+                      height: 200,
+                  ):
+                  Image.asset(
+                      'assets/toe.png',
+                      width: 200,
+                      height: 200,
+                  ),
                 ],
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                    SizedBox(
-                     height:80, //height of button
-                      width:200, //width of button
+                     height:70, //height of button
+                      width:180, //width of button
                      child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder( //to set border radius to button
                       borderRadius: BorderRadius.circular(20)
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/scores');}, 
-                      child: const Text('Hangman',style: TextStyle(fontSize: 20,),),
+                      onPressed: () {
+                        Data.chosed == 'hangman'?
+                        Navigator.pushNamed(context, '/HangmanBoard'):Navigator.pushNamed(context, '/tictactoe');
+                        }, 
+                      child: const Text('Play',style: TextStyle(fontSize: 20,),),
                       ),
                    ),
                 ],
@@ -90,16 +112,37 @@ class _gamehomeState extends State<gamehome>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                    SizedBox(
-                     height:80, //height of button
-                      width:200, //width of button
+                     height:70, //height of button
+                      width:180, //width of button
                      child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder( //to set border radius to button
                       borderRadius: BorderRadius.circular(20)
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/NoPlayers');}, 
-                      child: const Text('Tic Tac Toe',style: TextStyle(fontSize: 20,),),
+                      onPressed: () {Navigator.pushNamed(context, '/howtoplay');}, 
+                      child: const Text('How to play',style: TextStyle(fontSize: 20,),),
+                      ),
+                   ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                   SizedBox(
+                     height:70, //height of button
+                      width:180, //width of button
+                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder( //to set border radius to button
+                      borderRadius: BorderRadius.circular(20)
+                        ),
+                      ),
+                      onPressed: () {Navigator.pushNamed(context, '/scores');}, 
+                      child: const Text('High Scores',style: TextStyle(fontSize: 20,),),
                       ),
                    ),
                 ],
