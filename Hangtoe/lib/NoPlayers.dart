@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
 
@@ -33,9 +31,6 @@ class _PlayersState extends State<Players> {
               height: 100,
             ),
             Text("Choose The Number Of Players To Start The Game"),
-            const SizedBox(
-              height: 250,
-            ),
             const SizedBox(
               height: 20,
             ),
