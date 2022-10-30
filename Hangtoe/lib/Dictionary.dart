@@ -37,7 +37,6 @@ class _DictionaryState extends State<Dictionary> {
                         color: Colors.white
                       ),
                     ),
-                    // const Icon(Icons.gamepad_outlined,color: Color.fromARGB(255, 177, 96, 209),)
                 ],
               ),
             const SizedBox(
