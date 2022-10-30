@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Players extends StatefulWidget {
   const Players({super.key});
@@ -30,7 +31,13 @@ class _PlayersState extends State<Players> {
               width: 100,
               height: 100,
             ),
-            Text(style: TextStyle(color: Colors.white),,"Choose The Number Of Players To Start The Game"),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              "Choose The Number Of Players To Start The Game",
+              style: GoogleFonts.patrickHand(fontSize: 55, color: Colors.white),
+            ),
             const SizedBox(
               height: 20,
             ),
@@ -61,7 +68,7 @@ class _PlayersState extends State<Players> {
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 35,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
