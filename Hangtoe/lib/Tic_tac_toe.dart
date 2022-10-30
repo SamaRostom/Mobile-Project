@@ -35,7 +35,6 @@ class _TictactoeState extends State<Tictactoe> {
 
   void _checkWinner() {
     // Checking rows
-
     if (displayElement[0] == displayElement[1] &&
         displayElement[0] == displayElement[2] &&
         displayElement[0] != '') {
@@ -54,7 +53,6 @@ class _TictactoeState extends State<Tictactoe> {
     }
 
     // Checking Column
-
     if (displayElement[0] == displayElement[3] &&
         displayElement[0] == displayElement[6] &&
         displayElement[0] != '') {
@@ -74,7 +72,6 @@ class _TictactoeState extends State<Tictactoe> {
     }
 
     // Checking Diagonal
-
     if (displayElement[0] == displayElement[4] &&
         displayElement[0] == displayElement[8] &&
         displayElement[0] != '') {
@@ -142,21 +139,17 @@ class _TictactoeState extends State<Tictactoe> {
         displayElement[i] = '';
       }
     });
-
     filledBoxes = 0;
   }
 
   void _clearScoreBoard() {
     setState(() {
       xScore = 0;
-
       oScore = 0;
-
       for (int i = 0; i < 9; i++) {
         displayElement[i] = '';
       }
     });
-
     filledBoxes = 0;
   }
 
@@ -178,16 +171,9 @@ class _TictactoeState extends State<Tictactoe> {
           ),
           Expanded(
             // creating the ScoreBoard
-
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // Padding(
-
-                // padding: const EdgeInsets.all(30.0),
-
-                // child:
-
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -204,15 +190,6 @@ class _TictactoeState extends State<Tictactoe> {
                     ),
                   ],
                 ),
-
-                // ),
-
-                // Padding(
-
-                // padding: const EdgeInsets.all(30.0),
-
-                // child:
-
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -227,16 +204,12 @@ class _TictactoeState extends State<Tictactoe> {
                     ),
                   ],
                 ),
-
-                // ),
               ],
             ),
           ),
           Expanded(
             // Creating the Board for Tic tac toe
-
             flex: 4,
-
             child: GridView.builder(
                 itemCount: 9,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -261,25 +234,15 @@ class _TictactoeState extends State<Tictactoe> {
                 }),
           ),
           Expanded(
-
               // Button for Clearing the Enter board
-
               // as well as Scoreboard to start allover again
-
               child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  //   color: Colors.indigo[50],
-
-                  // textColor: Colors.black,
-
-                  //primary: Colors.transparent,
-
                   shape: RoundedRectangleBorder(
                     //to set border radius to button
-
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
