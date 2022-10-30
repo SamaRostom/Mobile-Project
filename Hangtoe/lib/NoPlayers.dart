@@ -28,18 +28,18 @@ class _PlayersState extends State<Players> {
             ),
             Image.asset(
               'assets/Friends.png',
-              width: 100,
-              height: 100,
+              width: 200,
+              height: 200,
             ),
             const SizedBox(
-              height: 20,
+              height: 50,
             ),
-            const Text(
+            Text(
               "Choose The Number Of Players To Start The Game",
-              style: GoogleFonts.patrickHand(fontSize: 55, color: Colors.white),
+              style: GoogleFonts.patrickHand(fontSize: 35, color: Colors.white),
             ),
             const SizedBox(
-              height: 20,
+              height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
