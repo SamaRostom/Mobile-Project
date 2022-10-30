@@ -25,7 +25,14 @@ class _PNameState extends State<PName> {
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     //crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
+                    children: <Widget>[
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                       const TextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
