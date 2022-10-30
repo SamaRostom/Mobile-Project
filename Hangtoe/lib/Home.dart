@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen>{
                       borderRadius: BorderRadius.circular(20), 
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/gamehome');Data.chosed="hangman";}, 
+                      onPressed: () {Navigator.pushNamed(context, '/NoPlayers');Data.chosed="hangman";}, 
                       child: const Text('Hangman',style: TextStyle(fontSize: 20,),),
                       ),
                    ),
@@ -164,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen>{
                       borderRadius: BorderRadius.circular(20)
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/gamehome');Data.chosed="x";}, 
+                      onPressed: () {Navigator.pushNamed(context, '/NoPlayers');Data.chosed="x";}, 
                       child: const Text('Tic Tac Toe',style: TextStyle(fontSize: 20,),),
                       ),
                    ),
