@@ -138,16 +138,6 @@ class _TictactoeState extends State<Tictactoe> {
             ],
           );
         });
-
-    // if (winner == 'O') {
-
-    //   oScore++;
-
-    // } else if (winner == 'X') {
-
-    //   xScore++;
-
-    // }
   }
 
   void _showDrawDialog() {
@@ -181,25 +171,7 @@ class _TictactoeState extends State<Tictactoe> {
     filledBoxes = 0;
   }
 
-  // void _clearScoreBoard() {
-
-  //   setState(() {
-
-  //     xScore = 0;
-
-  //     oScore = 0;
-
-  //     for (int i = 0; i < 9; i++) {
-
-  //       displayElement[i] = '';
-
-  //     }
-
-  //   });
-
-  //   filledBoxes = 0;
-
-  // }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -210,7 +182,6 @@ class _TictactoeState extends State<Tictactoe> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           IconButton(
-            // alignment: Alignment.topLeft,
 
             icon: const Icon(Icons.arrow_back),
 
@@ -220,82 +191,6 @@ class _TictactoeState extends State<Tictactoe> {
               Navigator.pop(context);
             },
           ),
-
-          // Expanded(
-
-          //   // creating the ScoreBoard
-
-          //   child: Row(
-
-          //     mainAxisAlignment: MainAxisAlignment.center,
-
-          //     children: <Widget>[
-
-          //       // Column(
-
-          //       //   mainAxisAlignment: MainAxisAlignment.center,
-
-          //       //   children: <Widget>[
-
-          //       //     // const Text(
-
-          //       //     //   'Player X',
-
-          //       //     //   style: TextStyle(
-
-          //       //     //       fontSize: 20,
-
-          //       //     //       fontWeight: FontWeight.bold,
-
-          //       //     //       color: Colors.white),
-
-          //       //     // ),
-
-          //       //     // Text(
-
-          //       //     //   xScore.toString(),
-
-          //       //     //   style: const TextStyle(fontSize: 20, color: Colors.white),
-
-          //       //     // ),
-
-          //       //   ],
-
-          //       // ),
-
-          //       // Column(
-
-          //       //   mainAxisAlignment: MainAxisAlignment.center,
-
-          //       //   children: <Widget>[
-
-          //       //     const Text('     Player O',
-
-          //       //         style: TextStyle(
-
-          //       //             fontSize: 20,
-
-          //       //             fontWeight: FontWeight.bold,
-
-          //       //             color: Colors.white)),
-
-          //       //     Text(
-
-          //       //       oScore.toString(),
-
-          //       //       style: const TextStyle(fontSize: 20, color: Colors.white),
-
-          //       //     ),
-
-          //       //   ],
-
-          //       // ),
-
-          //     ],
-
-          //   ),
-
-          // ),
 
           const SizedBox(
             height: 90,
@@ -329,42 +224,6 @@ class _TictactoeState extends State<Tictactoe> {
                   );
                 }),
           ),
-
-          // Expanded(
-
-          //     // Button for Clearing the Enter board
-
-          //     // as well as Scoreboard to start allover again
-
-          //     child: Row(
-
-          //   mainAxisAlignment: MainAxisAlignment.center,
-
-          //   children: <Widget>[
-
-          //     // ElevatedButton(
-
-          //     //   style: ElevatedButton.styleFrom(
-
-          //     //     shape: RoundedRectangleBorder(
-
-          //     //       //to set border radius to button
-
-          //     //       borderRadius: BorderRadius.circular(20),
-
-          //     //     ),
-
-          //     //   ),
-
-          //     //   onPressed: _clearScoreBoard,
-
-          //     //   child: const Text("Clear Score Board"),
-
-          //     // ),
-
-          //   ],
-
-          // ))
         ],
       )),
     );
