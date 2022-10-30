@@ -5,6 +5,7 @@ import 'package:flutter_application_1/scores.dart';
 import 'package:flutter_application_1/NoPlayers.dart';
 import 'package:flutter_application_1/gamehome.dart';
 import 'package:flutter_application_1/howtoplay.dart';
+import 'package:flutter_application_1/PNames.dart';
 // import 'package:flutter_application_1/HangmanBoard.dart';
 
 void main() {
@@ -21,16 +22,19 @@ class MyApp extends StatelessWidget {
       title: 'Hangtoe',
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF421b9b),
+        //scaffoldBackgroundColor: const Color.fromARGB(255, 132, 81, 250),
+        // scaffoldBackgroundColor: Color.fromARGB(255, 160, 120, 247),
       ),
       // home: const HomeScreen(),
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
-        '/scores': (context) => const scores(),
+        '/scores': (context) => const Scores(),
         '/NoPlayers': (context) => const Players(),
         '/gamehome': (context) => const Gamehome(),
         '/howtoplay': (context) => const Howtoplay(),
         '/HangmanBoard': (context) => const HangmanBoard(),
+        '/PNames': (context) => const PName(),
       },
     );
   }
