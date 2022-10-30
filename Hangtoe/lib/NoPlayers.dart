@@ -37,8 +37,8 @@ class _PlayersState extends State<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(
-                          context, '/PNames');Data.player = 1;
+                      Navigator.pushNamed(context, '/PNames');
+                      Data.player = 1;
                     },
                     child: const Text(
                       '1 Player',
@@ -51,7 +51,7 @@ class _PlayersState extends State<Players> {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -66,8 +66,8 @@ class _PlayersState extends State<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(
-                          context, '/PNames'); Data.player = 2;
+                      Navigator.pushNamed(context, '/PNames');
+                      Data.player = 2;
                     },
                     child: const Text(
                       '2 Players',
