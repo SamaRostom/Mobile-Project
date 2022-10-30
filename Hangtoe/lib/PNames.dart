@@ -75,12 +75,16 @@ class _PNameState extends State<PName> {
                       ButtonBar(
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
-                            child: Text('Next'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/gamehome');
+                            },
+                            child: const Text('Play'),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
-                            child: Text('Cancel'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancel'),
                           )
                         ],
                       )
