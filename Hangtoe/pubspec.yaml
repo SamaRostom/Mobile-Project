@@ -82,6 +82,7 @@ flutter:
     - assets/4.png
     - assets/xo.png
     - assets/xo1.png
+    - assets/Login.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
