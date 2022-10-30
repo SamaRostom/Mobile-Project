@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 
 class Players extends StatefulWidget {
   const Players({super.key});
@@ -14,46 +15,36 @@ class _PlayersState extends State<Players> {
     return SafeArea(
       child: Scaffold(
         body: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisSize: MainAxisSize.max,
           children: [
+            const SizedBox(
+              height: 250,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.account_circle, size: 50),
-                Column(children: const [
-                  Text(
-                    'Flutter McFlutter',
-                    style: TextStyle(
-                      fontSize: 30,
+                SizedBox(
+                  height: 80, //height of button
+                  width: 200, //width of button
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          //to set border radius to button
+                          borderRadius: BorderRadius.circular(20)),
                     ),
-                  ),
-                  Text(
-                    'Experienced App Developer',
-                    style: TextStyle(
-                      fontSize: 20,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/oneplayer');
+                    },
+                    child: const Text(
+                      '1 Player',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                ])
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: const [
-                Text(
-                  '123 Main Street',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                Text(
-                  '(415) 555-0198',
-                  style: TextStyle(
-                    fontSize: 20,
                   ),
                 ),
               ],
@@ -62,15 +53,30 @@ class _PlayersState extends State<Players> {
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.max,
-              children: const [
-                Icon(Icons.accessibility, size: 50),
-                Icon(Icons.timer, size: 50),
-                Icon(Icons.phone_android, size: 50),
-                Icon(Icons.phone_iphone, size: 50)
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 80, //height of button
+                  width: 200, //width of button
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          //to set border radius to button
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/twoplayers');
+                    },
+                    child: const Text(
+                      '2 Players',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),
