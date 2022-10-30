@@ -51,6 +51,7 @@ class _SignupState extends State<Signup> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Username',
+                    hintStyle: TextStyle(color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 50),
@@ -66,6 +67,7 @@ class _SignupState extends State<Signup> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Password',
+                    hintStyle: TextStyle(color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 20),
