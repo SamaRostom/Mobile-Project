@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
                   hintText: 'Enter the Password',
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               ButtonBar(
                 children: <Widget>[
                   ElevatedButton(
