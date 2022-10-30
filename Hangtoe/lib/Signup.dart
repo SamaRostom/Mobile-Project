@@ -12,6 +12,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,43 +32,62 @@ class _SignupState extends State<Signup> {
               ),
             ],
           ),
-          Column(
-            children: [
-              Image.asset('assets/Signup.png', width: 200),
-              const SizedBox(height: 50),
-              const TextField(
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Username',
-                ),
-              ),
-              const SizedBox(height: 50),
-              const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Password',
-                ),
-              ),
-              const SizedBox(height: 20),
-              ButtonBar(
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/Login');
-                    },
-                    child: const Text('Signup'),
+          Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Image.asset('assets/Signup.png', width: 200),
+                const SizedBox(height: 50),
+                TextFormField(
+                  autofocus: true,
+                  validator: (val) {
+                    if (val != null && val.isNotEmpty) {
+                      return null;
+                    } else {
+                      return 'Please enter a username';
+                    }
+                  },
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Username',
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/');
-                    },
-                    child: const Text('Cancel'),
-                  )
-                ],
-              )
-            ],
-          ),
+                ),
+                const SizedBox(height: 50),
+                TextFormField(
+                  autofocus: true,
+                  validator: (val) {
+                    if (val != null && val.isNotEmpty) {
+                      return null;
+                    } else {
+                      return 'Please enter a password';
+                    }
+                  },
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Password',
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ButtonBar(
+                  children: <Widget>[
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/Login');
+                      },
+                      child: const Text('Signup'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/');
+                      },
+                      child: const Text('Cancel'),
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
