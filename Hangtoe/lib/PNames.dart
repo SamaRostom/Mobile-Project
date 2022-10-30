@@ -18,7 +18,7 @@ class _PNameState extends State<PName> {
           padding: const EdgeInsets.all(8),
           children: [
             const Text(
-              'Enter the Players Name',
+              'TO Start The Game please Enter The Players Name',
               textAlign: TextAlign.center,
             ),
             Data.player == 2
@@ -52,13 +52,13 @@ class _PNameState extends State<PName> {
                             onPressed: () {
                               Navigator.pushNamed(context, '/gamehome');
                             },
-                            child: Text('Play'),
+                            child: const Text('Play'),
                           ),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text('Cancel'),
+                            child: const Text('Cancel'),
                           )
                         ],
                       )
