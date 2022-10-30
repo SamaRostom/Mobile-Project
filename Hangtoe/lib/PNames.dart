@@ -23,6 +23,8 @@ class _PNameState extends State<PName> {
             ),
             Data.player == 2
                 ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const TextField(
                         decoration: InputDecoration(
