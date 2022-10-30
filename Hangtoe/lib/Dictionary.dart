@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Dictionary extends StatefulWidget {
   const Dictionary({super.key});
@@ -19,10 +20,25 @@ class _DictionaryState extends State<Dictionary> {
           // mainAxisSize: MainAxisSize.max,
           children: [
             const SizedBox(
-              height: 250,
+              height: 200,
             ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                   Text(
+                      'Choose A Category',
+                      style: 
+                      GoogleFonts.kanit
+                      (
+                        fontSize: 40,
+                        color: Colors.white
+                      ),
+                    ),
+                    // const Icon(Icons.gamepad_outlined,color: Color.fromARGB(255, 177, 96, 209),)
+                ],
+              ),
             const SizedBox(
-              height: 20,
+              height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
