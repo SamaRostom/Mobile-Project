@@ -36,6 +36,7 @@ class _PlayersState extends State<Players> {
             ),
             Text(
               "Choose The Number Of Players To Start The Game",
+              textAlign: TextAlign.center,
               style: GoogleFonts.patrickHand(fontSize: 35, color: Colors.white),
             ),
             const SizedBox(
