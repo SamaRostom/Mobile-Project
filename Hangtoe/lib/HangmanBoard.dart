@@ -41,10 +41,8 @@ class _HangmanBoardState extends State<HangmanBoard> {
           Center(
             child: Stack(
               children: [
-                //let's make the figure widget
-                //let's add the images to the asset folder
-                //Okey now we will create a Game class
-                //Now the figure will be built according to the number of tries
+                //add the images to the asset folder
+                //figure will be built according to the number of tries
                 figureImage(Data.tries >= 0, "assets/hang.png"),
                 figureImage(Data.tries >= 1, "assets/head.png"),
                 figureImage(Data.tries >= 2, "assets/body.png"),
@@ -65,9 +63,9 @@ class _HangmanBoardState extends State<HangmanBoard> {
                 .toList(),
           ),
 
-          //Now let's build the Game keyboard
+          //Game keyboard
           SizedBox(
-            width: double.infinity,
+            // width: double.infinity,
             height: 250.0,
             child: GridView.count(
               crossAxisCount: 7,
