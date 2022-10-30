@@ -6,7 +6,9 @@ import 'package:flutter_application_1/NoPlayers.dart';
 import 'package:flutter_application_1/gamehome.dart';
 import 'package:flutter_application_1/howtoplay.dart';
 import 'package:flutter_application_1/PNames.dart';
-// import 'package:flutter_application_1/HangmanBoard.dart';
+import 'package:flutter_application_1/Tic_tac_toe.dart';
+import 'package:flutter_application_1/Login.dart';
+import 'package:flutter_application_1/Signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         // scaffoldBackgroundColor: Color.fromARGB(255, 160, 120, 247),
       ),
       // home: const HomeScreen(),
-      initialRoute: '/',
+      initialRoute: '/Signup',
       routes: {
         '/': (context) => const HomeScreen(),
         '/scores': (context) => const Scores(),
@@ -35,8 +37,10 @@ class MyApp extends StatelessWidget {
         '/howtoplay': (context) => const Howtoplay(),
         '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
+        '/Tic_tac_toe': (context) => const Tictactoe(),
+        '/Login': (context) => const Login(),
+        '/Signup': (context) => const Signup(),
       },
     );
   }
 }
-

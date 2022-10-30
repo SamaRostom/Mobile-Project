@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+// import 'data.dart';
 
 
 class Scores extends StatefulWidget {
@@ -10,15 +13,24 @@ class Scores extends StatefulWidget {
 }
 
 class ScoresState extends State<Scores>{
-  var S=Data.Hangscore;
+
+  // var S;
+  // Data.chosed == "hangman"?
+  // var S=Data.Hangscore;:var S=Data.xoscore;
+  // Data.chosed == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
+  // if(Data.chosed == "hangman"){
+    
+  // }
   List<DataRow> _createRows() {
     var rank = Data.topRanks;
+    List<Map> S;
+    Data.chosed == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
     return S
         .map((book) => DataRow(cells: [
-              DataCell(Text(book['Rank']-1 < 3 ? rank[book['Rank']-1] + book['Rank'].toString():book['Rank'].toString(), style: const TextStyle(fontSize: 20, color: Colors.white,),)),
-              DataCell(Text(book['Name'],style: const TextStyle(fontSize: 20, color: Colors.white,),)),
-              DataCell(Text(book['Date'],style: const TextStyle(fontSize: 20, color: Colors.white,),)),
-              DataCell(Text('     ${book['Score']}',style: const TextStyle(fontSize: 20, color: Colors.white,),))
+              DataCell(Text(book['Rank']-1 < 3 ? rank[book['Rank']-1] + book['Rank'].toString():book['Rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text(book['Name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text(book['Date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text('     ${book['Score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
             ]))
         .toList();
   }
@@ -47,14 +59,20 @@ class ScoresState extends State<Scores>{
                     Column(
                     // mainAxisAlignment: MainAxisAlignment.center,
                     // crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
+                    children:  [
                     Text(
                       'High Scores',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 50,
-                        color: Colors.white,
-                      ),
+                      style:
+                      GoogleFonts.patrickHand
+                      (
+                        fontSize: 60,
+                        color: Colors.white
+                      ),   
+                      // TextStyle(
+                      //   fontSize: 50,
+                      //   color: Colors.white,
+                      // ),
                     ),
                   ]),
                 //   ]
@@ -71,18 +89,34 @@ class ScoresState extends State<Scores>{
               children: [
                 DataTable(
                   columnSpacing: 25,
-                  columns: const[
+                  columns: [
                     DataColumn(
-                      label: Text('Rank',style: TextStyle(fontSize: 25, color: Colors.white,),),
+                      label: Text('Rank',style: GoogleFonts.patrickHand
+                      (
+                        fontSize: 25,
+                        color: Colors.white
+                      ),),
                     ),
                     DataColumn(
-                      label: Text('Name',style: TextStyle(fontSize: 25, color: Colors.white,),),
+                      label: Text('Name',style: GoogleFonts.patrickHand
+                      (
+                        fontSize: 25,
+                        color: Colors.white
+                      ),),
                     ),
                     DataColumn(
-                      label: Text('Date',style: TextStyle(fontSize: 25, color: Colors.white,),),
+                      label: Text('   Date',style: GoogleFonts.patrickHand
+                      (
+                        fontSize: 25,
+                        color: Colors.white
+                      ),),
                     ),
                     DataColumn(
-                      label: Text('Score',style: TextStyle(fontSize: 25, color: Colors.white,),),
+                      label: Text('Score',style: GoogleFonts.patrickHand
+                      (
+                        fontSize: 25,
+                        color: Colors.white
+                      ),),
                     ),
                   ], 
                   rows: _createRows()
