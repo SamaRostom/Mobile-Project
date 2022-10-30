@@ -29,19 +29,15 @@ class _HangmanBoardState extends State<HangmanBoard> {
         elevation: 0,
         centerTitle: true,
       ),
+
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          //Now we will build the Hidden word widget
-          //now let's go back to the Game class and add
-          // a new variable to store the selected character
-          /* and check if it's on the word */
-
           Center(
             child: Stack(
               children: [
-                //add the images to the asset folder
                 //figure will be built according to the number of tries
                 figureImage(Data.tries >= 0, "assets/hang.png"),
                 figureImage(Data.tries >= 1, "assets/head.png"),
@@ -56,8 +52,9 @@ class _HangmanBoardState extends State<HangmanBoard> {
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: word
-                .split('')
+            children:
+            //split the word letter by letter
+                word.split('')
                 .map((e) => letter(e.toUpperCase(),
                     !Data.selectedChar.contains(e.toUpperCase())))
                 .toList(),
@@ -65,11 +62,9 @@ class _HangmanBoardState extends State<HangmanBoard> {
 
           //Game keyboard
           SizedBox(
-            // width: double.infinity,
             height: 250.0,
             child: GridView.count(
               crossAxisCount: 7,
-              mainAxisSpacing: 8.0,
               crossAxisSpacing: 8.0,
               padding: EdgeInsets.all(8.0),
               children: Data.alphabets.map((e) {
@@ -81,9 +76,11 @@ class _HangmanBoardState extends State<HangmanBoard> {
                             Data.selectedChar.add(e);
                             // ignore: avoid_print
                             print(Data.selectedChar);
+                            //  count wrong guesses
                             if (!word.split('').contains(e.toUpperCase())) {
                               Data.tries++;
                             }
+                            //  return to home page when the draw is fully drawn
                             if(Data.tries == 6){
                               Navigator.pushNamed(context, '/');
                             }
