@@ -111,7 +111,7 @@ class _GamehomeState extends State<Gamehome>{
                       ),
                       onPressed: () {
                         Data.chosed == 'hangman'?
-                        Navigator.pushNamed(context, '/HangmanBoard'):Navigator.pushNamed(context, '/Tic_tac_toe');
+                        Navigator.pushNamed(context, '/Dictionary'):Navigator.pushNamed(context, '/Tic_tac_toe');
                         }, 
                       child: const Text('Play',style: TextStyle(fontSize: 20,),),
                       ),
