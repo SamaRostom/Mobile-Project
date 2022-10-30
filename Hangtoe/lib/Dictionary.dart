@@ -16,8 +16,6 @@ class _DictionaryState extends State<Dictionary> {
     return SafeArea(
       child: Scaffold(
         body: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisSize: MainAxisSize.max,
           children: [
             const SizedBox(
               height: 200,
