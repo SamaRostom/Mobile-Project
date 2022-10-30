@@ -24,7 +24,6 @@ class _DictionaryState extends State<Dictionary> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                  // alignment: Alignment.topLeft,
                   icon: const Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {Navigator.pop(context); },
