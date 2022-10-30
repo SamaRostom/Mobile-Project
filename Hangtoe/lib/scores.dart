@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/data.dart';
 
 
-// ignore: camel_case_types
-class scores extends StatefulWidget {
-  const scores({super.key});
+class Scores extends StatefulWidget {
+  const Scores({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _scoresState createState() => _scoresState();
+  ScoresState createState() => ScoresState();
 }
 
-// ignore: camel_case_types
-class _scoresState extends State<scores>{
+class ScoresState extends State<Scores>{
+  var S=Data.Hangscore;
+  List<DataRow> _createRows() {
+    var rank = Data.topRanks;
+    return S
+        .map((book) => DataRow(cells: [
+              DataCell(Text(book['Rank']-1 < 3 ? rank[book['Rank']-1] + book['Rank'].toString():book['Rank'].toString(), style: const TextStyle(fontSize: 20, color: Colors.white,),)),
+              DataCell(Text(book['Name'],style: const TextStyle(fontSize: 20, color: Colors.white,),)),
+              DataCell(Text(book['Date'],style: const TextStyle(fontSize: 20, color: Colors.white,),)),
+              DataCell(Text('     ${book['Score']}',style: const TextStyle(fontSize: 20, color: Colors.white,),))
+            ]))
+        .toList();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,65 +30,81 @@ class _scoresState extends State<scores>{
           // mainAxisAlignment: MainAxisAlignment.spaceAround,
           // mainAxisSize: MainAxisSize.max,
           children: [
+            const SizedBox(
+              height: 30,
+            ),
             Row(
-             
+               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
                   icon: const Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {Navigator.pop(context); },
                 ),
-                const Icon(Icons.account_circle, size: 50),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                  Text(
-                    'scores',
-                    style: TextStyle(
-                      fontSize: 30,
+                // ListView(
+                //   // padding: const EdgeInsets.all(0),
+                //   children: [
+                    Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                    Text(
+                      'High Scores',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 50,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Experienced App Developer',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ])
+                  ]),
+                //   ]
+                // ),
+               
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 60,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
-              children: const [
-                Text(
-                  '123 Main Street',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                Text(
-                  '(415) 555-0198',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.max,
-              children: const [
-                Icon(Icons.accessibility, size: 50),
-                Icon(Icons.timer, size: 50),
-                Icon(Icons.phone_android, size: 50),
-                Icon(Icons.phone_iphone, size: 50)
+              children: [
+                DataTable(
+                  columnSpacing: 25,
+                  columns: const[
+                    DataColumn(
+                      label: Text('Rank',style: TextStyle(fontSize: 25, color: Colors.white,),),
+                    ),
+                    DataColumn(
+                      label: Text('Name',style: TextStyle(fontSize: 25, color: Colors.white,),),
+                    ),
+                    DataColumn(
+                      label: Text('Date',style: TextStyle(fontSize: 25, color: Colors.white,),),
+                    ),
+                    DataColumn(
+                      label: Text('Score',style: TextStyle(fontSize: 25, color: Colors.white,),),
+                    ),
+                  ], 
+                  rows: _createRows()
+
+                      //  DataRow(cells: [
+                      //     DataCell(Text('1')),
+                      //     DataCell(Text('Arshik')),
+                      //     DataCell(Text('5644645')),
+                      //     DataCell(Text('3')),
+                      //  ])
+                      // for (var item in Data.scoreslist) {
+                      //     // print(item);
+                      //     Set<DataRow>(cells: [
+                      //     DataCell(item[1][1]),
+                      //     DataCell(Text('Arshik')),
+                      //     DataCell(Text('5644645')),
+                      //     DataCell(Text('3')),
+                      //  ])
+                      // }
+
+
+                  )  
               ],
             ),
           ],
