@@ -34,6 +34,7 @@ class _PNameState extends State<PName> {
                         },
                       ),
                       const TextField(
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           hintText: 'Enter 1 Player Name',
@@ -41,6 +42,7 @@ class _PNameState extends State<PName> {
                       ),
                       const SizedBox(height: 20),
                       const TextField(
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           hintText: 'Enter 2 Player Name',
@@ -67,6 +69,7 @@ class _PNameState extends State<PName> {
                 : Column(
                     children: [
                       const TextField(
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           hintText: 'Enter Player Name',
@@ -75,6 +78,11 @@ class _PNameState extends State<PName> {
                       ButtonBar(
                         children: [
                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  //to set border radius to button
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
                             onPressed: () {
                               Navigator.pushNamed(context, '/gamehome');
                             },
