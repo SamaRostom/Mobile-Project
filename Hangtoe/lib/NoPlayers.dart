@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/data.dart';
 
 class Players extends StatefulWidget {
   const Players({super.key});
@@ -37,7 +37,8 @@ class _PlayersState extends State<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/oneplayer');
+                      Navigator.pushNamed(
+                          context, '/oneplayer', Data.player = 1);
                     },
                     child: const Text(
                       '1 Player',
@@ -65,7 +66,8 @@ class _PlayersState extends State<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/twoplayers');
+                      Navigator.pushNamed(
+                          context, '/twoplayers', Data.player = 2);
                     },
                     child: const Text(
                       '2 Players',
