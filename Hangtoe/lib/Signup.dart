@@ -60,7 +60,7 @@ class _SignupState extends State<Signup> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/Signup');
+                      Navigator.pushNamed(context, '/');
                     },
                     child: const Text('Cancel'),
                   )
