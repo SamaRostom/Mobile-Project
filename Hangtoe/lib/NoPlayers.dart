@@ -17,7 +17,14 @@ class _PlayersState extends State<Players> {
         body: Column(
           // crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisSize: MainAxisSize.max,
-          children: [
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.arrow_back),
+              color: Colors.white,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             const SizedBox(
               height: 250,
             ),
