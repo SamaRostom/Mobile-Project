@@ -75,14 +75,14 @@ class _GamehomeState extends State<Gamehome>{
                       height: 200,
                   ):
                   Image.asset(
-                      'assets/toe.png',
-                      width: 200,
-                      height: 200,
+                      'assets/xo1.png',
+                      width: 150,
+                      height: 150,
                   ),
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 50,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
