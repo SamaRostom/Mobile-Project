@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,7 +37,12 @@ class Howtoplay extends StatelessWidget {
                     //     letterSpacing: 3.0,
                     //   ),
                   ),
-                  const Icon(Icons.lightbulb,color: Color.fromARGB(255, 255, 234, 49), size: 50.0,)
+                  //const IconButton(Icons.lightbulb,color: Color.fromARGB(255, 255, 234, 49), size: 50.0, onPressed(){})
+                  IconButton(
+                  icon: const Icon(Icons.lightbulb,size: 50.0,),
+                  color: const Color.fromARGB(255, 255, 234, 49),
+                  onPressed: () {},
+                ),
                 ],
               ),
             const SizedBox(
