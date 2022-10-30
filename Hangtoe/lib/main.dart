@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/HangmanBoard.dart';
 import 'package:flutter_application_1/Home.dart';
 import 'package:flutter_application_1/scores.dart';
 import 'package:flutter_application_1/NoPlayers.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         '/NoPlayers': (context) => const Players(),
         '/gamehome': (context) => const Gamehome(),
         '/howtoplay': (context) => const Howtoplay(),
-        // '/HangmanBoard': (context) => const HangmanBoard(),
+        '/HangmanBoard': (context) => const HangmanBoard(),
       },
     );
   }
