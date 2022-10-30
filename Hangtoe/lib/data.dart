@@ -5,6 +5,7 @@ class Data {
   static int tries = 5;
   static List<String> selectedChar = [];
   static var chosed; 
+  static var player=1;
   static Color primaryColorDark = Color(0xFF231954);
   static int numOfRows = 5;
   static List<String> topRanks = ["🥇", "🥈", "🥉"];
