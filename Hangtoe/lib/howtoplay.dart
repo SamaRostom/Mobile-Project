@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ignore: camel_case_types
 class Howtoplay extends StatelessWidget {
@@ -24,25 +25,32 @@ class Howtoplay extends StatelessWidget {
                   color: Colors.white,
                   onPressed: () {Navigator.pop(context); },
                 ),
-                  const Text(
+                   Text(
                     'How to play',
-                     style: TextStyle(
-                        fontSize: 50,
-                        color: Colors.white,
-                        letterSpacing: 3.0,
-                      ),
+                     style:
+                     GoogleFonts.patrickHand
+                      (
+                        fontSize: 60,
+                        color: Colors.white
+                      ),  
+                    //  TextStyle(
+                    //     fontSize: 50,
+                    //     color: Colors.white,
+                    //     letterSpacing: 3.0,
+                    //   ),
                   ),
+                  const Icon(Icons.lightbulb,color: Color.fromARGB(255, 255, 234, 49), size: 50.0,)
                 ],
               ),
             const SizedBox(
-              height: 100,
+              height: 70,
             ),
             Row(
               // mainAxisAlignment: MainAxisAlignment.start,
               children: 
                [
                 Data.chosed == 'hangman'?
-                const Text('''
+                 Text('''
           In the game of Hangman, 
           a clue word is given by 
           the program that the player
@@ -54,12 +62,18 @@ class Howtoplay extends StatelessWidget {
           is drawn the player loses, 
           otherwise the correct letter 
           is found and the player wins.''',
-                  style: TextStyle(
+                  style: 
+                  GoogleFonts.kanit
+                      (
                         fontSize: 25,
-                        color: Colors.white,
-                      ),
+                        color: Colors.white
+                      ), 
+                  // TextStyle(
+                  //       fontSize: 25,
+                  //       color: Colors.white,
+                  //     ),
                 ):
-                const Text(
+                 Text(
                   '''
       Tic-tac-toe is a puzzle game 
       for two players, X and O, 
@@ -70,10 +84,16 @@ class Howtoplay extends StatelessWidget {
       horizontal, vertical, or diagonal 
       row wins the game.
           ''',
-                  style: TextStyle(
+                  style: 
+                  GoogleFonts.kanit
+                      (
                         fontSize: 25,
-                        color: Colors.white,
-                      ),
+                        color: Colors.white
+                      ), 
+                  // TextStyle(
+                  //       fontSize: 25,
+                  //       color: Colors.white,
+                  //     ),
                 )
               ],
             ),
