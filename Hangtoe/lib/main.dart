@@ -9,6 +9,7 @@ import 'package:flutter_application_1/PNames.dart';
 import 'package:flutter_application_1/Tic_tac_toe.dart';
 import 'package:flutter_application_1/Login.dart';
 import 'package:flutter_application_1/Signup.dart';
+import 'package:flutter_application_1/Dictionary.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         // scaffoldBackgroundColor: Color.fromARGB(255, 160, 120, 247),
       ),
       // home: const HomeScreen(),
-      initialRoute: '/Signup',
+      initialRoute: '/SignUp',
       routes: {
         '/': (context) => const HomeScreen(),
         '/scores': (context) => const Scores(),
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/Tic_tac_toe': (context) => const Tictactoe(),
         '/Login': (context) => const Login(),
         '/Signup': (context) => const Signup(),
+        '/Dictionary': (context) => const Dictionary(),
       },
     );
   }

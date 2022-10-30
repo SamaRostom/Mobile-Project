@@ -110,6 +110,9 @@ class Data {
   // static List<String> categories = ["Animals","Sports","Countries"];
   // static const List<String> wordList = ["DOG","COW","CAT","HORSE","DONKEY"];
     static var cc;
+    static List<String> animals = ["DOG","COW","CAT","HORSE","DONKEY"];
+    static List<String> sports = ["Football","Tennis","Baseball","Squash","Swimming"];
+    static List<String> countries = ["Egypt","America","France","Germany","China"];
     static List<Map> categories = [
     {
       'Animals': 'DOG',
@@ -136,5 +139,33 @@ class Data {
       'Sports': 'swimming',
       'Countries': 'China',
     },
+  ];
+  static List<String> alphabets = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z"
   ];
 }

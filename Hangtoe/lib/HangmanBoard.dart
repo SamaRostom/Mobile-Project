@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-// import 'dart:math';
+ import 'dart:math';
 import 'package:flutter_application_1/data.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/letter.dart';
@@ -14,60 +16,18 @@ class HangmanBoard extends StatefulWidget {
 }
 
 class _HangmanBoardState extends State<HangmanBoard> {
-  
-  // String word = Data.wordList[rnd.nextInt(Data.wordList.length)];
   //choosing the game word
-  // String word = "Flutter".toUpperCase();
-  // String word = Data.wordList[0].toUpperCase();
-  if(Data.cc == "Animals"){
+  String word = Data.cc[0].toUpperCase();
 
-  }
-  else if(Data.cc == "Sports"){
-
-  }
-  else{
-    
-  }
-  // String word = randomListItem(Data.wordList);
   //Create a list that contains the Alphabet, or you can just copy and paste it
-  List<String> alphabets = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z"
-  ];
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColor.primaryColor,
       appBar: AppBar(
         title: Text("Hangman"),
         elevation: 0,
         centerTitle: true,
-        // backgroundColor: AppColor.primaryColor,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,17 +38,11 @@ class _HangmanBoardState extends State<HangmanBoard> {
           // a new variable to store the selected character
           /* and check if it's on the word */
 
-          // HomeApp.figureImage();
-          // Text(HomeApp.draw),
-          // children: [
-
           Center(
             child: Stack(
               children: [
-                //let's make the figure widget
-                //let's add the images to the asset folder
-                //Okey now we will create a Game class
-                //Now the figure will be built according to the number of tries
+                //add the images to the asset folder
+                //figure will be built according to the number of tries
                 figureImage(Data.tries >= 0, "assets/hang.png"),
                 figureImage(Data.tries >= 1, "assets/head.png"),
                 figureImage(Data.tries >= 2, "assets/body.png"),
@@ -109,31 +63,36 @@ class _HangmanBoardState extends State<HangmanBoard> {
                 .toList(),
           ),
 
-          //Now let's build the Game keyboard
+          //Game keyboard
           SizedBox(
-            width: double.infinity,
+            // width: double.infinity,
             height: 250.0,
             child: GridView.count(
               crossAxisCount: 7,
               mainAxisSpacing: 8.0,
               crossAxisSpacing: 8.0,
               padding: EdgeInsets.all(8.0),
-              children: alphabets.map((e) {
+              children: Data.alphabets.map((e) {
                 return RawMaterialButton(
                   onPressed: Data.selectedChar.contains(e)
-                      ? null // we first check that we didn't selected the button before
+                      ? null // check that we didn't selected the button before
                       : () {
                           setState(() {
                             Data.selectedChar.add(e);
+                            // ignore: avoid_print
                             print(Data.selectedChar);
                             if (!word.split('').contains(e.toUpperCase())) {
                               Data.tries++;
+                            }
+                            if(Data.tries == 6){
+                              Navigator.pushNamed(context, '/');
                             }
                           });
                         },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4.0),
                   ),
+                  // ignore: sort_child_properties_last
                   child: Text(
                     e,
                     style: TextStyle(
