@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Gamehome extends StatefulWidget {
   const Gamehome({super.key});
@@ -40,27 +41,39 @@ class _GamehomeState extends State<Gamehome>{
                     height: 160,
                   ),
                   Data.chosed == 'hangman'?
-                     const Text(
+                      Text(
                       'HANGMAN',
-                      style: TextStyle(
-                        fontSize: 50,
-                        color: Colors.white,
-                        // fontWeight: FontWeight.w300,
-                        letterSpacing: 3.0,
-                        // fonts.asset('fonts/FiraMono-Bold.ttf'),
-                        fontFamily: 'FiraMono',
-                      ),
+                      style:
+                      GoogleFonts.patrickHand
+                      (
+                        fontSize: 70,
+                        color: Colors.white
+                      ), 
+                      // TextStyle(
+                      //   fontSize: 50,
+                      //   color: Colors.white,
+                      //   // fontWeight: FontWeight.w300,
+                      //   letterSpacing: 3.0,
+                      //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
+                      //   fontFamily: 'FiraMono',
+                      // ),
                     ):
-                     const Text(
+                      Text(
                       'TICTACTOE',
-                      style: TextStyle(
-                        fontSize: 50,
-                        color: Colors.white,
-                        // fontWeight: FontWeight.w300,
-                        letterSpacing: 3.0,
-                        // fonts.asset('fonts/FiraMono-Bold.ttf'),
-                        fontFamily: 'FiraMono',
-                      ),
+                      style:
+                      GoogleFonts.patrickHand
+                      (
+                        fontSize: 60,
+                        color: Colors.white
+                      ),  
+                      // TextStyle(
+                      //   fontSize: 50,
+                      //   color: Colors.white,
+                      //   // fontWeight: FontWeight.w300,
+                      //   letterSpacing: 3.0,
+                      //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
+                      //   fontFamily: 'FiraMono',
+                      // ),
                     ),
                 ],
               ),
