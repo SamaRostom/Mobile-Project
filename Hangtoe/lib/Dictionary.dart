@@ -16,8 +16,6 @@ class _DictionaryState extends State<Dictionary> {
     return SafeArea(
       child: Scaffold(
         body: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisSize: MainAxisSize.max,
           children: [
             const SizedBox(
               height: 200,
@@ -25,6 +23,11 @@ class _DictionaryState extends State<Dictionary> {
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  color: Colors.white,
+                  onPressed: () {Navigator.pop(context); },
+                ),
                    Text(
                       'Choose A Category',
                       style: 
@@ -34,7 +37,6 @@ class _DictionaryState extends State<Dictionary> {
                         color: Colors.white
                       ),
                     ),
-                    // const Icon(Icons.gamepad_outlined,color: Color.fromARGB(255, 177, 96, 209),)
                 ],
               ),
             const SizedBox(
