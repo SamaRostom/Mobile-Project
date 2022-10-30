@@ -67,7 +67,7 @@ class _PlayersState extends State<Players> {
                     ),
                     onPressed: () {
                       Navigator.pushNamed(
-                          context, '/twoplayers'); Data.player = 2;
+                          context, '/PNames'); Data.player = 2;
                     },
                     child: const Text(
                       '2 Players',
