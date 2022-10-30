@@ -30,7 +30,7 @@ class _PlayersState extends State<Players> {
               width: 100,
               height: 100,
             ),
-            Text("Choose The Number Of Players To Start The Game"),
+            Text(style: TextStyle(color: Colors.white),,"Choose The Number Of Players To Start The Game"),
             const SizedBox(
               height: 20,
             ),
