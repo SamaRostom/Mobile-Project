@@ -17,10 +17,20 @@ class _PlayersState extends State<Players> {
         body: Column(
           // crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisSize: MainAxisSize.max,
-          children: [
-            const SizedBox(
-              height: 250,
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.arrow_back),
+              color: Colors.white,
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
+            Image.asset(
+              'assets/Friends.png',
+              width: 100,
+              height: 100,
+            ),
+            Text("Choose The Number Of Players To Start The Game"),
             const SizedBox(
               height: 20,
             ),

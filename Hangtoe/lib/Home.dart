@@ -15,6 +15,44 @@ class _HomeScreenState extends State<HomeScreen>{
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(backgroundColor: Colors.indigo),
+        drawer: Drawer(
+            child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+             DrawerHeader(
+              decoration: const BoxDecoration(
+                color: Colors.indigo,
+              ),
+              child: Text('Pages',style: GoogleFonts.patrickHand( fontSize: 40,color: Colors.white), ),
+            ),
+            ListTile(
+              leading: const Icon(
+              Icons.person_add,
+              color: Colors.indigo,
+            ),
+              title: Text('Sign up',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
+              onTap: () {Navigator.pushNamed(context, '/Signup');},
+            ),
+            ListTile(
+              leading: const Icon(
+              Icons.login,
+              color: Colors.indigo,
+            ),
+              title:  Text('Log in',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
+              onTap: () {Navigator.pushNamed(context, '/Login');},
+            ),
+            ListTile(
+              leading: const Icon(
+              Icons.logout,
+              color: Colors.indigo,
+            ),
+              title:  Text('Log out',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
+              onTap: () {Navigator.pushNamed(context, '/');},
+            ),
+          ],
+        )),
+
         body: Column(
           // crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisSize: MainAxisSize.max,
@@ -24,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen>{
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   const SizedBox(
-                    height: 190,
+                    height: 150,
                   ),
                    Text(
                       'HANGTOE',

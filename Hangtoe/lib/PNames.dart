@@ -18,14 +18,21 @@ class _PNameState extends State<PName> {
           padding: const EdgeInsets.all(8),
           children: [
             const Text(
-              'Enter the Players Name',
+              'TO Start The Game please Enter The Players Name',
               textAlign: TextAlign.center,
             ),
             Data.player == 2
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     //crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
+                    children: <Widget>[
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                       const TextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -42,12 +49,16 @@ class _PNameState extends State<PName> {
                       ButtonBar(
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
-                            child: Text('Next'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/gamehome');
+                            },
+                            child: const Text('Play'),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
-                            child: Text('Cancel'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancel'),
                           )
                         ],
                       )
@@ -64,12 +75,16 @@ class _PNameState extends State<PName> {
                       ButtonBar(
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
-                            child: Text('Next'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/gamehome');
+                            },
+                            child: const Text('Play'),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
-                            child: Text('Cancel'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancel'),
                           )
                         ],
                       )
