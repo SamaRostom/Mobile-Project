@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/Login');
+                      Navigator.pushNamed(context, '/');
                     },
                     child: const Text('Cancel'),
                   )
