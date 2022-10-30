@@ -13,6 +13,9 @@ class Howtoplay extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
+            const SizedBox(
+              height: 30,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
