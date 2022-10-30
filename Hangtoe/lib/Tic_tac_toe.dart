@@ -1,4 +1,4 @@
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
@@ -34,6 +34,6 @@ class _TictactoeState extends State<Tictactoe> {
         ],
 
       )
-    )
+    );
    }
 }
