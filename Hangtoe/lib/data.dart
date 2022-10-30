@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class Players {
   static const x = "X";
@@ -102,6 +103,38 @@ class Data {
       'Name': 'Sara',
       'Date': '22-Feb-12',
       'Score': 1
+    },
+  ];
+
+  // Random rnd = Random();
+  // static List<String> categories = ["Animals","Sports","Countries"];
+  // static const List<String> wordList = ["DOG","COW","CAT","HORSE","DONKEY"];
+    static var cc;
+    static List<Map> categories = [
+    {
+      'Animals': 'DOG',
+      'Sports': 'football',
+      'Countries': 'Egypt',
+    },
+    {
+      'Animals': 'COW',
+      'Sports': 'tennis',
+      'Countries': 'America',
+    },
+    {
+      'Animals': 'CAT',
+      'Sports': 'baseball',
+      'Countries': 'France',
+    },
+    {
+      'Animals': 'HORSE',
+      'Sports': 'squash',
+      'Countries': 'Germany',
+    },
+    {
+      'Animals': 'DONKEY',
+      'Sports': 'swimming',
+      'Countries': 'China',
     },
   ];
 }
