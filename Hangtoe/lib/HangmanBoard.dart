@@ -35,18 +35,16 @@ class HangmanBoard extends StatefulWidget {
 //                   borderRadius: BorderRadius.circular(20)
 //                 ),
 //               ),
-//               onPressed: () {}, 
+//               onPressed: () {},
 //               child: const Text('Hangman',style: TextStyle(fontSize: 20,),),
 //             ),
-//           //}  
+//           //}
 //           ],
 //         ),
 //       ),
 //     );
 //   }
 // }
-
-
 
 class _HangmanBoardState extends State<HangmanBoard> {
   //choosing the game word
@@ -80,7 +78,7 @@ class _HangmanBoardState extends State<HangmanBoard> {
     "Y",
     "Z"
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +101,24 @@ class _HangmanBoardState extends State<HangmanBoard> {
           // HomeApp.figureImage();
           // Text(HomeApp.draw),
           // children: [
-          
+
+          Center(
+            child: Stack(
+              children: [
+                //let's make the figure widget
+                //let's add the images to the asset folder
+                //Okey now we will create a Game class
+                //Now the figure will be built according to the number of tries
+                figureImage(Data.tries >= 0, "assets/hang.png"),
+                figureImage(Data.tries >= 1, "assets/head.png"),
+                figureImage(Data.tries >= 2, "assets/body.png"),
+                figureImage(Data.tries >= 3, "assets/ra.png"),
+                figureImage(Data.tries >= 4, "assets/la.png"),
+                figureImage(Data.tries >= 5, "assets/rl.png"),
+                figureImage(Data.tries >= 6, "assets/ll.png"),
+              ],
+            ),
+          ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -159,4 +174,3 @@ class _HangmanBoardState extends State<HangmanBoard> {
     );
   }
 }
-
