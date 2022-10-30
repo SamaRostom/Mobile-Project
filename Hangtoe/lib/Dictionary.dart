@@ -39,7 +39,7 @@ class _DictionaryState extends State<Dictionary> {
                     onPressed: () {
                       Navigator.pushNamed(
                           context, '/HangmanBoard');
-                          Data.cc = "Animals";
+                          Data.cc = Data.animals;
                     },
                     child: const Text(
                       'Animals',
@@ -69,7 +69,7 @@ class _DictionaryState extends State<Dictionary> {
                     onPressed: () {
                       Navigator.pushNamed(
                           context, '/HangmanBoard'); 
-                          Data.cc = "Sports";
+                          Data.cc = Data.sports;
                     },
                     child: const Text(
                       'Sports',
@@ -100,7 +100,7 @@ class _DictionaryState extends State<Dictionary> {
                     onPressed: () {
                       Navigator.pushNamed(
                           context, '/HangmanBoard'); 
-                          Data.cc = "Countries";
+                          Data.cc = Data.countries;
                     },
                     child: const Text(
                       'Countries',
