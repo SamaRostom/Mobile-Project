@@ -15,7 +15,10 @@ class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    // final double height = MediaQuery.of(context).size.height;
+    final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
     return Scaffold(
+      key:_scaffoldKey,
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: [
@@ -75,7 +78,10 @@ class _SignupState extends State<Signup> {
                   children: <Widget>[
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/Login');
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.pushNamed(context, '/Login');
+                        } 
+                        // Navigator.pushNamed(context, '/Login');
                       },
                       child: const Text('Signup'),
                     ),
