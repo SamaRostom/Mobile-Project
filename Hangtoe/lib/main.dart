@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         // scaffoldBackgroundColor: Color.fromARGB(255, 160, 120, 247),
       ),
       // home: const HomeScreen(),
-      initialRoute: '/SignUp',
+      initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
         '/scores': (context) => const Scores(),
