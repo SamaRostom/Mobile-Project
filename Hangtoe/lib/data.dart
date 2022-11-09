@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class Data {
   //adding the number of tries
   static int tries = 0;
   static List<String> selectedChar = [];
+  // ignore: prefer_typing_uninitialized_variables
   static var chosed;
   static var player = 1;
   static Color primaryColorDark = const Color(0xFF231954);
@@ -25,6 +25,7 @@ class Data {
   //   ['5', 'Sara','20-Feb-12','1'],
   // ];
 
+  // ignore: non_constant_identifier_names
   static List<Map> Hangscore = [
     {'Rank': 1, 'Name': 'Player', 'Date': '22-Mar-31', 'Score': 7},
     {'Rank': 2, 'Name': 'Ahmed', 'Date': '22-Apr-1', 'Score': 6},
@@ -44,6 +45,7 @@ class Data {
   // Random rnd = Random();
   // static List<String> categories = ["Animals","Sports","Countries"];
   // static const List<String> wordList = ["DOG","COW","CAT","HORSE","DONKEY"];
+  // ignore: prefer_typing_uninitialized_variables
   static var cc;
   static List<String> animals = ["DOG", "COW", "CAT", "HORSE", "DONKEY"];
   static List<String> sports = [
