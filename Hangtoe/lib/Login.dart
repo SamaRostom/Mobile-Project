@@ -11,10 +11,15 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  //key for form
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    // final double height = MediaQuery.of(context).size.height;
+    final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
     return Scaffold(
+      key:_scaffoldKey,
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: [
@@ -43,7 +48,7 @@ class _LoginState extends State<Login> {
                     hintText: 'Enter the Username',
                     hintStyle: TextStyle(color: Colors.white),
                   ),
-                  autofocus: true,
+                  // autofocus: true,
                   validator: (val) {
                     if (val != null && val.isNotEmpty) {
                       return null;
@@ -59,12 +64,17 @@ class _LoginState extends State<Login> {
                     hintText: 'Enter the Password',
                     hintStyle: TextStyle(color: Colors.white),
                   ),
-                  autofocus: true,
-                  validator: (val) {
-                    if (val != null && val.isNotEmpty) {
-                      return null;
-                    } else {
+                  // autofocus: true,
+                  validator: (value) {
+                    // if (value != null && value.isNotEmpty) {
+                    //   return null;
+                    // } else {
+                    //   return 'Please enter a password';
+                    // }
+                    if (value!.isEmpty) {
                       return 'Please enter a password';
+                    } else {
+                      return null;
                     }
                   },
                 ),
@@ -73,16 +83,21 @@ class _LoginState extends State<Login> {
                   children: <Widget>[
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/');
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.pushNamed(context, '/');
+                        } 
+                       
                       },
                       child: const Text('Login'),
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/Login');
+                        
+                        Navigator.pushNamed(context, '/'); 
+                        
                       },
                       child: const Text('Cancel'),
-                    )
+                    ),
                   ],
                 )
               ],
