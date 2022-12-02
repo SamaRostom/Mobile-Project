@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: 'Hangtoe',
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF421b9b),
