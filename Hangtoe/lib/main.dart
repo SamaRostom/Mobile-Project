@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/HangmanBoard.dart';
-import 'package:flutter_application_1/Home.dart';
-import 'package:flutter_application_1/scores.dart';
-import 'package:flutter_application_1/NoPlayers.dart';
-import 'package:flutter_application_1/gamehome.dart';
-import 'package:flutter_application_1/howtoplay.dart';
-import 'package:flutter_application_1/PNames.dart';
-import 'package:flutter_application_1/Tic_tac_toe.dart';
-import 'package:flutter_application_1/Login.dart';
-import 'package:flutter_application_1/Signup.dart';
-import 'package:flutter_application_1/Dictionary.dart';
+import 'package:flutter_application_1/screens/HangmanBoard.dart';
+import 'package:flutter_application_1/screens/Home.dart';
+import 'package:flutter_application_1/screens/scores.dart';
+import 'package:flutter_application_1/screens/NoPlayers.dart';
+import 'package:flutter_application_1/screens/gamehome.dart';
+import 'package:flutter_application_1/screens/howtoplay.dart';
+import 'package:flutter_application_1/screens/PNames.dart';
+import 'package:flutter_application_1/screens/Tic_tac_toe.dart';
+import 'package:flutter_application_1/screens/Login.dart';
+import 'package:flutter_application_1/screens/Signup.dart';
+import 'package:flutter_application_1/screens/Dictionary.dart';
 
 void main() {
   runApp(const MyApp());
