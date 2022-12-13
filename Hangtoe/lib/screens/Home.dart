@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../services/score_service.dart';
+import '../constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen>{
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,7 +51,21 @@ class _HomeScreenState extends State<HomeScreen>{
               color: Colors.indigo,
             ),
               title:  Text('Log out',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
-              onTap: () {Navigator.pushNamed(context, '/');},
+              onTap: () async {
+                int rank=1;
+                String date='22-Mar-31';
+                String playername="sama";
+                int score =7;
+                String typeofgame='xo';
+                var response = await FirebaseCrud.addScore(
+                rank: rank,
+                playername: playername,
+                date: date,
+                score : score,
+                typeofgame: typeofgame,);
+                DialogExample(response.message);
+                print(response.message);
+                },
             ),
           ],
         )),
