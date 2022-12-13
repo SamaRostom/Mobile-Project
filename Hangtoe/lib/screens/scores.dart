@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import '../services/score_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../models/scores_model.dart';
 // import 'data.dart';
 
 
@@ -21,7 +23,8 @@ class ScoresState extends State<Scores>{
   // if(Data.chosed == "hangman"){
     
   // }
-  List<DataRow> _createRows() {
+  final Stream<QuerySnapshot> collectionReference = FirebaseCrud.readScore();
+  List<DataRow> createRow() {
     var rank = Data.topRanks;
     List<Map> S;
     Data.chosed == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
@@ -119,7 +122,7 @@ class ScoresState extends State<Scores>{
                       ),),
                     ),
                   ], 
-                  rows: _createRows()
+                  rows: createRow(),
 
                       //  DataRow(cells: [
                       //     DataCell(Text('1')),
@@ -148,5 +151,10 @@ class ScoresState extends State<Scores>{
     );
   }
 }
+
+
+
+
+
 
 
