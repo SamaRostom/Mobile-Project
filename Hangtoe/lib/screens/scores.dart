@@ -26,14 +26,29 @@ class ScoresState extends State<Scores>{
   final Stream<QuerySnapshot> collectionReference = FirebaseCrud.readScore();
   List<DataRow> createRow() {
     var rank = Data.topRanks;
+    // List<Scoresmodel> Scores = [];
+    // List<Map> S;
+    // Scoresmodel.typeofgame == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
+    // return S
+    //     .map((book) => DataRow(cells: [
+    //           DataCell(Text(book['rank']-1 < 3 ? rank[book['rank']-1] + book['rank'].toString():book['rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+    //           DataCell(Text(book['name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+    //           DataCell(Text(book['date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+    //           DataCell(Text('     ${book['score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
+    //         ]))
+    //     .toList();
+    
+    Map? d= Scoresmodel.setmap();
+    // List<Map> S=d as List<Map>;
     List<Map> S;
     Data.chosed == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
+    
     return S
         .map((book) => DataRow(cells: [
-              DataCell(Text(book['Rank']-1 < 3 ? rank[book['Rank']-1] + book['Rank'].toString():book['Rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text(book['Name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text(book['Date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text('     ${book['Score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
+              DataCell(Text(book['rank']-1 < 3 ? rank[book['rank']-1] + book['rank'].toString():book['rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text(book['player_name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text(book['date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text('     ${book['score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
             ]))
         .toList();
   }
