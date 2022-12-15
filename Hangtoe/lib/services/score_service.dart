@@ -1,13 +1,19 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/screens/scores.dart';
 import '../models/scores_model.dart';
 import '../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 //https://github.com/ahmedserag2/E-Commerce/tree/main/lib
 //https://www.freecodespot.com/blog/crud-in-flutter-using-firebase/
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+final database = FirebaseDatabase.instance; 
+final storage = firebase_storage.FirebaseStorage.instance;
 final CollectionReference _Collection = _firestore.collection('Scores');
 class Response{
   int? code;
@@ -60,6 +66,23 @@ class FirebaseCrud {
 
         return response;
   }
+  Future<List<Scoresmodel>> getAllProducts() async {
+    var data = await database.ref("Scores").once();
+
+    List<Scoresmodel> Scores = [];
+    for (var element in data.snapshot.children) {
+      Map valueMap = json.decode(jsonEncode(element.value));
+      // List<String> imgs = [];
+      // for (String image in valueMap['images']) {
+      //   String img = await storage.ref('products/' + image).getDownloadURL();
+      //   imgs.add(img);
+      // }
+      // valueMap["images"] = imgs;
+      // Scoresmodel.fromMap(valueMap);
+      Scores.add(Scoresmodel.fromJson(valueMap));
+    }
+    return Scores;
+  }
   static Stream<QuerySnapshot> readScore() {
     CollectionReference notesItemCollection =
         _Collection;
@@ -71,6 +94,26 @@ class FirebaseCrud {
     // });    
 
     return notesItemCollection.snapshots();
+//     StreamBuilder(
+//     stream: _Collection.snapshots(),
+// builder: (context, snapshot) {
+//   return !snapshot.hasData
+//       ? const Text('PLease Wait')
+//       : ListView.builder(
+//           itemCount: snapshot.data.documents.length,
+//           itemBuilder: (context, index) {
+//             DocumentSnapshot products =
+//                 snapshot.data.documents[index];
+//             return ProductItem(
+//               rank: products['rank'],
+//               player_name: products['player_name'],
+//               date: products['date'],
+//               score: products['score'],
+//               typeofgame: products['typeofgame'],
+//             );
+//           },
+//         );
+//     });
   }
   // getDataFromDatabase() async {
   //   var value = FirebaseDatabase.instance.reference();
@@ -162,6 +205,17 @@ class FirebaseCrud {
 
 // return eventsHashMap;
 // }
+
+ static Map? getScores(){
+    Map? d;
+    _Collection.get().then((QuerySnapshot snapshot){
+      snapshot.docs.forEach((DocumentSnapshot doc) { 
+        // print(doc.data);
+        d= doc.data() as Map?;
+      });
+    });
+    return d;
+  }
 }
  
 
