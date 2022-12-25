@@ -1,11 +1,12 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
+import '../models/XO_model.dart';
 
 class Tictactoe extends StatefulWidget {
   const Tictactoe({super.key});
 
   @override
-
-  // ignore: library_private_types_in_public_api
   _TictactoeState createState() => _TictactoeState();
 }
 
