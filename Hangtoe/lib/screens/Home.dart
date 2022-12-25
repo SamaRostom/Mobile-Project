@@ -52,19 +52,17 @@ class _HomeScreenState extends State<HomeScreen>{
             ),
               title:  Text('Log out',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
               onTap: () async {
-                int rank=1;
-                String date='22-Mar-31';
-                String playername="sama";
-                int score =7;
+                int rank=5;
+                String date='23-Mar-01';
+                String playername="player";
+                int score =5;
                 String typeofgame='xo';
-                var response = await FirebaseCrud.addScore(
-                rank: rank,
-                playername: playername,
-                date: date,
-                score : score,
-                typeofgame: typeofgame,);
-                DialogExample(response.message);
-                print(response.message);
+                createScore(
+                  rank: rank,
+                  playername: playername,
+                  date: date,
+                  score : score,
+                  typeofgame: typeofgame,);
                 },
             ),
           ],
@@ -181,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen>{
                       borderRadius: BorderRadius.circular(20)
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/NoPlayers');Data.chosed="x";}, 
+                      onPressed: () {Navigator.pushNamed(context, '/NoPlayers');Data.chosed="xo";}, 
                       child: const Text('Tic Tac Toe',style: TextStyle(fontSize: 20,),),
                       ),
                    ),
