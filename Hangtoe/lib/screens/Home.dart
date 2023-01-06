@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen>{
               title:  Text('Log out',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
               onTap: () async {
                 int rank=5;
-                String date='23-Mar-01';
+                String date='25-Mar-01';
                 String playername="player";
                 int score =5;
                 String typeofgame='xo';
