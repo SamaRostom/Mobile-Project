@@ -6,9 +6,11 @@ import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/gamehome.dart';
 import 'package:flutter_application_1/screens/howtoplay.dart';
 import 'package:flutter_application_1/screens/PNames.dart';
-import 'package:flutter_application_1/screens/Tic_tac_toe.dart';
 import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
+import 'package:flutter_application_1/Screens/join_room_screen.dart';
+import 'package:flutter_application_1/Screens/create_room_screen.dart';
+import 'package:flutter_application_1/Screens/main_menu_screen.dart';
 import 'package:flutter_application_1/screens/Dictionary.dart';
 import 'package:firebase_core/firebase_core.dart';
 // import 'firebase_options.dart';
@@ -47,7 +49,9 @@ class MyApp extends StatelessWidget {
         '/howtoplay': (context) => const Howtoplay(),
         '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
-        '/Tic_tac_toe': (context) => const Tictactoe(),
+        '/main_menu_screen': (context) => const MainMenuScreen(),
+        '/join_room_screen': (context) => const JoinRoomScreen(),
+        '/create_room_screen': (context) => const CreateRoomScreen(),
         '/Login': (context) => const Login(),
         '/Signup': (context) => const Signup(),
         '/Dictionary': (context) => const Dictionary(),
