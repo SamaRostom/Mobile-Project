@@ -225,9 +225,9 @@ import '../models/scores_model.dart';
 void createScore({required rank, required playername, required date, required score, required typeofgame}) async {
   final docScore = FirebaseFirestore.instance.collection('Scores').doc();
 
-  final Score = Scoresmodel(rankid : docScore.id, rank: rank, playername: playername, date: date, score: score, typeofgame: typeofgame);
+   final scoree = Scoresmodel(rankid : docScore.id, rank: rank, playername: playername, date: date, score: score, typeofgame: typeofgame);
 
-  final json = Score.toJson();
+  final json = scoree.toJson();
 
   await docScore.set(json);
 }
