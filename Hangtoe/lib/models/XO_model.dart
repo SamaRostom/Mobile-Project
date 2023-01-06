@@ -23,7 +23,7 @@ class _XOmodelState extends State<XOmodel> {
 
   String lastvalue = "X";
 
-  void _tapped(int index) {
+  void tapped(int index) {
     setState(() {
       if (oTurn && displayElement[index] == '') {
         displayElement[index] = 'O';
@@ -169,5 +169,11 @@ class _XOmodelState extends State<XOmodel> {
     });
 
     filledBoxes = 0;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }

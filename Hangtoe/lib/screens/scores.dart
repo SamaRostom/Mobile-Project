@@ -23,144 +23,171 @@ class ScoresState extends State<Scores>{
   // if(Data.chosed == "hangman"){
     
   // }
-  final Stream<QuerySnapshot> collectionReference = FirebaseCrud.readScore();
-  List<DataRow> createRow() {
+  // final Stream<QuerySnapshot> collectionReference = FirebaseCrud.readScore();
+  // List<DataRow> createRow() {
+  //   var rank = Data.topRanks;
+  //   // List<Scoresmodel> Scores = [];
+  //   // List<Map> S;
+  //   // Scoresmodel.typeofgame == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
+  //   // return S
+  //   //     .map((book) => DataRow(cells: [
+  //   //           DataCell(Text(book['rank']-1 < 3 ? rank[book['rank']-1] + book['rank'].toString():book['rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+  //   //           DataCell(Text(book['name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+  //   //           DataCell(Text(book['date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+  //   //           DataCell(Text('     ${book['score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
+  //   //         ]))
+  //   //     .toList();
+    
+  //   Map? d= Scoresmodel.setmap();
+  //   // List<Map> S=d as List<Map>;
+  //   List<Map> S;
+  //   Data.chosed == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
+    
+  //   return S
+  //       .map((book) => DataRow(cells: [
+  //             DataCell(Text(book['rank']-1 < 3 ? rank[book['rank']-1] + book['rank'].toString():book['rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+  //             DataCell(Text(book['player_name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+  //             DataCell(Text(book['date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+  //             DataCell(Text('     ${book['score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
+  //           ]))
+  //       .toList();
+  // }
+
+   List<DataRow> _createRows(QuerySnapshot snapshot) {
     var rank = Data.topRanks;
-    // List<Scoresmodel> Scores = [];
-    // List<Map> S;
-    // Scoresmodel.typeofgame == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
-    // return S
-    //     .map((book) => DataRow(cells: [
-    //           DataCell(Text(book['rank']-1 < 3 ? rank[book['rank']-1] + book['rank'].toString():book['rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-    //           DataCell(Text(book['name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-    //           DataCell(Text(book['date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-    //           DataCell(Text('     ${book['score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
-    //         ]))
-    //     .toList();
-    
-    Map? d= Scoresmodel.setmap();
-    // List<Map> S=d as List<Map>;
-    List<Map> S;
-    Data.chosed == 'hangman'? S=Data.Hangscore:S=Data.xoscore;
-    
-    return S
-        .map((book) => DataRow(cells: [
-              DataCell(Text(book['rank']-1 < 3 ? rank[book['rank']-1] + book['rank'].toString():book['rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text(book['player_name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text(book['date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text('     ${book['score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
+    List<DataRow> newScore = snapshot.docs.map((DocumentSnapshot documentSnapshot) => DataRow(cells: [
+              DataCell(Text((documentSnapshot['rank'])-1 < 3 ? rank[documentSnapshot['rank']-1] + documentSnapshot['rank'].toString():documentSnapshot['rank'].toString(), style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text(documentSnapshot['player_name'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text(documentSnapshot['date'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
+              DataCell(Text('     ${documentSnapshot['score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
             ]))
         .toList();
+
+    return newScore;
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceAround,
-          // mainAxisSize: MainAxisSize.max,
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  color: Colors.white,
-                  onPressed: () {Navigator.pop(context); },
-                ),
-                // ListView(
-                //   // padding: const EdgeInsets.all(0),
-                //   children: [
-                    Column(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    // crossAxisAlignment: CrossAxisAlignment.center,
-                    children:  [
-                    Text(
-                      'High Scores',
-                      textAlign: TextAlign.center,
-                      style:
-                      GoogleFonts.patrickHand
-                      (
-                        fontSize: 60,
-                        color: Colors.white
-                      ),   
-                      // TextStyle(
-                      //   fontSize: 50,
-                      //   color: Colors.white,
+        body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('Scores').where('typeofgame', isEqualTo:Data.chosed).snapshots(),
+          builder: (context, snapshot) {
+            if(snapshot.hasData){
+              final allScores = snapshot.data!;
+              return Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                // mainAxisSize: MainAxisSize.max,
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        onPressed: () {Navigator.pop(context); },
+                      ),
+                      // ListView(
+                      //   // padding: const EdgeInsets.all(0),
+                      //   children: [
+                          Column(
+                          // mainAxisAlignment: MainAxisAlignment.center,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          children:  [
+                          Text(
+                            'High Scores',
+                            textAlign: TextAlign.center,
+                            style:
+                            GoogleFonts.patrickHand
+                            (
+                              fontSize: 60,
+                              color: Colors.white
+                            ),   
+                            // TextStyle(
+                            //   fontSize: 50,
+                            //   color: Colors.white,
+                            // ),
+                          ),
+                        ]),
+                      //   ]
                       // ),
-                    ),
-                  ]),
-                //   ]
-                // ),
-               
-              ],
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                DataTable(
-                  columnSpacing: 25,
-                  columns: [
-                    DataColumn(
-                      label: Text('Rank',style: GoogleFonts.patrickHand
-                      (
-                        fontSize: 25,
-                        color: Colors.white
-                      ),),
-                    ),
-                    DataColumn(
-                      label: Text('Name',style: GoogleFonts.patrickHand
-                      (
-                        fontSize: 25,
-                        color: Colors.white
-                      ),),
-                    ),
-                    DataColumn(
-                      label: Text('   Date',style: GoogleFonts.patrickHand
-                      (
-                        fontSize: 25,
-                        color: Colors.white
-                      ),),
-                    ),
-                    DataColumn(
-                      label: Text('Score',style: GoogleFonts.patrickHand
-                      (
-                        fontSize: 25,
-                        color: Colors.white
-                      ),),
-                    ),
-                  ], 
-                  rows: createRow(),
-
-                      //  DataRow(cells: [
-                      //     DataCell(Text('1')),
-                      //     DataCell(Text('Arshik')),
-                      //     DataCell(Text('5644645')),
-                      //     DataCell(Text('3')),
-                      //  ])
-                      // for (var item in Data.scoreslist) {
-                      //     // print(item);
-                      //     Set<DataRow>(cells: [
-                      //     DataCell(item[1][1]),
-                      //     DataCell(Text('Arshik')),
-                      //     DataCell(Text('5644645')),
-                      //     DataCell(Text('3')),
-                      //  ])
-                      // }
-
-
-                  )  
-              ],
-            ),
-          ],
+                    
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      DataTable(
+                        columnSpacing: 25,
+                        columns: [
+                          DataColumn(
+                            label: Text('Rank',style: GoogleFonts.patrickHand
+                            (
+                              fontSize: 25,
+                              color: Colors.white
+                            ),),
+                          ),
+                          DataColumn(
+                            label: Text('Name',style: GoogleFonts.patrickHand
+                            (
+                              fontSize: 25,
+                              color: Colors.white
+                            ),),
+                          ),
+                          DataColumn(
+                            label: Text('   Date',style: GoogleFonts.patrickHand
+                            (
+                              fontSize: 25,
+                              color: Colors.white
+                            ),),
+                          ),
+                          DataColumn(
+                            label: Text('Score',style: GoogleFonts.patrickHand
+                            (
+                              fontSize: 25,
+                              color: Colors.white
+                            ),),
+                          ),
+                        ], 
+                        rows: _createRows(allScores),
           
+                            //  DataRow(cells: [
+                            //     DataCell(Text('1')),
+                            //     DataCell(Text('Arshik')),
+                            //     DataCell(Text('5644645')),
+                            //     DataCell(Text('3')),
+                            //  ])
+                            // for (var item in Data.scoreslist) {
+                            //     // print(item);
+                            //     Set<DataRow>(cells: [
+                            //     DataCell(item[1][1]),
+                            //     DataCell(Text('Arshik')),
+                            //     DataCell(Text('5644645')),
+                            //     DataCell(Text('3')),
+                            //  ])
+                            // }
+          
+          
+                        )  
+                    ],
+                  ),
+                ],
+                
+              );
+            }
+            else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          }
         ),
       ),
     );
