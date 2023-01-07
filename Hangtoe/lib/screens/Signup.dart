@@ -35,10 +35,6 @@ class _SignupState extends ConsumerState<Signup> {
   void redirectToLogin() {
     final user = FirebaseAuth.instance.currentUser!;
     UserHelper.saveUser(user);
-    //Salah Way
-    // Future userData = UserHelper().getUserData();
-    // ref.read(userDataProviderRepository.notifier).state = userData;
-    // Navigator.of(context).pushNamed('/home');
 
     UserHelper().getNewUserData().then((value) {
       UserModel user = UserModel.fromSnapshot(value);
