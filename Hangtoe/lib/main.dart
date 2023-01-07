@@ -13,11 +13,6 @@ import 'package:flutter_application_1/Screens/create_room_screen.dart';
 import 'package:flutter_application_1/Screens/main_menu_screen.dart';
 import 'package:flutter_application_1/screens/Dictionary.dart';
 import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
-
-// void main() {
-//   runApp(const MyApp());
-// }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +34,6 @@ class MyApp extends StatelessWidget {
         //scaffoldBackgroundColor: const Color.fromARGB(255, 132, 81, 250),
         // scaffoldBackgroundColor: Color.fromARGB(255, 160, 120, 247),
       ),
-      // home: const HomeScreen(),
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
