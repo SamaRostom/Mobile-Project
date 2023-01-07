@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
  import 'dart:math';
-import 'package:flutter_application_1/data.dart';
+import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/models/Hangman/letter.dart';
 import 'package:flutter_application_1/models/Hangman/figure_image.dart';
