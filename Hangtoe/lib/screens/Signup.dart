@@ -47,9 +47,9 @@ class _SignupState extends ConsumerState<Signup> {
   @override
   Widget build(BuildContext context) {
     // final double height = MediaQuery.of(context).size.height;
-    final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey =  GlobalKey<ScaffoldState>();
     return Scaffold(
-      key:_scaffoldKey,
+      key:scaffoldKey,
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: [
