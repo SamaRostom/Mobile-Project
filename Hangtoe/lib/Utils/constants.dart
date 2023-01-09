@@ -72,7 +72,7 @@ void errormessage(String t, String m) {
     content: AwesomeSnackbarContent(
       title: t,
       message: m,
-
+      color: Colors.purple,
       // change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
       contentType: ContentType.failure,
     ),
