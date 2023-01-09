@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/user_model.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+
 import '../Utils/constants.dart';
 import '../Utils/data.dart' as val;
+import '../widgets/loading_widget.dart';
 
 class UserHelper{
   static saveUser(User user) async {
@@ -12,8 +16,8 @@ class UserHelper{
 
     Map<String, dynamic> userData = {
       "email": user.email,
-      "username":"sama",
-      "password":"SAMA1212",
+      "username":"eeee",
+      "password":"Eee1111",
     };
     final userRef = db.collection("Users").doc(user.uid);
     if ((await userRef.get()).exists) {
@@ -31,18 +35,38 @@ class UserHelper{
             barrierDismissible: false,
             context: context,
             builder: (context) {
-              return const Center(
-                  child: CircularProgressIndicator(
-                backgroundColor: Colors.black26,
-                valueColor: AlwaysStoppedAnimation<Color>(
-                    Color.fromARGB(255, 205, 153, 51)),
-              ));
+              return  const LoadingWidget();
+              // Center(
+              //   child: LoadingAnimationWidget.inkDrop(
+              //     color: Colors.white, size: 100,
+              // ));
+              
+              // Center(
+              //     child: CircularProgressIndicator(
+              //   backgroundColor: Colors.black26,
+              //   valueColor: AlwaysStoppedAnimation<Color>(
+              //       Color.fromARGB(255, 205, 153, 51)),
+              // ));
+              
             });
-        final credential =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
         );
+        final FirebaseFirestore db = FirebaseFirestore.instance;
+        final user = FirebaseAuth.instance.currentUser!;
+
+        Map<String, dynamic> userData = {
+          "email": emailController.text.trim(),
+          "username":nameController.text.trim(),
+          "password":passwordController.text.trim(),
+        };
+        final userRef = db.collection("Users").doc(user.uid);
+        if ((await userRef.get()).exists) {
+        } else {
+          await userRef.set(userData);
+        }
 
         Navigator.of(context).pushNamed('/Login');
       } on FirebaseAuthException catch (e) {
@@ -69,4 +93,20 @@ class UserHelper{
     String id = user.uid;
     return FirebaseFirestore.instance.collection('Users').doc(id).get();
   }
+  
+  // postDetailsToFirestore() async {
+  //   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  //   User? user = FirebaseAuth.instance.currentUser;
+
+  //   UserModel userModel = UserModel(user.username,user.email);
+
+  //   await firebaseFirestore
+  //       .collection("users")
+  //       .doc(user.uid)
+  //       .set(userModel.toMap(userModel));
+  // }
+
+  // function() async{
+
+  // }
 }
