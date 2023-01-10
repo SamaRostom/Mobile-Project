@@ -79,7 +79,9 @@ class _PNameState extends State<PName> {
                                 borderRadius: BorderRadius.circular(20)),
                           ),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/create_room_screen');
+                            Data.chosed == 'hangman'?
+                            Navigator.pushNamed(context, '/gamehome')
+                            :Navigator.pushNamed(context, '/create_room_screen');
                           },
                           child: Text('Play',
                               style: GoogleFonts.patrickHand(
