@@ -7,8 +7,8 @@ class HangmanGame {
   final List<String> wordList;			// list of possible words to guess
   final Set<String> lettersGuessed = new Set<String>();
 
-  List<String> _wordToGuess =[];
-  int _wrongGuesses=0;
+  List<String> wordToGuess =[];
+  int wrongGuesses=0;
 
   StreamController<Null> _onWin = new StreamController<Null>.broadcast();
   Stream<Null> get onWin => _onWin.stream;
@@ -32,10 +32,10 @@ class HangmanGame {
     wordList.shuffle();
 
     // break the first word from the shuffled list into a list of letters
-    _wordToGuess = wordList.first.split('');
+    wordToGuess = wordList.first.split('');
 
     // reset the wrong guess count
-    _wrongGuesses = 0;
+    wrongGuesses = 0;
 
     // clear the set of guessed letters
     lettersGuessed.clear();
@@ -50,7 +50,7 @@ class HangmanGame {
 
     // if the guessed letter is present in the word, check for a win
     // otherwise, check for player death
-    if (_wordToGuess.contains(letter)) {
+    if (wordToGuess.contains(letter)) {
       _onRight.add(letter);
 
       if (isWordComplete) {
@@ -62,27 +62,28 @@ class HangmanGame {
       }
     }
     else {
-      _wrongGuesses++;
+      wrongGuesses++;
 
-      _onWrong.add(_wrongGuesses);
+      _onWrong.add(wrongGuesses);
 
-      if (_wrongGuesses == hanged) {
+      if (wrongGuesses == hanged) {
         _onChange.add(fullWord);
         _onLose.add(null);
       }
     }
   }
 
-  int get wrongGuesses => _wrongGuesses;
-  List<String> get wordToGuess => _wordToGuess;
+  int get wrongGuessesG => wrongGuesses;
+  List<String> get wordToGuessL => wordToGuess;
   String get fullWord => wordToGuess.join();
 
-  String get wordForDisplay => wordToGuess.map((String letter) =>
+// replace correct guessed letter
+  String get wordForDisplay => wordToGuessL.map((String letter) =>
     lettersGuessed.contains(letter) ? letter : "_").join();
 
   // check to see if every letter in the word has been guessed
   bool get isWordComplete {
-    for (String letter in _wordToGuess) {
+    for (String letter in wordToGuess) {
       if (!lettersGuessed.contains(letter)) {
         return false;
       }
