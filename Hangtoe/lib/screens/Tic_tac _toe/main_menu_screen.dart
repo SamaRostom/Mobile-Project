@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/Tic_tac%20_toe/create_room_screen.dart';
-import 'package:flutter_application_1/screens/Tic_tac%20_toe/join_room_screen.dart';
 import 'package:flutter_application_1/widgets/responsive.dart';
 import 'package:flutter_application_1/widgets/custom_button.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainMenuScreen extends StatelessWidget {
   // static String routeName = '/main-menu';
@@ -30,6 +29,11 @@ class MainMenuScreen extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+            const SizedBox(height: 100),
+            Text('Choose to create a new room or join a room',
+                style:
+                    GoogleFonts.patrickHand(fontSize: 35, color: Colors.white)),
+            const SizedBox(height: 150),
             CustomButton(
               // onTap: () => createRoom(context),
               onTap: () {
