@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
  import 'dart:math';
 import 'package:flutter_application_1/data.dart';
-import 'package:flutter_application_1/main.dart';
+// import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/models/Hangman/letter.dart';
 import 'package:flutter_application_1/models/Hangman/figure_image.dart';
+// import 'package:flutter_application_1/models/Hangman/HangmanGame.dart';
 // import 'package:flutter_application_1/drawing.dart';
 
 class HangmanBoard extends StatefulWidget {
@@ -18,9 +19,9 @@ class HangmanBoard extends StatefulWidget {
 class _HangmanBoardState extends State<HangmanBoard> {
   //choosing the game word
   String word = Data.cc[0].toUpperCase();
-
+  // animals.shuffle();
   //Create a list that contains the Alphabet, or you can just copy and paste it
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
