@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/HangmanBoard.dart';
 import 'package:flutter_application_1/screens/Home.dart';
+import 'package:flutter_application_1/screens/Tic_tac%20_toe/create_room_screen.dart';
+import 'package:flutter_application_1/screens/Tic_tac%20_toe/join_room_screen.dart';
+import 'package:flutter_application_1/screens/Tic_tac%20_toe/main_menu_screen.dart';
 import 'package:flutter_application_1/screens/scores.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/gamehome.dart';
@@ -47,6 +50,9 @@ class MyApp extends StatelessWidget {
         '/howtoplay': (context) => const Howtoplay(),
         '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
+        '/main_menu_screen': (context) => const MainMenuScreen(),
+        '/join_room_screen': (context) => const JoinRoomScreen(),
+        '/create_room_screen': (context) => const CreateRoomScreen(),
         // '/Tic_tac_toe': (context) => const Tictactoe(),
         '/Login': (context) => const Login(),
         '/Signup': (context) => const Signup(),
