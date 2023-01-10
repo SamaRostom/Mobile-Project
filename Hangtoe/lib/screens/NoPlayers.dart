@@ -38,7 +38,7 @@ class _PlayersState extends State<Players> {
               height: 200,
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             Text(
               "Choose The Number Of Players To Start The Game",
@@ -46,13 +46,13 @@ class _PlayersState extends State<Players> {
               style: GoogleFonts.patrickHand(fontSize: 35, color: Colors.white),
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 80, //height of button
+                  height: 60, //height of button
 
                   width: 200, //width of button
 
@@ -80,13 +80,13 @@ class _PlayersState extends State<Players> {
               ],
             ),
             const SizedBox(
-              height: 35,
+              height: 25,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 80, //height of button
+                  height: 60, //height of button
 
                   width: 200, //width of button
 
@@ -105,6 +105,40 @@ class _PlayersState extends State<Players> {
                     },
                     child: const Text(
                       '2 Players',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 60, //height of button
+
+                  width: 200, //width of button
+
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+
+                          //to set border radius to button
+
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/main_menu_screen');
+
+                      Data.player = 2;
+                    },
+                    child: const Text(
+                      'Rooms',
                       style: TextStyle(
                         fontSize: 20,
                       ),
