@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/Hangman/HangmanGame.dart';
 import 'package:flutter_application_1/data.dart';
-
-// import 'package:hangtoetest/engine/figure_image.dart';
+import 'package:flutter_application_1/models/Hangman/figure_image.dart';
 
 List<String> progressImages = const [
   'assets/hang.png',
@@ -63,6 +62,17 @@ class _HangmanPageState extends State<HangmanPage> {
     setState(() {
       //In the original code -->
       _activeImage = progressImages[wrongGuessCount];
+
+      // mn page HangmanBoard el adema
+      // another way to display el image wara ba3d
+        // figureImage(Data.tries >= 0, "assets/hang.png");
+        // figureImage(Data.tries >= 1, "assets/head.png");
+        // figureImage(Data.tries >= 2, "assets/body.png");
+        // figureImage(Data.tries >= 3, "assets/ra.png");
+        // figureImage(Data.tries >= 4, "assets/la.png");
+        // figureImage(Data.tries >= 5, "assets/rl.png");
+        // figureImage(Data.tries >= 6, "assets/ll.png");
+
 
       // for(int i=0; i<=wrongGuessCount; i++){
       //   _activeImage = progressImages[i];
@@ -134,7 +144,7 @@ class _HangmanPageState extends State<HangmanPage> {
       );
 
 
-          //Game keyboard
+          //Game keyboard in HangmanBoard
           // SizedBox(
           //   height: 250.0,
           //   child: GridView.count(
