@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/HangmanBoard.dart';
 import 'package:flutter_application_1/screens/Home.dart';
-import 'package:flutter_application_1/screens/Tic_tac%20_toe/create_room_screen.dart';
-import 'package:flutter_application_1/screens/Tic_tac%20_toe/join_room_screen.dart';
-import 'package:flutter_application_1/screens/Tic_tac%20_toe/main_menu_screen.dart';
+
 import 'package:flutter_application_1/screens/scores.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/gamehome.dart';
@@ -14,6 +12,10 @@ import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_application_1/screens/Dictionary.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'screens/Tic_tac _toe/create_room_screen.dart';
+import 'screens/Tic_tac _toe/join_room_screen.dart';
+import 'screens/Tic_tac _toe/main_menu_screen.dart';
 // import 'firebase_options.dart';
 
 // void main() {
