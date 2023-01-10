@@ -14,22 +14,23 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  // final usernameController = TextEditingController();
-  // final passwordController = TextEditingController();
+  //key for form
+  final _formKey = GlobalKey<FormState>();
 
-  // @override
-  // void dispose() {
-  //   usernameController.dispose();
-  //   passwordController.dispose();
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
 
   // final user = FirebaseAuth.instance.currentUser!;
   // String userId = User.uid;
 
-  //key for form
-  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     // ignore: no_leading_underscores_for_local_identifiers
@@ -59,7 +60,7 @@ class _LoginState extends State<Login> {
               children: [
                 Image.asset('assets/Login.png', width: 250),
                 TextFormField(
-                  // controller: usernameController,
+                  controller: usernameController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Username',
@@ -76,7 +77,7 @@ class _LoginState extends State<Login> {
                 ),
                 const SizedBox(height: 50),
                 TextFormField(
-                  // controller: passwordController,
+                  controller: passwordController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Password',
@@ -118,16 +119,22 @@ class _LoginState extends State<Login> {
     );
   }
 
-  //*********************************SIGN IN************************************/
-  Future logIn({required String username, required String password}) async {
-    final User? user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: username.trim(),
-      password: password.trim(),
-    ))
-        .user;
+  // Future logIn({required String username, required String password}) async {
+  //   final User? user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //     email: username.trim(),
+  //     password: password.trim(),
+  //   ))
+  //       .user;
 
-    // if (user != null) {
-    //   userId = user.uid;
-    // }
+  //   // if (user != null) {
+  //   //   userId = user.uid;
+  //   // }
+  // }
+
+  Future logIn({required String username, required String password}) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: usernameController.text.trim(),
+      password: passwordController.text.trim(),
+    );
   }
 }
