@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/data.dart';
+import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/widgets/loading_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/score_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -183,9 +184,10 @@ class ScoresState extends State<Scores>{
               );
             }
             else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const LoadingWidget();
+              // Center(
+              //   child: CircularProgressIndicator(),
+              // );
             }
           }
         ),

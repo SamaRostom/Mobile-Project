@@ -2,8 +2,13 @@
 
 import 'package:flutter/material.dart';
  import 'dart:math';
-import 'package:flutter_application_1/data.dart';
+// <<<<<<< HEAD
+import 'package:flutter_application_1/Utils/data.dart';
 // import 'package:flutter_application_1/main.dart';
+// =======
+// import 'package:flutter_application_1/Utils/data.dart';
+// import 'package:flutter_application_1/main.dart';
+// >>>>>>> f5cc5f4759769bd103e18f872deafb7d7789d388
 import 'package:flutter_application_1/models/Hangman/letter.dart';
 import 'package:flutter_application_1/models/Hangman/figure_image.dart';
 // import 'package:flutter_application_1/models/Hangman/HangmanGame.dart';

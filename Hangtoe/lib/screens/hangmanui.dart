@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/Hangman/HangmanGame.dart';
-import 'package:flutter_application_1/data.dart';
-import 'package:flutter_application_1/models/Hangman/figure_image.dart';
+// import 'package:flutter_application_1/Utils/data.dart';
+// import 'package:flutter_application_1/models/Hangman/figure_image.dart';
+// import 'package:flutter_application_1/Utils/data.dart';
+
+// import 'package:hangtoetest/engine/figure_image.dart';
 
 List<String> progressImages = const [
   'assets/hang.png',

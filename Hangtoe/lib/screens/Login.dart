@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
+// import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_application_1/data.dart';
+// import 'package:flutter_application_1/data.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -11,15 +14,28 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  // final usernameController = TextEditingController();
+  // final passwordController = TextEditingController();
+
+  // @override
+  // void dispose() {
+  //   usernameController.dispose();
+  //   passwordController.dispose();
+
+  //   super.dispose();
+  // }
+
+  // final user = FirebaseAuth.instance.currentUser!;
+  // String userId = User.uid;
+
   //key for form
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
-    // final double height = MediaQuery.of(context).size.height;
-    final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
+    // ignore: no_leading_underscores_for_local_identifiers
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      key:_scaffoldKey,
+      key: _scaffoldKey,
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: [
@@ -43,12 +59,13 @@ class _LoginState extends State<Login> {
               children: [
                 Image.asset('assets/Login.png', width: 250),
                 TextFormField(
+                  // controller: usernameController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter the Username',
+                    hintText: 'Username',
                     hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.mail, color: Colors.white),
                   ),
-                  // autofocus: true,
                   validator: (val) {
                     if (val != null && val.isNotEmpty) {
                       return null;
@@ -59,18 +76,14 @@ class _LoginState extends State<Login> {
                 ),
                 const SizedBox(height: 50),
                 TextFormField(
+                  // controller: passwordController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter the Password',
+                    hintText: 'Password',
                     hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.lock, color: Colors.white),
                   ),
-                  // autofocus: true,
                   validator: (value) {
-                    // if (value != null && value.isNotEmpty) {
-                    //   return null;
-                    // } else {
-                    //   return 'Please enter a password';
-                    // }
                     if (value!.isEmpty) {
                       return 'Please enter a password';
                     } else {
@@ -85,16 +98,13 @@ class _LoginState extends State<Login> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           Navigator.pushNamed(context, '/');
-                        } 
-                       
+                        }
                       },
                       child: const Text('Login'),
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        
-                        Navigator.pushNamed(context, '/'); 
-                        
+                        Navigator.pushNamed(context, '/');
                       },
                       child: const Text('Cancel'),
                     ),
@@ -106,5 +116,18 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
+  }
+
+  //*********************************SIGN IN************************************/
+  Future logIn({required String username, required String password}) async {
+    final User? user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: username.trim(),
+      password: password.trim(),
+    ))
+        .user;
+
+    // if (user != null) {
+    //   userId = user.uid;
+    // }
   }
 }

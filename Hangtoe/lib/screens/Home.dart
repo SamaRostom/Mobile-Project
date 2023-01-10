@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/data.dart';
+import 'package:flutter_application_1/Utils/data.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/score_service.dart';
-import '../constants.dart';
+import '../Utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
