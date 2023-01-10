@@ -6,7 +6,7 @@ import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/gamehome.dart';
 import 'package:flutter_application_1/screens/howtoplay.dart';
 import 'package:flutter_application_1/screens/PNames.dart';
-import 'package:flutter_application_1/screens/Tic_tac_toe.dart';
+// import 'package:flutter_application_1/screens/Tic_tac_toe.dart';
 import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_application_1/screens/Dictionary.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         '/howtoplay': (context) => const Howtoplay(),
         '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
-        '/Tic_tac_toe': (context) => const Tictactoe(),
+        // '/Tic_tac_toe': (context) => const Tictactoe(),
         '/Login': (context) => const Login(),
         '/Signup': (context) => const Signup(),
         '/Dictionary': (context) => const Dictionary(),
