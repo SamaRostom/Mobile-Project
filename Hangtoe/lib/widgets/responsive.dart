@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Responsive extends StatelessWidget {
   final Widget child;
@@ -9,7 +10,7 @@ class Responsive extends StatelessWidget {
     return Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(
-          maxWidth: 600,
+          maxWidth: 300,
         ),
         child: child,
       ),
