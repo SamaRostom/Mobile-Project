@@ -118,4 +118,25 @@ class Data {
     "Y",
     "Z"
   ];
+
+  static List<String> progressImages = const [
+  'assets/hang.png',
+  'assets/head.png',
+  'assets/body.png',
+  'assets/ra.png',
+  'assets/la.png',
+  'assets/rl.png',
+  'assets/ll.png',
+];
+
+
+static const String victoryImage = 'assets/victory.png';
+
+// static List<String> alphabet = const [
+//   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+//   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+// ];
+
+
+
 }
