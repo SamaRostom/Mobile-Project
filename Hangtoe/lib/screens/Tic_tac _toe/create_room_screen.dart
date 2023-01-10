@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/custom_button.dart';
 import 'package:flutter_application_1/widgets/custom_text.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CreateRoomScreen extends StatefulWidget {
   // static String routeName = '/create-room';
@@ -42,7 +43,7 @@ class _CreateRoomScreen extends State<CreateRoomScreen> {
                     ),
                   ],
                   text: 'Create Room',
-                  fontSize: 70,
+                  fontSize: 60,
                 ),
                 SizedBox(
                   height: 100,
@@ -63,9 +64,24 @@ class _CreateRoomScreen extends State<CreateRoomScreen> {
                 SizedBox(
                   height: 50,
                 ),
-                // CustomButton(onTap: () {}, text: 'Create'),
               ],
             ),
+            SizedBox(
+              height: 50, //height of button
+              width: 120,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      //to set border radius to button
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+                onPressed: () {},
+                child: Text('Create',
+                    style: GoogleFonts.patrickHand(
+                      fontSize: 25,
+                    )),
+              ),
+            )
           ],
         ),
       ),
