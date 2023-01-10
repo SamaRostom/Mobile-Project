@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/data.dart';
+import 'package:flutter_application_1/Utils/data.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Dictionary extends StatefulWidget {
