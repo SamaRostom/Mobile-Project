@@ -61,12 +61,6 @@ class _LoginState extends State<Login> {
                 Image.asset('assets/Login.png', width: 250),
                 TextFormField(
                   controller: usernameController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Username',
-                    hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.mail, color: Colors.white),
-                  ),
                   validator: (val) {
                     if (val != null && val.isNotEmpty) {
                       return null;
@@ -74,16 +68,16 @@ class _LoginState extends State<Login> {
                       return 'Please enter a username';
                     }
                   },
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Username',
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.person, color: Colors.white),
+                  ),
                 ),
                 const SizedBox(height: 50),
                 TextFormField(
                   controller: passwordController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Password',
-                    hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.lock, color: Colors.white),
-                  ),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter a password';
@@ -91,6 +85,12 @@ class _LoginState extends State<Login> {
                       return null;
                     }
                   },
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Password',
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.lock, color: Colors.white),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 ButtonBar(
