@@ -62,7 +62,7 @@ class _PNameState extends State<PName> {
                             borderSide:
                                 BorderSide(width: 3, color: Colors.white),
                           ),
-                          hintText: 'Enter your nickname',
+                          hintText: 'Enter 2 Player Name',
                           hintStyle: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -79,9 +79,7 @@ class _PNameState extends State<PName> {
                                 borderRadius: BorderRadius.circular(20)),
                           ),
                           onPressed: () {
-                            Data.chosed == 'hangman'?
-                            Navigator.pushNamed(context, '/gamehome')
-                            :Navigator.pushNamed(context, '/create_room_screen');
+                            Navigator.pushNamed(context, '/gamehome');
                           },
                           child: Text('Play',
                               style: GoogleFonts.patrickHand(
@@ -121,7 +119,7 @@ class _PNameState extends State<PName> {
                                 borderRadius: BorderRadius.circular(20)),
                           ),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/create_room_screen');
+                            Navigator.pushNamed(context, '/gamehome');
                           },
                           child: Text('Play',
                               style: GoogleFonts.patrickHand(
