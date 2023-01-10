@@ -19,7 +19,7 @@ class HangmanPage extends StatefulWidget {
 
 class _HangmanPageState extends State<HangmanPage> {
   late bool showNewGame;
-  late String activeImage;
+  // late String activeImage;
   late String activeWord;
 
   @override
@@ -43,9 +43,11 @@ class _HangmanPageState extends State<HangmanPage> {
   void updateGallowsImage(int wrongGuessCount) {
     setState(() {
       //In the original code -->
-      activeImage = Data.progressImages[wrongGuessCount];
+      // activeImage = Data.progressImages[wrongGuessCount];
 
-
+      for(int i=0; i<=wrongGuessCount; i++){
+        Data.progressImages[i];
+      }
 
 
 
@@ -75,7 +77,7 @@ class _HangmanPageState extends State<HangmanPage> {
 
   void win([_]) {
     setState(() {
-      activeImage = Data.victoryImage;
+      // activeImage = Data.victoryImage;
       gameOver();
     });
   }
@@ -91,7 +93,7 @@ class _HangmanPageState extends State<HangmanPage> {
 
     setState(() {
       activeWord = '';
-      activeImage = Data.progressImages[0];
+      // activeImage = Data.progressImages[0];
       showNewGame = false;
     });
   }
@@ -135,7 +137,8 @@ class _HangmanPageState extends State<HangmanPage> {
           children: <Widget>[
             // Image
             Expanded(
-              child: Image.asset(activeImage),
+              // child: Image.asset(activeImage),
+              child: Image.asset(updateGallowsImage(3)),
             ),
             // Word
             Padding(
