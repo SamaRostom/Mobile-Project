@@ -6,7 +6,7 @@ import 'dart:convert';
 
 List<SeeMoreGamesModel?>? seeMoreGamesModelFromJson(String str) => json.decode(str) == null ? [] : List<SeeMoreGamesModel?>.from(json.decode(str)!.map((x) => SeeMoreGamesModel.fromJson(x)));
 
-String seeMoreGamesModelToJson(List<SeeMoreGamesModel?>? data) => json.encode(data == null ? [] : List<dynamic>.from(data!.map((x) => x!.toJson())));
+String seeMoreGamesModelToJson(List<SeeMoreGamesModel?>? data) => json.encode(data == null ? [] : List<dynamic>.from(data.map((x) => x!.toJson())));
 
 class SeeMoreGamesModel {
     SeeMoreGamesModel({
@@ -41,8 +41,8 @@ class SeeMoreGamesModel {
         thumbnail: json["thumbnail"],
         shortDescription: json["short_description"],
         gameUrl: json["game_url"],
-        genre: genreValues!.map[json["genre"]],
-        platform: platformValues!.map[json["platform"]],
+        genre: genreValues.map[json["genre"]],
+        platform: platformValues.map[json["platform"]],
         publisher: json["publisher"],
         developer: json["developer"],
         releaseDate: json["release_date"],
