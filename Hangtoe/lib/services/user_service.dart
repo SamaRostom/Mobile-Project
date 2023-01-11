@@ -109,4 +109,14 @@ class UserHelper{
   // function() async{
 
   // }
+
+//   void addNickname({required nickname, nickname2}) async {
+//   final docName = FirebaseFirestore.instance.collection('Users').doc();
+
+//    final scoree = UserModel(rankid : docName.id,);
+
+//   final json = scoree.toJson();
+
+//   await docName.set(json);
+// }
 }

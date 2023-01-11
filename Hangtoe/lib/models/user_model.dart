@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   String username;
+  String? nickname;
+  String? nickname2;
   String email;
   // String password;
   UserModel(this.username, this.email);

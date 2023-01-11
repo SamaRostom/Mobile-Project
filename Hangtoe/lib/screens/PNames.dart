@@ -11,10 +11,25 @@ class PName extends StatefulWidget {
 }
 
 class _PNameState extends State<PName> {
+  final _formKey = GlobalKey<FormState>();
+  final _play1Controller = TextEditingController();
+  final _play2Controller = TextEditingController();
+  final _playController = TextEditingController();
+
+  @override
+  void dispose() {
+    _play1Controller.dispose();
+    _play2Controller.dispose();
+    _playController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey =  GlobalKey<ScaffoldState>();
     return SafeArea(
       child: Scaffold(
+        key:scaffoldKey,
         body: ListView(
           padding: const EdgeInsets.all(8),
           children: [
@@ -37,101 +52,138 @@ class _PNameState extends State<PName> {
               height: 100,
             ),
             Data.player == 2
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const TextField(
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          focusColor: Colors.white,
-                          hoverColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 3, color: Colors.white),
-                          ),
-                          hintText: 'Enter 1 Player Name',
-                          hintStyle: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      const TextField(
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 3, color: Colors.white),
-                          ),
-                          hintText: 'Enter 2 Player Name',
-                          hintStyle: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 70,
-                      ),
-                      SizedBox(
-                        height: 50, //height of button
-                        width: 120,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                //to set border radius to button
-                                borderRadius: BorderRadius.circular(20)),
-                          ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/gamehome');
+                ? Form(
+                   key: _formKey,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        TextFormField(
+                          autofocus: true,
+                          controller: _play1Controller,
+                          validator: (val) {
+                            if (val!.isNotEmpty) {
+                              return null;
+                            } else {
+                              return 'Please enter a nickname for player 1';
+                            }
                           },
-                          child: Text('Play',
-                              style: GoogleFonts.patrickHand(
-                                fontSize: 25,
-                              )),
-                        ),
-                      ),
-                    ],
-                  )
-                : Column(
-                    children: [
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      const TextField(
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          // border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 3, color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                            fillColor: Colors.white,
+                            focusColor: Colors.white,
+                            hoverColor: Colors.white,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 3, color: Colors.white),
+                            ),
+                            hintText: 'Enter 1 Player Name',
+                            hintStyle: TextStyle(color: Colors.white),
                           ),
-                          hintText: 'Enter Player Name',
-                          hintStyle: TextStyle(color: Colors.white),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 70,
-                      ),
-                      SizedBox(
-                        height: 50, //height of button
-                        width: 120,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                //to set border radius to button
-                                borderRadius: BorderRadius.circular(20)),
-                          ),
-                          onPressed: () {
-                            Data.chosed == 'hangman'
-                                ? Navigator.pushNamed(context, '/gamehome')
-                                : Navigator.pushNamed(
-                                    context, '/singleplayerAI');
+                        const SizedBox(height: 20),
+                        TextFormField(
+                          autofocus: true,
+                          controller: _play2Controller,
+                          validator: (val) {
+                            if (val!.isNotEmpty) {
+                              return null;
+                            } else {
+                              return 'Please enter a nickname for player 2';
+                            }
                           },
-                          child: Text('Play',
-                              style: GoogleFonts.patrickHand(
-                                fontSize: 25,
-                              )),
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 3, color: Colors.white),
+                            ),
+                            hintText: 'Enter 2 Player Name',
+                            hintStyle: TextStyle(color: Colors.white),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                        const SizedBox(
+                          height: 70,
+                        ),
+                        SizedBox(
+                          height: 50, //height of button
+                          width: 120,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  //to set border radius to button
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                Navigator.pushNamed(context, '/gamehome');
+                              }
+                            },
+                            child: Text('Play',
+                                style: GoogleFonts.patrickHand(
+                                  fontSize: 25,
+                                )),
+                          ),
+                        ),
+                      ],
+                    ),
+                )
+                : Form(
+                  key: _formKey,
+                  child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        TextFormField(
+                          autofocus: true,
+                          controller: _playController,
+                          validator: (val) {
+                            if (val!.isNotEmpty) {
+                              return null;
+                            } else {
+                              return 'Please enter a nickname';
+                            }
+                          },
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                            // border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 3, color: Colors.white),
+                            ),
+                            hintText: 'Enter Player Name',
+                            hintStyle: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 70,
+                        ),
+                        SizedBox(
+                          height: 50, //height of button
+                          width: 120,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  //to set border radius to button
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                              Data.chosed == 'hangman'
+                                  ? Navigator.pushNamed(context, '/gamehome')
+                                  : Navigator.pushNamed(
+                                      context, '/singleplayerAI');
+                              }
+                            },
+                            child: Text('Play',
+                                style: GoogleFonts.patrickHand(
+                                  fontSize: 25,
+                                )),
+                          ),
+                        ),
+                      ],
+                    ),
+                ),
           ],
         ),
       ),

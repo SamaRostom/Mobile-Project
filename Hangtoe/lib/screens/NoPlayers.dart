@@ -19,7 +19,7 @@ class _PlayersState extends State<Players> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
+        body: ListView(
           // crossAxisAlignment: CrossAxisAlignment.center,
 
           // mainAxisSize: MainAxisSize.max,
