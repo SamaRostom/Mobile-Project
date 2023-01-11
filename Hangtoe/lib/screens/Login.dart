@@ -103,9 +103,29 @@ class _LoginState extends ConsumerState<Login> {
                       child: const Text('Cancel'),
                     ),
                   ],
-                )
+                ),
               ],
             ),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            // ignore: sort_child_properties_last
+            children: <Widget>[
+              const Text('Create a new account'),
+              TextButton(
+                child: const Text(
+                  'Sign up',
+                  style: TextStyle(
+                      fontSize: 20,
+                      decoration: TextDecoration.underline,
+                      color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Signup');
+                },
+              )
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
           ),
         ],
       ),
