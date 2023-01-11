@@ -16,7 +16,7 @@ class _SignupState extends ConsumerState<Signup> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -25,13 +25,12 @@ class _SignupState extends ConsumerState<Signup> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     // final double height = MediaQuery.of(context).size.height;
-    final GlobalKey<ScaffoldState> scaffoldKey =  GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      key:scaffoldKey,
+      key: scaffoldKey,
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: [
@@ -98,7 +97,7 @@ class _SignupState extends ConsumerState<Signup> {
                   autofocus: true,
                   controller: _passwordController,
                   validator: (val) {
-                    if (val != null && isPassword(val) ) {
+                    if (val != null && isPassword(val)) {
                       return null;
                     } else {
                       return 'Please enter At Least 8 characters one letter and one number';
@@ -118,9 +117,9 @@ class _SignupState extends ConsumerState<Signup> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           // Navigator.pushNamed(context, '/Login');
-                          UserService().signUp(
-                                ref,context, _nameController, _emailController, _passwordController);    
-                        } 
+                          UserService().signUp(ref, context, _nameController,
+                              _emailController, _passwordController);
+                        }
                         // Navigator.pushNamed(context, '/Login');
                       },
                       child: const Text('Signup'),
@@ -135,7 +134,27 @@ class _SignupState extends ConsumerState<Signup> {
                 )
               ],
             ),
-          )
+          ),
+          const SizedBox(height: 20),
+          Row(
+            // ignore: sort_child_properties_last
+            children: <Widget>[
+              const Text('Already have an account?'),
+              TextButton(
+                child: const Text(
+                  'Sign in',
+                  style: TextStyle(
+                      fontSize: 20,
+                      decoration: TextDecoration.underline,
+                      color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Login');
+                },
+              )
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
         ],
       ),
     );
