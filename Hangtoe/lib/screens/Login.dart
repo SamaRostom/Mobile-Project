@@ -1,30 +1,32 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../services/user_service.dart';
 // import 'package:flutter_application_1/data.dart';
 // import 'package:firebase_core/firebase_core.dart';
 
-class Login extends StatefulWidget {
+class Login extends ConsumerStatefulWidget {
   const Login({super.key});
   @override
   // ignore: library_private_types_in_public_api
-  _LoginState createState() => _LoginState();
+  ConsumerState<Login> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends ConsumerState<Login> {
   //key for form
   final _formKey = GlobalKey<FormState>();
 
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    usernameController.dispose();
-    passwordController.dispose();
-
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -60,24 +62,24 @@ class _LoginState extends State<Login> {
               children: [
                 Image.asset('assets/Login.png', width: 250),
                 TextFormField(
-                  controller: usernameController,
+                  controller: _emailController,
                   validator: (val) {
                     if (val != null && val.isNotEmpty) {
                       return null;
                     } else {
-                      return 'Please enter a username';
+                      return 'Please enter your email';
                     }
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Username',
+                    hintText: 'Email',
                     hintStyle: TextStyle(color: Colors.white),
                     prefixIcon: Icon(Icons.person, color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 50),
                 TextFormField(
-                  controller: passwordController,
+                  controller: _passwordController,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter a password';
@@ -98,7 +100,8 @@ class _LoginState extends State<Login> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.pushNamed(context, '/');
+                          UserHelper().signIn(ref, context, _emailController,
+                              _passwordController);
                         }
                       },
                       child: const Text('Login'),
@@ -116,25 +119,6 @@ class _LoginState extends State<Login> {
           ),
         ],
       ),
-    );
-  }
-
-  // Future logIn({required String username, required String password}) async {
-  //   final User? user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
-  //     email: username.trim(),
-  //     password: password.trim(),
-  //   ))
-  //       .user;
-
-  //   // if (user != null) {
-  //   //   userId = user.uid;
-  //   // }
-  // }
-
-  Future logIn({required String username, required String password}) async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: usernameController.text.trim(),
-      password: passwordController.text.trim(),
     );
   }
 }
