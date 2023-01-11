@@ -2,22 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../services/user_service.dart';
-// import 'package:flutter_application_1/data.dart';
-// import 'package:firebase_core/firebase_core.dart';
 
 class Login extends ConsumerStatefulWidget {
   const Login({super.key});
   @override
-  // ignore: library_private_types_in_public_api
   ConsumerState<Login> createState() => _LoginState();
 }
 
 class _LoginState extends ConsumerState<Login> {
-  //key for form
   final _formKey = GlobalKey<FormState>();
 
   final _emailController = TextEditingController();
@@ -30,9 +24,6 @@ class _LoginState extends ConsumerState<Login> {
     super.dispose();
   }
 
-  // final user = FirebaseAuth.instance.currentUser!;
-  // String userId = User.uid;
-
   @override
   Widget build(BuildContext context) {
     // ignore: no_leading_underscores_for_local_identifiers
@@ -44,7 +35,6 @@ class _LoginState extends ConsumerState<Login> {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            // ignore: prefer_const_literals_to_create_immutables
             children: [
               const SizedBox(
                 height: 100,
