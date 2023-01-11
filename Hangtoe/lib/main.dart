@@ -17,7 +17,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'screens/Tic_tac _toe/create_room_screen.dart';
 import 'screens/Tic_tac _toe/join_room_screen.dart';
-import 'screens/Tic_tac _toe/main_menu_screen.dart';
+import 'screens/Tic_tac _toe/room_screen.dart';
 import 'screens/Tic_tac _toe/twoplayers.dart';
 import 'screens/seemoregames.dart';
 // import 'firebase_options.dart';
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         '/howtoplay': (context) => const HowToPlay(),
         '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
-        '/main_menu_screen': (context) => const MainMenuScreen(),
+        '/main_menu_screen': (context) => const RoomScreen(),
         '/join_room_screen': (context) => const JoinRoomScreen(),
         '/create_room_screen': (context) => const CreateRoomScreen(),
         '/singleplayerAI': (context) => const SinglepalyerAI(),
