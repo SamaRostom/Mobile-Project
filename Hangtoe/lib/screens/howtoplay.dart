@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/widgets/loading_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Howtoplay extends StatelessWidget {
-  const Howtoplay({super.key});
+import '../models/seemoregames_model.dart';
+import '../services/seemoregames_service.dart';
 
+class HowToPlay extends StatefulWidget {
+  const HowToPlay({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _HowToPlayState();
+}
+class _HowToPlayState extends State<HowToPlay> {
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
+        body: ListView(
           children: [
             const SizedBox(
               height: 30,
@@ -100,6 +108,15 @@ class Howtoplay extends StatelessWidget {
                 )
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              OutlinedButton(
+                onPressed: () {
+                Navigator.pushNamed(context, '/SeeMoreGames');
+              }, child: const Text('See more games',style: TextStyle(fontSize: 20,),),
+              ),
+            ],),
           ],
         ),
       ),

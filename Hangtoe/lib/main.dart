@@ -17,6 +17,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'screens/Tic_tac _toe/create_room_screen.dart';
 import 'screens/Tic_tac _toe/join_room_screen.dart';
 import 'screens/Tic_tac _toe/main_menu_screen.dart';
+import 'screens/seemoregames.dart';
 // import 'firebase_options.dart';
 
 // void main() {
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
         '/scores': (context) => const Scores(),
         '/NoPlayers': (context) => const Players(),
         '/gamehome': (context) => const Gamehome(),
-        '/howtoplay': (context) => const Howtoplay(),
+        '/howtoplay': (context) => const HowToPlay(),
         '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
         '/main_menu_screen': (context) => const MainMenuScreen(),
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
         '/Login': (context) => const Login(),
         '/Signup': (context) => const Signup(),
         '/Dictionary': (context) => const Dictionary(),
+        '/SeeMoreGames': (context) => const SeeMoreGames(),
       },
     );
   }
