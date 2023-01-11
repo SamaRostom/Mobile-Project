@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/HangmanBoard.dart';
 import 'package:flutter_application_1/screens/Home.dart';
+import 'package:flutter_application_1/screens/singleplayerAI.dart';
 
 import 'package:flutter_application_1/screens/scores.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         '/main_menu_screen': (context) => const MainMenuScreen(),
         '/join_room_screen': (context) => const JoinRoomScreen(),
         '/create_room_screen': (context) => const CreateRoomScreen(),
+        '/singleplayerAI': (context) => const SinglepalyerAI(),
         // '/Tic_tac_toe': (context) => const Tictactoe(),
         '/Login': (context) => const Login(),
         '/Signup': (context) => const Signup(),
