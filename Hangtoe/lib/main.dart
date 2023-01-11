@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/HangmanBoard.dart';
 import 'package:flutter_application_1/screens/Home.dart';
-import 'package:flutter_application_1/screens/singleplayerAI.dart';
 
+import 'package:flutter_application_1/screens/Tic_tac%20_toe/singleplayerAI.dart';
 import 'package:flutter_application_1/screens/scores.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/gamehome.dart';
@@ -18,6 +18,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/Tic_tac _toe/create_room_screen.dart';
 import 'screens/Tic_tac _toe/join_room_screen.dart';
 import 'screens/Tic_tac _toe/main_menu_screen.dart';
+import 'screens/Tic_tac _toe/twoplayers.dart';
 import 'screens/seemoregames.dart';
 // import 'firebase_options.dart';
 
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         '/join_room_screen': (context) => const JoinRoomScreen(),
         '/create_room_screen': (context) => const CreateRoomScreen(),
         '/singleplayerAI': (context) => const SinglepalyerAI(),
+        '/Twoplayers': (context) => const Twoplayers(),
         // '/Tic_tac_toe': (context) => const Tictactoe(),
         '/Login': (context) => const Login(),
         '/Signup': (context) => const Signup(),

@@ -45,17 +45,13 @@ class _HangmanPageState extends State<HangmanPage> {
       //In the original code -->
       // activeImage = Data.progressImages[wrongGuessCount];
 
-      for(int i=0; i<=wrongGuessCount; i++){
+      for (int i = 0; i <= wrongGuessCount; i++) {
         Data.progressImages[i];
       }
-
-
 
       // for(int i=0; i<=wrongGuessCount; i++){
       //   _activeImage = progressImages[i];
       // }
-
-
 
       // if(wrongGuessCount == 0){
       //   _activeImage = progressImages[0];
@@ -71,7 +67,6 @@ class _HangmanPageState extends State<HangmanPage> {
       //   _activeImage = progressImages[1];
       //   _activeImage = progressImages[2];
       // }
-
     });
   }
 
@@ -111,20 +106,24 @@ class _HangmanPageState extends State<HangmanPage> {
         spacing: 1.0,
         runSpacing: 1.0,
         alignment: WrapAlignment.center,
-        children: Data.alphabets.map((letter) => MaterialButton(
-          child: Text(letter),
-          padding: const EdgeInsets.all(2.0),
-          onPressed: lettersGuessed.contains(letter) ? null : () {
-            widget.obj.guessLetter(letter);
-          },
-        )).toList(),
+        children: Data.alphabets
+            .map((letter) => MaterialButton(
+                  child: Text(letter),
+                  padding: const EdgeInsets.all(2.0),
+                  onPressed: lettersGuessed.contains(letter)
+                      ? null
+                      : () {
+                          widget.obj.guessLetter(letter);
+                        },
+                ))
+            .toList(),
       );
     }
   }
 
 // static int hanged = 0;
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 118, 20, 136),
@@ -136,10 +135,10 @@ class _HangmanPageState extends State<HangmanPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Image
-            Expanded(
-              // child: Image.asset(activeImage),
-              child: Image.asset(updateGallowsImage(3)),
-            ),
+            // Expanded(
+            //   // child: Image.asset(activeImage),
+            //   child: Image.asset(updateGallowsImage(3)),
+            // ),
             // Word
             Padding(
               padding: const EdgeInsets.all(20.0),

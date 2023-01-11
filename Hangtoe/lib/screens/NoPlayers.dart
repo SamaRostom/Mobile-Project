@@ -68,6 +68,7 @@ class _PlayersState extends ConsumerState<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
+                      Data.type = "Oneplayer";
                       // final userData = ref.watch(playernameProivder);
                       Navigator.pushNamed(context, '/gamehome');
 
@@ -103,6 +104,7 @@ class _PlayersState extends ConsumerState<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
+                      Data.type = "Twoplayer";
                       Navigator.pushNamed(context, '/PNames');
 
                       Data.noofplayers = 2;
@@ -137,6 +139,7 @@ class _PlayersState extends ConsumerState<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
+                      Data.type = "Room";
                       Navigator.pushNamed(context, '/main_menu_screen');
 
                       Data.player = 2;
