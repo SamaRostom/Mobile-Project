@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../providers/user_provider.dart';
 import '../services/score_service.dart';
 import '../Utils/constants.dart';
+import '../services/user_service.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _HomeScreenState createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>{
+class _HomeScreenState extends ConsumerState<HomeScreen>{
   
   @override
   Widget build(BuildContext context) {
@@ -52,17 +55,18 @@ class _HomeScreenState extends State<HomeScreen>{
             ),
               title:  Text('Log out',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
               onTap: () async {
-                int rank=5;
-                String date='25-Mar-01';
-                String playername="player";
-                int score =5;
-                String typeofgame='xo';
-                createScore(
-                  rank: rank,
-                  playername: playername,
-                  date: date,
-                  score : score,
-                  typeofgame: typeofgame,);
+                UserService.logOut(context);
+                // int rank=5;
+                // String date='25-Mar-01';
+                // String playername="player";
+                // int score =5;
+                // String typeofgame='xo';
+                // createScore(
+                //   rank: rank,
+                //   playername: playername,
+                //   date: date,
+                //   score : score,
+                //   typeofgame: typeofgame,);
                 },
             ),
           ],
@@ -120,8 +124,19 @@ class _HomeScreenState extends State<HomeScreen>{
                 ],
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [ Text(
+                      'Welcome  ' +  ref.watch(newUserDataProivder)!.username,
+                      style: 
+                      GoogleFonts.kanit
+                      (
+                        fontSize: 25,
+                        color: Colors.white
+                      ),
+                    ),],),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

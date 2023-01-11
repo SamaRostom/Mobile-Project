@@ -3,93 +3,54 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../Utils/constants.dart';
 import '../Utils/data.dart' as val;
 import '../providers/user_provider.dart';
 import '../widgets/loading_widget.dart';
 
-class UserHelper {
-  static saveUser(User user) async {
-    //Dont Put Instance common as it doesnt change when the user logs out
-    final FirebaseFirestore db = FirebaseFirestore.instance;
-    final user = FirebaseAuth.instance.currentUser!;
-
-    Map<String, dynamic> userData = {
-      "email": user.email,
-      "username": "eeee",
-      "password": "Eee1111",
-    };
-    final userRef = db.collection("Users").doc(user.uid);
-    if ((await userRef.get()).exists) {
-      // To Update Anything in the User
-    } else {
-      await userRef.set(userData);
-    }
-  }
-
+class UserService {
   //Register Page
-  Future signUp(
-      BuildContext context,
-      TextEditingController nameController,
-      TextEditingController emailController,
+  Future signUp(WidgetRef ref,BuildContext context, TextEditingController nameController, TextEditingController emailController,
       TextEditingController passwordController) async {
-    try {
-      showDialog(
-          barrierDismissible: false,
-          context: context,
-          builder: (context) {
-            return const LoadingWidget();
-            // Center(
-            //   child: LoadingAnimationWidget.inkDrop(
-            //     color: Colors.white, size: 100,
-            // ));
-
-            // Center(
-            //     child: CircularProgressIndicator(
-            //   backgroundColor: Colors.black26,
-            //   valueColor: AlwaysStoppedAnimation<Color>(
-            //       Color.fromARGB(255, 205, 153, 51)),
-            // ));
+      try {
+        showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) {
+              return const Center(
+                child: LoadingWidget(),
+              );
+            });
+        final credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+        UserService.saveUser(nameController.text);
+        UserService().getNewUserData().then((value) {
+            UserModel user = UserModel.fromSnapshot(value);
+              ref.read(newUserDataProivder.notifier).state = user;
+              Navigator.of(context).pushNamed('/');
           });
-
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-      final FirebaseFirestore db = FirebaseFirestore.instance;
-      final user = FirebaseAuth.instance.currentUser!;
-
-      Map<String, dynamic> userData = {
-        "email": emailController.text.trim(),
-        "username": nameController.text.trim(),
-        "password": passwordController.text.trim(),
-      };
-      final userRef = db.collection("Users").doc(user.uid);
-      if ((await userRef.get()).exists) {
-      } else {
-        await userRef.set(userData);
+        Navigator.of(context).pushNamed('/Login');
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          Navigator.of(context).pop();
+          error("Error!", "The password provided is too weak.");
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(val.snackBar);
+        } else if (e.code == 'email-already-in-use') {
+          Navigator.of(context).pop();
+          error("Error!", "The account already exists for that email.");
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(val.snackBar);
+        }
+      } catch (e) {
+        print(e);
       }
-
-      Navigator.of(context).pushNamed('/Login');
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        Navigator.of(context).pop();
-        errormessage("Error!", "The password provided is too weak.");
-        ScaffoldMessenger.of(context)
-          ..hideCurrentSnackBar()
-          ..showSnackBar(val.snackBar);
-      } else if (e.code == 'email-already-in-use') {
-        Navigator.of(context).pop();
-        errormessage("Error!", "The account already exists for that email.");
-        ScaffoldMessenger.of(context)
-          ..hideCurrentSnackBar()
-          ..showSnackBar(val.snackBar);
-      }
-    } catch (e) {
-      print(e);
-    }
   }
 
   Future signIn(
@@ -111,19 +72,43 @@ class UserHelper {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      UserHelper().getNewUserData().then((value) {
+      UserService().getNewUserData().then((value) {
         UserModel user = UserModel.fromSnapshot(value);
         ref.read(newUserDataProivder.notifier).state = user;
         Navigator.pushNamed(context, '/');
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('user-not-found');
-        Navigator.of(context).pop();
-      } else if (e.code == 'wrong-password') {
-        print('wrong-password');
-        Navigator.of(context).pop();
-      }
+          Navigator.of(context).pop();
+          error("Error!", "No user found for that email.");
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(val.snackBar);
+        } else if (e.code == 'wrong-password') {
+          Navigator.of(context).pop();
+          error("Error!", "Wrong password provided for that user.");
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(val.snackBar);
+        }
+    }
+  }
+
+  static saveUser(String username) async {
+    //Dont Put Instance common as it doesnt change when the user logs out
+    final FirebaseFirestore db = FirebaseFirestore.instance;
+    final user = FirebaseAuth.instance.currentUser!;
+
+    Map<String, dynamic> userData = {
+      "email": user.email,
+      "score": 0,
+      "username":username,
+    };
+    final userRef = db.collection("Users").doc(user.uid);
+    if ((await userRef.get()).exists) {
+      // To Update Anything in the User
+    } else {
+      await userRef.set(userData);
     }
   }
 
@@ -133,29 +118,28 @@ class UserHelper {
     return FirebaseFirestore.instance.collection('Users').doc(id).get();
   }
 
-  // postDetailsToFirestore() async {
-  //   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  //   User? user = FirebaseAuth.instance.currentUser;
+  static logOut(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacementNamed('/Login');
+  }
 
-  //   UserModel userModel = UserModel(user.username,user.email);
+  static void updateScore(WidgetRef ref) async {
+    String path = '';
+    String email = ref.watch(newUserDataProivder)!.email;
+    int score = ref.watch(newUserDataProivder)!.score;
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .where("email", isEqualTo: email)
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      for (var doc in querySnapshot.docs) {
+        path = (doc.reference.path);
+      }
+    });
 
-  //   await firebaseFirestore
-  //       .collection("users")
-  //       .doc(user.uid)
-  //       .set(userModel.toMap(userModel));
-  // }
-
-  // function() async{
-
-  // }
-
-//   void addNickname({required nickname, nickname2}) async {
-//   final docName = FirebaseFirestore.instance.collection('Users').doc();
-
-//    final scoree = UserModel(rankid : docName.id,);
-
-//   final json = scoree.toJson();
-
-//   await docName.set(json);
-// }
+    final washingtonRef = FirebaseFirestore.instance.doc(path);
+    washingtonRef.update({"score": score});
+  }
 }
+
+

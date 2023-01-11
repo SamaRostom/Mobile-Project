@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-class Players extends StatefulWidget {
+import '../providers/user_provider.dart';
+
+class Players extends ConsumerStatefulWidget {
   const Players({super.key});
 
   @override
 
   // ignore: library_private_types_in_public_api
 
-  _PlayersState createState() => _PlayersState();
+  ConsumerState<Players> createState() => _PlayersState();
 }
 
-class _PlayersState extends State<Players> {
+class _PlayersState extends ConsumerState<Players> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -65,9 +68,10 @@ class _PlayersState extends State<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/PNames');
+                      // final userData = ref.watch(playernameProivder);
+                      Navigator.pushNamed(context, '/gamehome');
 
-                      Data.player = 1;
+                      Data.noofplayers = 1;
                     },
                     child: const Text(
                       '1 Player',
@@ -101,7 +105,7 @@ class _PlayersState extends State<Players> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/PNames');
 
-                      Data.player = 2;
+                      Data.noofplayers = 2;
                     },
                     child: const Text(
                       '2 Players',

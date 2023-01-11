@@ -2,19 +2,26 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/game_button.dart';
 import 'package:flutter_application_1/widgets/custom_dailog.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class SinglepalyerAI extends StatefulWidget {
+import '../providers/user_provider.dart';
+import '../services/score_service.dart';
+import '../services/user_service.dart';
+
+class SinglepalyerAI extends ConsumerStatefulWidget {
   const SinglepalyerAI({super.key});
 
   @override
-  State<SinglepalyerAI> createState() => _SinglepalyerAIState();
+  ConsumerState<SinglepalyerAI> createState() => _SinglepalyerAIState();
 }
 
-class _SinglepalyerAIState extends State<SinglepalyerAI> {
+class _SinglepalyerAIState extends ConsumerState<SinglepalyerAI> {
   late List<GameButton> buttonsList;
   var player1;
   var player2;
   var activePlayer;
+  var score=0;
   @override
   void initState() {
     super.initState();
@@ -138,6 +145,12 @@ class _SinglepalyerAIState extends State<SinglepalyerAI> {
     }
     if (winner != -1) {
       if (winner == 1) {
+        // ref.read(newUserDataProivder.notifier).state!.score +=5;
+        // ref.watch(newUserDataProivder)!.score += 5;
+        score+=5;
+        if(score > ref.watch(newUserDataProivder)!.score){
+          ref.read(newUserDataProivder.notifier).state!.score = score;
+        }
         showDialog(
             context: context,
             builder: (_) => CustomDialog("You are the winner",
@@ -154,6 +167,7 @@ class _SinglepalyerAIState extends State<SinglepalyerAI> {
 
   void resetGame() {
     if (Navigator.canPop(context)) Navigator.pop(context);
+    UserService.updateScore(ref);
     setState(() {
       buttonsList = doInit();
     });
@@ -176,6 +190,9 @@ class _SinglepalyerAIState extends State<SinglepalyerAI> {
             Navigator.pop(context);
           },
         ),
+        Center(child: Text("High Score:  ${ref.watch(newUserDataProivder)!.score}", style: GoogleFonts.kanit (fontSize: 25,color: Colors.white),),),
+        Center(child: Text("Score:  $score", style: GoogleFonts.kanit (fontSize: 25,color: Colors.white),)),
+
         const SizedBox(
           height: 40,
         ),

@@ -90,7 +90,7 @@ class _LoginState extends ConsumerState<Login> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          UserHelper().signIn(ref, context, _emailController,
+                          UserService().signIn(ref, context, _emailController,
                               _passwordController);
                         }
                       },

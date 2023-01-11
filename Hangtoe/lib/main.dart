@@ -13,6 +13,7 @@ import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_application_1/screens/Dictionary.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'screens/Tic_tac _toe/create_room_screen.dart';
 import 'screens/Tic_tac _toe/join_room_screen.dart';
@@ -27,7 +28,7 @@ import 'screens/seemoregames.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         // scaffoldBackgroundColor: Color.fromARGB(255, 160, 120, 247),
       ),
       // home: const HomeScreen(),
-      initialRoute: '/',
+      initialRoute: '/Login',
       routes: {
         '/': (context) => const HomeScreen(),
         '/scores': (context) => const Scores(),

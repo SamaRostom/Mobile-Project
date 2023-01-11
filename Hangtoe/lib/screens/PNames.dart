@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PName extends StatefulWidget {
+import '../providers/user_provider.dart';
+
+class PName extends ConsumerStatefulWidget {
   const PName({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _PNameState createState() => _PNameState();
+  ConsumerState<PName> createState() => _PNameState();
 }
 
-class _PNameState extends State<PName> {
+class _PNameState extends ConsumerState<PName> {
   final _formKey = GlobalKey<FormState>();
   final _play1Controller = TextEditingController();
   final _play2Controller = TextEditingController();
@@ -169,10 +172,14 @@ class _PNameState extends State<PName> {
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                              Data.chosed == 'hangman'
-                                  ? Navigator.pushNamed(context, '/gamehome')
-                                  : Navigator.pushNamed(
-                                      context, '/singleplayerAI');
+                                // ref.read(nicknameProivder.notifier).state = _playController.text;
+                                // ref.read(nickname1Proivder.notifier).state = _play1Controller.text;
+                                // ref.read(nickname2Proivder.notifier).state = _play2Controller.text;
+                                // print(ref.watch(nicknameProivder));
+                                Data.chosed == 'hangman'
+                                    ? Navigator.pushNamed(context, '/gamehome')
+                                    : Navigator.pushNamed(
+                                        context, '/singleplayerAI');
                               }
                             },
                             child: Text('Play',

@@ -1,19 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_application_1/Utils/data.dart';
 import '../Utils/validations.dart';
-import '../models/user_model.dart';
-import '../providers/user_provider.dart';
 import '../services/user_service.dart';
 
 class Signup extends ConsumerStatefulWidget {
   const Signup({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   ConsumerState<Signup> createState() => _SignupState();
 }
 
@@ -29,18 +23,6 @@ class _SignupState extends ConsumerState<Signup> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }
-
-  //byd5al el 7aga fel firebas bas mesh byro7 3ala page login
-  void redirectToLogin() {
-    final user = FirebaseAuth.instance.currentUser!;
-    UserHelper.saveUser(user);
-
-    UserHelper().getNewUserData().then((value) {
-      UserModel user = UserModel.fromSnapshot(value);
-      ref.read(newUserDataProivder.notifier).state = user;
-      Navigator.of(context).pushReplacementNamed('/Login');
-    });
   }
 
 
@@ -136,9 +118,8 @@ class _SignupState extends ConsumerState<Signup> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           // Navigator.pushNamed(context, '/Login');
-                          // UserHelper().signUp(
-                          //       context, _nameController, _emailController, _passwordController);
-                          redirectToLogin();      
+                          UserService().signUp(
+                                ref,context, _nameController, _emailController, _passwordController);    
                         } 
                         // Navigator.pushNamed(context, '/Login');
                       },

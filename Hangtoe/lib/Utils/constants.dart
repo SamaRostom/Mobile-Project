@@ -63,7 +63,7 @@ class DialogExample extends StatelessWidget {
   }
 }
 
-void errormessage(String t, String m) {
+void error(String t, String m) {
   val.snackBar = SnackBar(
     // need to set following properties for best effect of awesome_snackbar_content
     elevation: 0,
