@@ -14,6 +14,10 @@ final nickname2Proivder = StateProvider<String>((ref) {
   return "";
 });
 
-final playernameProivder = StateProvider<String>((ref) {
-  return "";
+final scoreOProivder = StateProvider<int>((ref) {
+  return 0;
+});
+
+final scoreXProivder = StateProvider<int>((ref) {
+  return 0;
 });

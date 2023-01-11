@@ -1,20 +1,21 @@
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/user_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // import 'package:flutter_application_1/drawing.dart';
 
-class Twoplayers extends StatefulWidget {
+class Twoplayers extends ConsumerStatefulWidget {
   const Twoplayers({super.key});
 
   @override
 
   // ignore: library_private_types_in_public_api
-
-  _TwoplayersState createState() => _TwoplayersState();
+  ConsumerState<Twoplayers> createState() => _TwoplayersState();
 }
 
-class _TwoplayersState extends State<Twoplayers> {
+class _TwoplayersState extends ConsumerState<Twoplayers> {
   List<String> displayElement = ['', '', '', '', '', '', '', '', ''];
 
   int oScore = 0;
@@ -124,9 +125,11 @@ class _TwoplayersState extends State<Twoplayers> {
         });
 
     if (winner == 'O') {
-      oScore++;
+      // oScore++;
+      ref.read(scoreOProivder.notifier).state += 1;
     } else if (winner == 'X') {
-      xScore++;
+      // xScore++;
+      ref.read(scoreXProivder.notifier).state += 1;
     }
   }
 
@@ -163,9 +166,10 @@ class _TwoplayersState extends State<Twoplayers> {
 
   void _clearScoreBoard() {
     setState(() {
-      xScore = 0;
-
-      oScore = 0;
+      // xScore = 0;
+      // oScore = 0;
+      ref.read(scoreOProivder.notifier).state = 0;
+      ref.read(scoreXProivder.notifier).state = 0;
 
       for (int i = 0; i < 9; i++) {
         displayElement[i] = '';
@@ -209,15 +213,20 @@ class _TwoplayersState extends State<Twoplayers> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Text(ref.watch(nickname1Proivder),style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),),
                     const Text(
                       'Player X',
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.normal,
                           color: Colors.white),
                     ),
                     Text(
-                      xScore.toString(),
+                      // xScore.toString(),
+                      ref.watch(scoreXProivder).toString(),
                       style: const TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ],
@@ -234,13 +243,18 @@ class _TwoplayersState extends State<Twoplayers> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Text(ref.watch(nickname2Proivder),style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),),
                     const Text('     Player O',
                         style: TextStyle(
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
                             color: Colors.white)),
                     Text(
-                      oScore.toString(),
+                      // oScore.toString(),
+                      ref.watch(scoreOProivder).toString(),
                       style: const TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ],

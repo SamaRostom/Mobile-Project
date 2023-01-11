@@ -115,6 +115,8 @@ class _PNameState extends ConsumerState<PName> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          ref.read(nickname1Proivder.notifier).state = _play1Controller.text;
+                          ref.read(nickname2Proivder.notifier).state = _play2Controller.text;
                           Navigator.pushNamed(context, '/gamehome');
                         }
                       },
