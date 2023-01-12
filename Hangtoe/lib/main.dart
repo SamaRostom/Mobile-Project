@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/HangmanBoard.dart';
+// import 'package:flutter_application_1/screens/Hangman/HangmanBoard.dart';
 import 'package:flutter_application_1/screens/Home.dart';
 
 import 'package:flutter_application_1/screens/Tic_tac%20_toe/singleplayerAI.dart';
@@ -11,7 +11,7 @@ import 'package:flutter_application_1/screens/PNames.dart';
 // import 'package:flutter_application_1/screens/Tic_tac_toe.dart';
 import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
-import 'package:flutter_application_1/screens/Dictionary.dart';
+import 'package:flutter_application_1/screens/Hangman/Dictionary.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         '/NoPlayers': (context) => const Players(),
         '/gamehome': (context) => const Gamehome(),
         '/howtoplay': (context) => const HowToPlay(),
-        '/HangmanBoard': (context) => const HangmanBoard(),
+        // '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
         '/main_menu_screen': (context) => const RoomScreen(),
         '/join_room_screen': (context) => const JoinRoomScreen(),
