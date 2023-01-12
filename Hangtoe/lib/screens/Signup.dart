@@ -55,20 +55,18 @@ class _SignupState extends ConsumerState<Signup> {
                 const SizedBox(height: 20),
                 //username
                 TextFormField(
-                  autofocus: true,
-                  controller: _nameController,
+                  controller: _emailController,
                   validator: (val) {
-                    if (val != null && isName(val)) {
+                    if (val != null && val.isNotEmpty) {
                       return null;
                     } else {
-                      return 'Please enter a valid username';
+                      return 'Please enter your username';
                     }
                   },
-                  style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
                     hintText: 'Username',
                     hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.person, color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -83,11 +81,10 @@ class _SignupState extends ConsumerState<Signup> {
                       return 'Please enter a valid email';
                     }
                   },
-                  style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
                     hintText: 'Email',
                     hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.email, color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -104,9 +101,9 @@ class _SignupState extends ConsumerState<Signup> {
                     }
                   },
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
                     hintText: 'Password',
                     hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.lock, color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -116,19 +113,23 @@ class _SignupState extends ConsumerState<Signup> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // Navigator.pushNamed(context, '/Login');
                           UserService().signUp(ref, context, _nameController,
                               _emailController, _passwordController);
                         }
-                        // Navigator.pushNamed(context, '/Login');
                       },
-                      child: const Text('Signup'),
+                      child: const Text(
+                        'Signup',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/');
                       },
-                      child: const Text('Cancel'),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
                     )
                   ],
                 )
@@ -139,10 +140,13 @@ class _SignupState extends ConsumerState<Signup> {
           Row(
             // ignore: sort_child_properties_last
             children: <Widget>[
-              const Text('Already have an account?'),
+              const Text(
+                'Already have an account?',
+                style: TextStyle(fontSize: 23, color: Colors.white),
+              ),
               TextButton(
                 child: const Text(
-                  'Sign in',
+                  'Login',
                   style: TextStyle(
                       fontSize: 20,
                       decoration: TextDecoration.underline,
