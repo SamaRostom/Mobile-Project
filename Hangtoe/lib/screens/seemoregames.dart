@@ -45,24 +45,50 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
             ListView.builder(
             itemCount: des.length,
             itemBuilder: (context, index){
-              return 
+              return Container(
+        padding: const EdgeInsets.all(2),
+        height: 140,
+        child: Card(
+          elevation: 5,
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Image.network(
+                  des[index].thumbnail,
+                  width: 200,
+                ),
+                Expanded(
+                    child: Container(
+                        padding: const EdgeInsets.all(5),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Text(des[index].title,style: const TextStyle(fontWeight: FontWeight.bold)),
+                            Text(des[index].shortDescription,style: const TextStyle(fontWeight: FontWeight.normal, color: Colors.black, fontSize: 12)),    
+                          ],
+                        )))
+              ]),
+        ));
               // Row(
               //   children: [
-                  Container(
-                    height: 50,
-                    width: 50,
-                    child: Card(
-                          semanticContainer: true,
-                          color: Colors.black,
-                          child: Column(
-                            children: <Widget>[
-                              Image.network(des[index].thumbnail,height: 30,width: 30,),
-                              Text(des[index].title,style: GoogleFonts.patrickHand(color: Colors.white)),
-                              Text(des[index].shortDescription,style: GoogleFonts.patrickHand(color: Colors.white)),
-                            ],
-                          ),
-                        ),
-                  )
+
+                  // Container(
+                  //   height: 50,
+                  //   width: 50,
+                  //   child: Card(
+                  //         semanticContainer: true,
+                  //         color: Colors.black,
+                  //         child: Column(
+                  //           children: <Widget>[
+                  //             Image.network(des[index].thumbnail,height: 30,width: 30,),
+                  //             Text(des[index].title,style: GoogleFonts.patrickHand(color: Colors.white)),
+                  //             Text(des[index].shortDescription,style: GoogleFonts.patrickHand(color: Colors.white)),
+                  //           ],
+                  //         ),
+                  //       ),
+                  // )
+
+
                       // Card(
                       //   child: Column(
                       //     children: <Widget>[
