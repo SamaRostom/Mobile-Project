@@ -10,30 +10,30 @@ String seeMoreGamesModelToJson(List<SeeMoreGamesModel?>? data) => json.encode(da
 
 class SeeMoreGamesModel {
     SeeMoreGamesModel({
-        this.id,
-        this.title,
-        this.thumbnail,
-        this.shortDescription,
-        this.gameUrl,
-        this.genre,
-        this.platform,
-        this.publisher,
-        this.developer,
-        this.releaseDate,
-        this.freetogameProfileUrl,
+        required this.id,
+        required this.title,
+        required this.thumbnail,
+        required this.shortDescription,
+        required this.gameUrl,
+        required this.genre,
+        required this.platform,
+        required this.publisher,
+        required this.developer,
+        required this.releaseDate,
+        required this.freetogameProfileUrl,
     });
 
-    int? id;
-    String? title;
-    String? thumbnail;
-    String? shortDescription;
-    String? gameUrl;
-    Genre? genre;
-    Platform? platform;
-    String? publisher;
-    String? developer;
-    String? releaseDate;
-    String? freetogameProfileUrl;
+    int id;
+    String title;
+    String thumbnail;
+    String shortDescription;
+    String gameUrl;
+    Genre genre;
+    Platform platform;
+    String publisher;
+    String developer;
+    String releaseDate;
+    String freetogameProfileUrl;
 
     factory SeeMoreGamesModel.fromJson(Map<String, dynamic> json) => SeeMoreGamesModel(
         id: json["id"],
@@ -41,8 +41,8 @@ class SeeMoreGamesModel {
         thumbnail: json["thumbnail"],
         shortDescription: json["short_description"],
         gameUrl: json["game_url"],
-        genre: genreValues.map[json["genre"]],
-        platform: platformValues.map[json["platform"]],
+        genre: genreValues.map[json["genre"]]!,
+        platform: platformValues.map[json["platform"]]!,
         publisher: json["publisher"],
         developer: json["developer"],
         releaseDate: json["release_date"],

@@ -3,7 +3,7 @@ import '../models/seemoregames_model.dart';
 import 'package:http/http.dart' as http;
 
 class SeeMoreGamesService{
-  getOrganizations() async{
+  getData() async{
     var client = http.Client();
 
     var uri = Uri.parse("https://www.freetogame.com/api/games");

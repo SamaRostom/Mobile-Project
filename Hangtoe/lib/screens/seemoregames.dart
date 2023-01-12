@@ -23,7 +23,7 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
     getData();
   }
   getData() async{
-    des = await SeeMoreGamesService().getOrganizations();
+    des = await SeeMoreGamesService().getData();
 
     if(des.isNotEmpty){
       setState((){
@@ -38,7 +38,7 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
         body: Visibility(
         visible: isLoaded,
         replacement: const Center(
-          child: CircularProgressIndicator(),
+          child: LoadingWidget(),
         ),
         child: ListView.builder(
           itemCount: des.length,
