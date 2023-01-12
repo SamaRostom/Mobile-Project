@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Utils/constants.dart';
 import '../Utils/data.dart' as val;
+import '../Utils/data.dart';
 import '../providers/user_provider.dart';
 import '../widgets/loading_widget.dart';
 
@@ -75,6 +76,7 @@ class UserService {
       UserService().getNewUserData().then((value) {
         UserModel user = UserModel.fromSnapshot(value);
         ref.read(newUserDataProivder.notifier).state = user;
+        Data.loggedin = true;
         Navigator.pushNamed(context, '/');
       });
     } on FirebaseAuthException catch (e) {
@@ -120,11 +122,12 @@ class UserService {
 
   static logOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
+    Data.loggedin = false;
     Navigator.of(context).pushReplacementNamed('/Login');
   }
 
   static void updateScore(WidgetRef ref) async {
-    String path = '';
+    String data = '';
     String email = ref.watch(newUserDataProivder)!.email;
     int score = ref.watch(newUserDataProivder)!.score;
     await FirebaseFirestore.instance
@@ -133,12 +136,12 @@ class UserService {
         .get()
         .then((QuerySnapshot querySnapshot) {
       for (var doc in querySnapshot.docs) {
-        path = (doc.reference.path);
+        data = (doc.reference.path);
       }
     });
 
-    final washingtonRef = FirebaseFirestore.instance.doc(path);
-    washingtonRef.update({"score": score});
+    final update = FirebaseFirestore.instance.doc(data);
+    update.update({"score": score});
   }
 }
 

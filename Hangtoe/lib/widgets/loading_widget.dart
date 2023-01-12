@@ -8,7 +8,7 @@ class LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: LoadingAnimationWidget.inkDrop(
-      color: Colors.white, size: 100,
+      color: Colors.white, size: 60,
     ));
   }
 }

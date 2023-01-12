@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Utils/constants.dart';
 import 'package:flutter_application_1/Utils/data.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../Utils/data.dart' as val;
 
 class Gamehome extends StatefulWidget {
   const Gamehome({super.key});
@@ -108,7 +110,27 @@ class _GamehomeState extends State<Gamehome> {
                         Navigator.pushNamed(context, '/Dictionary');
                       } else {
                         if (Data.type == "Oneplayer") {
-                          Navigator.pushNamed(context, '/singleplayerAI');
+                          if(Data.loggedin){
+                            Navigator.pushNamed(context, '/singleplayerAI');
+                          }
+                          else{
+                            error("Login", "you need to log in to play");
+                            // TextButton(
+                            //   child: const Text(
+                            //     'Login',
+                            //     style: TextStyle(
+                            //         fontSize: 20,
+                            //         decoration: TextDecoration.underline,
+                            //         color: Colors.white),
+                            //   ),
+                            //   onPressed: () {
+                            //     Navigator.pushNamed(context, '/Login');
+                            //   },
+                            // );
+                            ScaffoldMessenger.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(val.snackBar);
+                          }
                         } else if (Data.type == "Twoplayer") {
                           Navigator.pushNamed(context, '/Twoplayers');
                         } else if (Data.type == "Room") {

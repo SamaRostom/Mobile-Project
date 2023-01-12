@@ -4,6 +4,7 @@ var snackBar;
 
 class Data {
   static var noofplayers;
+  static bool loggedin = false;
   //adding the number of tries
   static int tries = 0;
   static List<String> selectedChar = [];

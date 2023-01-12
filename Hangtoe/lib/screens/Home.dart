@@ -22,7 +22,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(backgroundColor: Colors.indigo),
-        drawer: Drawer(
+        drawer: 
+        Data.loggedin == false?
+        Drawer(
             child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -48,6 +50,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
               title:  Text('Log in',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
               onTap: () {Navigator.pushNamed(context, '/Login');},
             ),
+          ],
+        )):Drawer(
+            child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+             DrawerHeader(
+              decoration: const BoxDecoration(
+                color: Colors.indigo,
+              ),
+              child: Text('Pages',style: GoogleFonts.patrickHand( fontSize: 40,color: Colors.white), ),
+            ),
             ListTile(
               leading: const Icon(
               Icons.logout,
@@ -56,17 +69,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
               title:  Text('Log out',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
               onTap: () async {
                 UserService.logOut(context);
-                // int rank=5;
-                // String date='25-Mar-01';
-                // String playername="player";
-                // int score =5;
-                // String typeofgame='xo';
-                // createScore(
-                //   rank: rank,
-                //   playername: playername,
-                //   date: date,
-                //   score : score,
-                //   typeofgame: typeofgame,);
                 },
             ),
           ],
@@ -126,7 +128,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
               const SizedBox(
                 height: 20,
               ),
-              Row(
+              Data.loggedin?
+                  Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [ Text(
                       'Welcome  ' +  ref.watch(newUserDataProivder)!.username,
@@ -136,7 +139,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
                         fontSize: 25,
                         color: Colors.white
                       ),
-                    ),],),
+                    ),],): 
+                    const SizedBox(
+                      height: 20,
+                    ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
