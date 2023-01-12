@@ -2,13 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'dart:math';
-// <<<<<<< HEAD
+
 import 'package:flutter_application_1/Utils/data.dart';
 // import 'package:flutter_application_1/main.dart';
-// =======
 // import 'package:flutter_application_1/Utils/data.dart';
 // import 'package:flutter_application_1/main.dart';
-// >>>>>>> f5cc5f4759769bd103e18f872deafb7d7789d388
 import 'package:flutter_application_1/models/Hangman/letter.dart';
 import 'package:flutter_application_1/models/Hangman/figure_image.dart';
 import 'package:flutter_application_1/models/Hangman/HangmanGame.dart';
@@ -26,7 +24,6 @@ class HangmanBoard extends StatefulWidget {
   const HangmanBoard({super.key, required this.obj});
   // HangmanBoard(this.obj);
   @override
-  // ignore: library_private_types_in_public_api
 
   //original hena fe el code el adem
   // _HangmanBoardState createState() => _HangmanBoardState();
@@ -107,14 +104,6 @@ class _HangmanBoardState extends State<HangmanBoard> {
     }
   // }
 
-
-
-  // @override
-  // Widget build(BuildContext context) {
-    
-  // throw UnimplementedError();
-  // }
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
