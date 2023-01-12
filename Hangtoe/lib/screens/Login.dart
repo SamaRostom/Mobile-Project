@@ -61,10 +61,9 @@ class _LoginState extends ConsumerState<Login> {
                     }
                   },
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
                     hintText: 'Email',
                     hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.person, color: Colors.white),
+                    prefixIcon: Icon(Icons.email, color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 50),
@@ -78,7 +77,6 @@ class _LoginState extends ConsumerState<Login> {
                     }
                   },
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
                     hintText: 'Password',
                     hintStyle: TextStyle(color: Colors.white),
                     prefixIcon: Icon(Icons.lock, color: Colors.white),
@@ -94,13 +92,17 @@ class _LoginState extends ConsumerState<Login> {
                               _passwordController);
                         }
                       },
-                      child: const Text('Login'),
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/');
                       },
-                      child: const Text('Cancel'),
+                      child: const Text('Cancel',
+                          style: TextStyle(fontSize: 20, color: Colors.white)),
                     ),
                   ],
                 ),
@@ -111,7 +113,10 @@ class _LoginState extends ConsumerState<Login> {
           Row(
             // ignore: sort_child_properties_last
             children: <Widget>[
-              const Text('Create a new account'),
+              const Text(
+                'Create a new account',
+                style: TextStyle(fontSize: 23, color: Colors.white),
+              ),
               TextButton(
                 child: const Text(
                   'Sign up',
