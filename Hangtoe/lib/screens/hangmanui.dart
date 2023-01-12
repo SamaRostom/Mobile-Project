@@ -19,7 +19,7 @@ class HangmanPage extends StatefulWidget {
 
 class _HangmanPageState extends State<HangmanPage> {
   late bool showNewGame;
-  // late String activeImage;
+  late String activeImage;
   late String activeWord;
 
   @override
@@ -72,7 +72,7 @@ class _HangmanPageState extends State<HangmanPage> {
 
   void win([_]) {
     setState(() {
-      // activeImage = Data.victoryImage;
+      activeImage = Data.victoryImage;
       gameOver();
     });
   }
@@ -88,7 +88,7 @@ class _HangmanPageState extends State<HangmanPage> {
 
     setState(() {
       activeWord = '';
-      // activeImage = Data.progressImages[0];
+      activeImage = Data.progressImages[0];
       showNewGame = false;
     });
   }
@@ -99,7 +99,8 @@ class _HangmanPageState extends State<HangmanPage> {
         child: const Text('New Game'),
         onPressed: newGame,
       );
-    } else {
+    } 
+    else {
       final Set<String> lettersGuessed = widget.obj.lettersGuessed;
 
       return Wrap(
@@ -135,10 +136,16 @@ class _HangmanPageState extends State<HangmanPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Image
+            Expanded(
+              child: Image.asset(activeImage),
+              // child: Image.asset(updateGallowsImage(3)),
+            ),
+
             // Expanded(
             //   // child: Image.asset(activeImage),
             //   child: Image.asset(updateGallowsImage(3)),
             // ),
+
             // Word
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -146,6 +153,7 @@ class _HangmanPageState extends State<HangmanPage> {
                 child: Text(activeWord, style: activeWordStyle),
               ),
             ),
+            
             // Controls
             Expanded(
               child: Center(
