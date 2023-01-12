@@ -4,9 +4,12 @@
 
 import 'dart:convert';
 
-List<SeeMoreGamesModel?>? seeMoreGamesModelFromJson(String str) => json.decode(str) == null ? [] : List<SeeMoreGamesModel?>.from(json.decode(str)!.map((x) => SeeMoreGamesModel.fromJson(x)));
+// List<SeeMoreGamesModel?>? seeMoreGamesModelFromJson(String str) => json.decode(str) == null ? [] : List<SeeMoreGamesModel?>.from(json.decode(str)!.map((x) => SeeMoreGamesModel.fromJson(x)));
 
-String seeMoreGamesModelToJson(List<SeeMoreGamesModel?>? data) => json.encode(data == null ? [] : List<dynamic>.from(data.map((x) => x!.toJson())));
+// String seeMoreGamesModelToJson(List<SeeMoreGamesModel>? data) => json.encode(data == null ? [] : List<dynamic>.from(data.map((x) => x.toJson())));
+List<SeeMoreGamesModel> seeMoreGamesModelFromJson(String str) => List<SeeMoreGamesModel>.from(json.decode(str).map((x) => SeeMoreGamesModel.fromJson(x)));
+
+String seeMoreGamesModelToJson(List<SeeMoreGamesModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class SeeMoreGamesModel {
     SeeMoreGamesModel({

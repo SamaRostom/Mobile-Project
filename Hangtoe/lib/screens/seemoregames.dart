@@ -35,19 +35,55 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(title: const Text("See More Games"),),
         body: Visibility(
         visible: isLoaded,
         replacement: const Center(
           child: LoadingWidget(),
         ),
-        child: ListView.builder(
-          itemCount: des.length,
-          itemBuilder: (context, index){
-            return ListTile(
-              title: Text(des[index].title.toString()),
-              subtitle: Text(des[index].shortDescription.toString()),
-            );
-          }
+        child:
+            ListView.builder(
+            itemCount: des.length,
+            itemBuilder: (context, index){
+              return 
+              // Row(
+              //   children: [
+                  Container(
+                    height: 50,
+                    width: 50,
+                    child: Card(
+                          semanticContainer: true,
+                          color: Colors.black,
+                          child: Column(
+                            children: <Widget>[
+                              Image.network(des[index].thumbnail,height: 30,width: 30,),
+                              Text(des[index].title,style: GoogleFonts.patrickHand(color: Colors.white)),
+                              Text(des[index].shortDescription,style: GoogleFonts.patrickHand(color: Colors.white)),
+                            ],
+                          ),
+                        ),
+                  )
+                      // Card(
+                      //   child: Column(
+                      //     children: <Widget>[
+                      //       Image.network(des[index+1].thumbnail),
+                      //       Text(des[index+1].title),
+                      //       Text(des[index+1].shortDescription),
+                      //     ],
+                      //   ),
+                      // ),
+              //   ],
+              // )
+              ;
+              
+              // ListTile(
+              //   title: Text(des[index].title.toString()),
+              //   subtitle: Text(des[index].shortDescription.toString()),
+                
+              // );
+            }
+          // ),
+          // ],
         ),
       ),
       ),
