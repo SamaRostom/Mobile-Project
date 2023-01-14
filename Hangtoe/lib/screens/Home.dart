@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/providers/score_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/user_provider.dart';
@@ -178,7 +179,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
                       borderRadius: BorderRadius.circular(20), 
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/NoPlayers');Data.chosed="hangman";}, 
+                      onPressed: () {
+                        ref.read(typeofgameProivder.notifier).state = "hangman";
+                        Navigator.pushNamed(context, '/NoPlayers');
+                        Data.chosed="hangman";
+                      }, 
                       child: const Text('Hangman',style: TextStyle(fontSize: 20,),),
                       ),
                    ),
@@ -200,7 +205,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
                       borderRadius: BorderRadius.circular(20)
                         ),
                       ),
-                      onPressed: () {Navigator.pushNamed(context, '/NoPlayers');Data.chosed="xo";}, 
+                      onPressed: () {
+                        ref.read(typeofgameProivder.notifier).state = "xo";
+                        Navigator.pushNamed(context, '/NoPlayers');
+                        Data.chosed="xo";
+                      }, 
                       child: const Text('Tic Tac Toe',style: TextStyle(fontSize: 20,),),
                       ),
                    ),

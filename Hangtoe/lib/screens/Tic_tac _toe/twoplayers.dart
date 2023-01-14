@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../providers/score_provider.dart';
+
 // import 'package:flutter_application_1/drawing.dart';
 
 class Twoplayers extends ConsumerStatefulWidget {
@@ -24,7 +26,7 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
 
   int filledBoxes = 0;
 
-  bool oTurn = true;
+  bool oTurn = false;
 
   String lastvalue = "X";
 

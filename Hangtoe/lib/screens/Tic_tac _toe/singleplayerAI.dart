@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/score_provider.dart';
+import 'package:flutter_application_1/services/score_service.dart';
 import 'package:flutter_application_1/widgets/game_button.dart';
 import 'package:flutter_application_1/widgets/custom_dailog.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -147,8 +149,8 @@ class _SinglepalyerAIState extends ConsumerState<SinglepalyerAI> {
         // ref.read(newUserDataProivder.notifier).state!.score +=5;
         // ref.watch(newUserDataProivder)!.score += 5;
         score += 5;
-        if (score > ref.watch(newUserDataProivder)!.score) {
-          ref.read(newUserDataProivder.notifier).state!.score = score;
+        if (score > ref.watch(scoreProivder)) {
+          ref.read(scoreProivder.notifier).state = score;
         }
         showDialog(
             context: context,
@@ -166,7 +168,8 @@ class _SinglepalyerAIState extends ConsumerState<SinglepalyerAI> {
 
   void resetGame() {
     if (Navigator.canPop(context)) Navigator.pop(context);
-    UserService.updateScore(ref);
+    // UserService.updateScore(ref);
+    ScoreService.saveScore(ref);
     setState(() {
       buttonsList = doInit();
     });
@@ -191,7 +194,7 @@ class _SinglepalyerAIState extends ConsumerState<SinglepalyerAI> {
         ),
         Center(
           child: Text(
-            "High Score:  ${ref.watch(newUserDataProivder)!.score}",
+            "High Score:  ${ref.watch(scoreProivder)}",
             style: GoogleFonts.kanit(fontSize: 25, color: Colors.white),
           ),
         ),
