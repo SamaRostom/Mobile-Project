@@ -55,7 +55,7 @@ class _SignupState extends ConsumerState<Signup> {
                 const SizedBox(height: 20),
                 //username
                 TextFormField(
-                  controller: _emailController,
+                  controller: _nameController,
                   validator: (val) {
                     if (val != null && val.isNotEmpty) {
                       return null;

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/widgets/loading_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../models/seemoregames_model.dart';
 import '../services/seemoregames_service.dart';
@@ -71,54 +69,11 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
                                         Text(des[index].title,
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold)),
-                                        // Text(des[index].shortDescription,
-                                        //     style: const TextStyle(
-                                        //         fontWeight: FontWeight.normal,
-                                        //         color: Colors.black,
-                                        //         fontSize: 12)),
                                       ],
                                     )))
                           ]),
                     ));
-                // Row(
-                //   children: [
-
-                // Container(
-                //   height: 50,
-                //   width: 50,
-                //   child: Card(
-                //         semanticContainer: true,
-                //         color: Colors.black,
-                //         child: Column(
-                //           children: <Widget>[
-                //             Image.network(des[index].thumbnail,height: 30,width: 30,),
-                //             Text(des[index].title,style: GoogleFonts.patrickHand(color: Colors.white)),
-                //             Text(des[index].shortDescription,style: GoogleFonts.patrickHand(color: Colors.white)),
-                //           ],
-                //         ),
-                //       ),
-                // )
-
-                // Card(
-                //   child: Column(
-                //     children: <Widget>[
-                //       Image.network(des[index+1].thumbnail),
-                //       Text(des[index+1].title),
-                //       Text(des[index+1].shortDescription),
-                //     ],
-                //   ),
-                // ),
-                //   ],
-                // )
-
-                // ListTile(
-                //   title: Text(des[index].title.toString()),
-                //   subtitle: Text(des[index].shortDescription.toString()),
-
-                // );
               }
-              // ),
-              // ],
               ),
         ),
       ),
