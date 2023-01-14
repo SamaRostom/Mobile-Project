@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_application_1/screens/Hangman/HangmanBoard.dart';
+import 'package:flutter_application_1/screens/Hangman/HangmanBoard.dart';
 import 'package:flutter_application_1/screens/Home.dart';
 
 import 'package:flutter_application_1/screens/Tic_tac%20_toe/singleplayerAI.dart';
@@ -14,7 +14,7 @@ import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_application_1/screens/Hangman/Dictionary.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'screens/Hangman/twoplayershang.dart';
 import 'screens/Tic_tac _toe/create_room_screen.dart';
 import 'screens/Tic_tac _toe/join_room_screen.dart';
 import 'screens/Tic_tac _toe/room_screen.dart';
@@ -47,14 +47,16 @@ class MyApp extends StatelessWidget {
         // scaffoldBackgroundColor: Color.fromARGB(255, 160, 120, 247),
       ),
       // home: const HomeScreen(),
-      initialRoute: '/Login',
+      // initialRoute: '/Login',
+      initialRoute: '/Players',
       routes: {
         '/': (context) => const HomeScreen(),
         '/scores': (context) => const Scores(),
         '/NoPlayers': (context) => const Players(),
+        '/TwoplayersHangman': (context) => const TwoplayersHangman(),
         '/gamehome': (context) => const Gamehome(),
         '/howtoplay': (context) => const HowToPlay(),
-        // '/HangmanBoard': (context) => const HangmanBoard(),
+        '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
         '/main_menu_screen': (context) => const RoomScreen(),
         '/join_room_screen': (context) => const JoinRoomScreen(),
