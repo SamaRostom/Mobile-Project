@@ -11,6 +11,8 @@ import '../Utils/constants.dart';
 import '../services/user_service.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
+  static const routeName = "/home-screen";
+
   const HomeScreen({super.key});
 
   @override
@@ -18,211 +20,236 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen>{
-  
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(backgroundColor: Colors.indigo),
-        drawer: 
-        Data.loggedin == false?
-        Drawer(
-            child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-             DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Colors.indigo,
-              ),
-              child: Text('Pages',style: GoogleFonts.patrickHand( fontSize: 40,color: Colors.white), ),
-            ),
-            ListTile(
-              leading: const Icon(
-              Icons.person_add,
-              color: Colors.indigo,
-            ),
-              title: Text('Sign up',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
-              onTap: () {Navigator.pushNamed(context, '/Signup');},
-            ),
-            ListTile(
-              leading: const Icon(
-              Icons.login,
-              color: Colors.indigo,
-            ),
-              title:  Text('Log in',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
-              onTap: () {Navigator.pushNamed(context, '/Login');},
-            ),
-          ],
-        )):Drawer(
-            child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-             DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Colors.indigo,
-              ),
-              child: Text('Pages',style: GoogleFonts.patrickHand( fontSize: 40,color: Colors.white), ),
-            ),
-            ListTile(
-              leading: const Icon(
-              Icons.logout,
-              color: Colors.indigo,
-            ),
-              title:  Text('Log out',style: GoogleFonts.patrickHand( fontSize: 30,color: Colors.indigo), ),
-              onTap: () async {
-                UserService.logOut(context);
-                },
-            ),
-          ],
-        )),
-
+        drawer: Data.loggedin == false
+            ? Drawer(
+                child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  DrawerHeader(
+                    decoration: const BoxDecoration(
+                      color: Colors.indigo,
+                    ),
+                    child: Text(
+                      'Pages',
+                      style: GoogleFonts.patrickHand(
+                          fontSize: 40, color: Colors.white),
+                    ),
+                  ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.person_add,
+                      color: Colors.indigo,
+                    ),
+                    title: Text(
+                      'Sign up',
+                      style: GoogleFonts.patrickHand(
+                          fontSize: 30, color: Colors.indigo),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/Signup');
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.login,
+                      color: Colors.indigo,
+                    ),
+                    title: Text(
+                      'Log in',
+                      style: GoogleFonts.patrickHand(
+                          fontSize: 30, color: Colors.indigo),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/Login');
+                    },
+                  ),
+                ],
+              ))
+            : Drawer(
+                child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  DrawerHeader(
+                    decoration: const BoxDecoration(
+                      color: Colors.indigo,
+                    ),
+                    child: Text(
+                      'Pages',
+                      style: GoogleFonts.patrickHand(
+                          fontSize: 40, color: Colors.white),
+                    ),
+                  ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.logout,
+                      color: Colors.indigo,
+                    ),
+                    title: Text(
+                      'Log out',
+                      style: GoogleFonts.patrickHand(
+                          fontSize: 30, color: Colors.indigo),
+                    ),
+                    onTap: () async {
+                      UserService.logOut(context);
+                    },
+                  ),
+                ],
+              )),
         body: Column(
           // crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisSize: MainAxisSize.max,
           children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  const SizedBox(
-                    height: 150,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                const SizedBox(
+                  height: 150,
+                ),
+                Text(
+                  'HANGTOE',
+                  style: GoogleFonts.patrickHand(
+                      // textStyle: Theme.of(context).textTheme.headline4,
+                      fontSize: 75,
+                      // fontWeight: FontWeight.w700,
+                      color: Colors.white),
+                  // TextStyle(
+                  //   fontSize: 60,
+                  //   color: Colors.white,
+                  //   // fontWeight: FontWeight.w300,
+                  //   letterSpacing: 3.0,
+                  //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
+                  //   fontFamily: 'FiraMono',
+
+                  // ),)
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                // Padding(
+                //   padding: const EdgeInsets.all(50),
+                //   child: const AnimatedRotation(
+                //     turns: 5,
+                //     duration: Duration(seconds: 2),
+                //     child: FlutterLogo(),
+                //   ),),
+                Image.asset(
+                  'assets/homepic.png',
+                  width: 200,
+                  height: 130,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Data.loggedin
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Welcome  ' + ref.watch(newUserDataProivder)!.username,
+                        style: GoogleFonts.kanit(
+                            fontSize: 25, color: Colors.white),
+                      ),
+                    ],
+                  )
+                : const SizedBox(
+                    height: 20,
                   ),
-                   Text(
-                      'HANGTOE',
-                      style: 
-                      GoogleFonts.patrickHand
-                      (
-                        // textStyle: Theme.of(context).textTheme.headline4,
-                        fontSize: 75,
-                        // fontWeight: FontWeight.w700,
-                        color: Colors.white
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Lets play',
+                  style: GoogleFonts.kanit(fontSize: 25, color: Colors.white),
+                  // TextStyle(
+                  //   fontSize: 20,
+                  //   color: Colors.white,
+                  // ),
+                ),
+                const Icon(
+                  Icons.gamepad_outlined,
+                  color: Color.fromARGB(255, 177, 96, 209),
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 80, //height of button
+                  width: 200, //width of button
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      //primary: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        //to set border radius to button
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      // TextStyle(
-                      //   fontSize: 60,
-                      //   color: Colors.white,
-                      //   // fontWeight: FontWeight.w300,
-                      //   letterSpacing: 3.0,
-                      //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
-                      //   fontFamily: 'FiraMono',
-                        
-                      // ),)
                     ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                mainAxisSize: MainAxisSize.max,
-                children:[
-                  // Padding(
-                  //   padding: const EdgeInsets.all(50),
-                  //   child: const AnimatedRotation(
-                  //     turns: 5,
-                  //     duration: Duration(seconds: 2),
-                  //     child: FlutterLogo(),
-                  //   ),),
-                  Image.asset(
-                      'assets/homepic.png',
-                      width: 200,
-                      height: 130,
+                    onPressed: () {
+                      ref.read(typeofgameProivder.notifier).state = "hangman";
+                      Navigator.pushNamed(context, '/NoPlayers');
+                      // Navigator.pushReplacementNamed(context, TypeWordScreen.routeName);
+                      Data.chosed = "hangman";
+                    },
+                    child: const Text(
+                      'Hangman',
+                      style: TextStyle(
+                        fontSize: 20,
                       ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Data.loggedin?
-                  Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [ Text(
-                      'Welcome  ' +  ref.watch(newUserDataProivder)!.username,
-                      style: 
-                      GoogleFonts.kanit
-                      (
-                        fontSize: 25,
-                        color: Colors.white
-                      ),
-                    ),],): 
-                    const SizedBox(
-                      height: 20,
                     ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                   Text(
-                      'Lets play',
-                      style: 
-                      GoogleFonts.kanit
-                      (
-                        fontSize: 25,
-                        color: Colors.white
-                      ),
-                      // TextStyle(
-                      //   fontSize: 20,
-                      //   color: Colors.white,
-                      // ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 80, //height of button
+                  width: 200, //width of button
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      //primary: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          //to set border radius to button
+                          borderRadius: BorderRadius.circular(20)),
                     ),
-                    const Icon(Icons.gamepad_outlined,color: Color.fromARGB(255, 177, 96, 209),)
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                   SizedBox(
-                     height:80, //height of button
-                      width:200, //width of button
-                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                      //primary: Colors.transparent,  
-                      shape: RoundedRectangleBorder( //to set border radius to button
-                      borderRadius: BorderRadius.circular(20), 
-                        ),
+                    onPressed: () {
+                      ref.read(typeofgameProivder.notifier).state = "xo";
+                      Navigator.pushNamed(context, '/NoPlayers');
+                      Data.chosed = "xo";
+                    },
+                    child: const Text(
+                      'Tic Tac Toe',
+                      style: TextStyle(
+                        fontSize: 20,
                       ),
-                      onPressed: () {
-                        ref.read(typeofgameProivder.notifier).state = "hangman";
-                        Navigator.pushNamed(context, '/NoPlayers');
-                        // Navigator.pushReplacementNamed(context, TypeWordScreen.routeName);
-                        Data.chosed="hangman";
-                      }, 
-                      child: const Text('Hangman',style: TextStyle(fontSize: 20,),),
-                      ),
-                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                   SizedBox(
-                     height:80, //height of button
-                      width:200, //width of button
-                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                      //primary: Colors.transparent, 
-                      shape: RoundedRectangleBorder( //to set border radius to button
-                      borderRadius: BorderRadius.circular(20)
-                        ),
-                      ),
-                      onPressed: () {
-                        ref.read(typeofgameProivder.notifier).state = "xo";
-                        Navigator.pushNamed(context, '/NoPlayers');
-                        Data.chosed="xo";
-                      }, 
-                      child: const Text('Tic Tac Toe',style: TextStyle(fontSize: 20,),),
-                      ),
-                   ),
-                ],
-              ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
