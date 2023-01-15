@@ -29,7 +29,7 @@ class ScoresState extends ConsumerState<Scores>{
 
     List<DataRow> newScore = snapshot.docs.map((DocumentSnapshot documentSnapshot) => DataRow(
       color: MaterialStateColor.resolveWith((states) {
-                if(documentSnapshot['email'] == ref.watch(newUserDataProivder)!.email){
+                if(Data.loggedin && documentSnapshot['email'] == ref.watch(newUserDataProivder)!.email){
                   return Colors.cyan;
                 }
                 else{
