@@ -4,7 +4,7 @@ import 'package:flutter_application_1/widgets/custom_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CreateRoomScreen extends StatefulWidget {
-  // static String routeName = '/create-room';
+  static const routeName = "/createroom-screen";
   const CreateRoomScreen({Key? key}) : super(key: key);
 
   @override
