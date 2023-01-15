@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../Utils/data.dart';
+// import '../../providers/user_provider.dart';
+import 'package:flutter_application_1/providers/user_provider.dart';
 
-class LoseScreen extends StatelessWidget {
-  static const String routeName = '/lose-screen';
+  class LoseScreen extends ConsumerStatefulWidget {
+    static const String routeName = '/lose-screen';
 
-  const LoseScreen({super.key});
+    const LoseScreen({super.key});
+    @override
+      ConsumerState<LoseScreen> createState() => _LoseScreenState();
+  }
 
-
+  class _LoseScreenState extends ConsumerState<LoseScreen> {
   @override
   Widget build(BuildContext context) {
     final data = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
@@ -31,24 +36,22 @@ class LoseScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Text(
-              "YOU\nLOSE",
+            Text("\nHARD LUCK!\n"+ref.watch(nickname1Proivder)+"\nLOSE",
               textAlign: TextAlign.center,
-              style:
-              theme.textTheme.headline1!.copyWith(color: theme.primaryColor,fontSize: 50.0),
+              style:theme.textTheme.headline1!.copyWith(color: Colors.white,fontSize: 50.0),
             ),
 
             Text(
               "Your score : $score",
               textAlign: TextAlign.center,
               style:
-              theme.textTheme.headline1!.copyWith(color: theme.primaryColor,fontSize: 24.0),
+              theme.textTheme.headline1!.copyWith(color: Colors.white,fontSize: 24.0),
             ),const SizedBox(height: 10,),
             Text(
               "Word : $guessedWord",
               textAlign: TextAlign.center,
               style:
-              theme.textTheme.headline1!.copyWith(color: theme.primaryColor,fontSize: 24.0),
+              theme.textTheme.headline1!.copyWith(color: Colors.white,fontSize: 24.0),
             ),
             const SizedBox(
               height: 30,
