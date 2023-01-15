@@ -40,6 +40,7 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("See More Games"),
+          backgroundColor: Colors.indigo,
         ),
         body: Visibility(
           visible: isLoaded,
