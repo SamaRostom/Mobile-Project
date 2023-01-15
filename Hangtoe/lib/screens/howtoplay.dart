@@ -7,13 +7,15 @@ import '../models/seemoregames_model.dart';
 import '../services/seemoregames_service.dart';
 
 class HowToPlay extends StatefulWidget {
+  static const routeName = "/howtoplay-screen";
+
   const HowToPlay({super.key});
 
   @override
   State<StatefulWidget> createState() => _HowToPlayState();
 }
+
 class _HowToPlayState extends State<HowToPlay> {
-  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,39 +31,40 @@ class _HowToPlayState extends State<HowToPlay> {
                 IconButton(
                   icon: const Icon(Icons.arrow_back),
                   color: Colors.white,
-                  onPressed: () {Navigator.pop(context); },
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
-                   Text(
-                    'How to play',
-                     style:
-                     GoogleFonts.patrickHand
-                      (
-                        fontSize: 60,
-                        color: Colors.white
-                      ),  
-                    //  TextStyle(
-                    //     fontSize: 50,
-                    //     color: Colors.white,
-                    //     letterSpacing: 3.0,
-                    //   ),
+                Text(
+                  'How to play',
+                  style: GoogleFonts.patrickHand(
+                      fontSize: 60, color: Colors.white),
+                  //  TextStyle(
+                  //     fontSize: 50,
+                  //     color: Colors.white,
+                  //     letterSpacing: 3.0,
+                  //   ),
+                ),
+                //const IconButton(Icons.lightbulb,color: Color.fromARGB(255, 255, 234, 49), size: 50.0, onPressed(){})
+                IconButton(
+                  icon: const Icon(
+                    Icons.lightbulb,
+                    size: 50.0,
                   ),
-                  //const IconButton(Icons.lightbulb,color: Color.fromARGB(255, 255, 234, 49), size: 50.0, onPressed(){})
-                  IconButton(
-                  icon: const Icon(Icons.lightbulb,size: 50.0,),
                   color: const Color.fromARGB(255, 255, 234, 49),
                   onPressed: () {},
                 ),
-                ],
-              ),
+              ],
+            ),
             const SizedBox(
               height: 70,
             ),
             Row(
               // mainAxisAlignment: MainAxisAlignment.start,
-              children: 
-               [
-                Data.chosed == 'hangman'?
-                 Text('''
+              children: [
+                Data.chosed == 'hangman'
+                    ? Text(
+                        '''
           In the game of Hangman, 
           a clue word is given by 
           the program that the player
@@ -73,19 +76,15 @@ class _HowToPlayState extends State<HowToPlay> {
           is drawn the player loses, 
           otherwise the correct letter 
           is found and the player wins.''',
-                  style: 
-                  GoogleFonts.kanit
-                      (
-                        fontSize: 25,
-                        color: Colors.white
-                      ), 
-                  // TextStyle(
-                  //       fontSize: 25,
-                  //       color: Colors.white,
-                  //     ),
-                ):
-                 Text(
-                  '''
+                        style: GoogleFonts.kanit(
+                            fontSize: 25, color: Colors.white),
+                        // TextStyle(
+                        //       fontSize: 25,
+                        //       color: Colors.white,
+                        //     ),
+                      )
+                    : Text(
+                        '''
       Tic-tac-toe is a puzzle game 
       for two players, X and O, 
       who take turns marking the 
@@ -95,28 +94,31 @@ class _HowToPlayState extends State<HowToPlay> {
       horizontal, vertical, or diagonal 
       row wins the game.
           ''',
-                  style: 
-                  GoogleFonts.kanit
-                      (
-                        fontSize: 25,
-                        color: Colors.white
-                      ), 
-                  // TextStyle(
-                  //       fontSize: 25,
-                  //       color: Colors.white,
-                  //     ),
-                )
+                        style: GoogleFonts.kanit(
+                            fontSize: 25, color: Colors.white),
+                        // TextStyle(
+                        //       fontSize: 25,
+                        //       color: Colors.white,
+                        //     ),
+                      )
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              OutlinedButton(
-                onPressed: () {
-                Navigator.pushNamed(context, '/SeeMoreGames');
-              }, child: const Text('See more games',style: TextStyle(fontSize: 20,),),
-              ),
-            ],),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/SeeMoreGames');
+                  },
+                  child: const Text(
+                    'See more games',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
