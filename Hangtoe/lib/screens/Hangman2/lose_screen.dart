@@ -3,7 +3,6 @@ import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../Utils/data.dart';
-// import '../../providers/user_provider.dart';
 import 'package:flutter_application_1/providers/user_provider.dart';
 
   class LoseScreen extends ConsumerStatefulWidget {
@@ -21,7 +20,6 @@ import 'package:flutter_application_1/providers/user_provider.dart';
     final String word = data['word'];
     final int score = data['score'];
     final String guessedWord = data['guessedWord'];
-
 
     final theme = Theme.of(context);
     return Scaffold(
@@ -74,7 +72,8 @@ import 'package:flutter_application_1/providers/user_provider.dart';
               // splashColor: theme.primaryColor.withOpacity(0.3),
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.circular(5.0)),
-                onPressed: () => Navigator.pushReplacementNamed(context, Data.type == "Oneplayer" ? GameScreen.routeName : TypeWordScreen.routeName,arguments: "")  ,
+                onPressed: () => Navigator.pushNamed(context,Data.type == "Oneplayer" ? '/Categories':TypeWordScreen.routeName,arguments: ""),
+                // Navigator.pushReplacementNamed(context, Data.type == "Oneplayer" ? GameScreen.routeName : TypeWordScreen.routeName,arguments: "")  ,
               child: FittedBox(
                 child: Text("Play Again", style: theme.textTheme.headline5),
               ),
