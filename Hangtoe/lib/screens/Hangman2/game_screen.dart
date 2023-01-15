@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/hangman_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import '../http/random_word.dart';
 import 'win_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,17 +13,17 @@ import '../../models/Hangman2/guess_letter_model.dart';
 import '../../widgets/Hangman2/guess_letter.dart';
 import '../../widgets/Hangman2/letter_click.dart';
 
-class GameScreen extends StatefulWidget {
+class GameScreen extends ConsumerStatefulWidget {
   static const routeName = "/game";
 
   const GameScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _GameScreenState createState() => _GameScreenState();
+  ConsumerState<GameScreen> createState() => _GameScreenState();
 }
 
-class _GameScreenState extends State<GameScreen> {
+class _GameScreenState extends ConsumerState<GameScreen> {
 
   late Timer _timer;
 
@@ -157,7 +159,8 @@ class _GameScreenState extends State<GameScreen> {
   //----------------| Get random word or word from user typing|---------------------
   Future getWord(BuildContext context) async {
     try{
-      String routeWord = (ModalRoute.of(context)!.settings.arguments as String);
+      // String routeWord = (ModalRoute.of(context)!.settings.arguments as String);
+      String routeWord = ref.watch(wordProivder);
       if(routeWord==""){
         // Map map = await _randomWordApi.getWord();
         // setState(() => this.game.word = map['word']);
@@ -239,7 +242,8 @@ class _GameScreenState extends State<GameScreen> {
   //lose game
   void lose() => Navigator.pushReplacementNamed(context, LoseScreen.routeName,arguments: {
     "score": game.score,
-    "word" : (ModalRoute.of(context)!.settings.arguments as String),
+    // "word" : (ModalRoute.of(context)!.settings.arguments as String),
+    "word" : (ref.watch(wordProivder)),
     "guessedWord" : game.word
   });
 
@@ -248,7 +252,8 @@ class _GameScreenState extends State<GameScreen> {
     checkHighScore();
     Navigator.pushReplacementNamed(context, WinScreen.routeName,arguments: {
       "score": game.score,
-      "word" : (ModalRoute.of(context)!.settings.arguments as String),
+      // "word" : (ModalRoute.of(context)!.settings.arguments as String),
+      "word" : (ref.watch(wordProivder)),
       "guessedWord" : game.word
     });
   }
