@@ -4,6 +4,8 @@ import 'package:flutter_application_1/widgets/custom_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RoomScreen extends StatelessWidget {
+  static const routeName = "/room-screen";
+
   // static String routeName = '/main-menu';
   const RoomScreen({Key? key}) : super(key: key);
 
