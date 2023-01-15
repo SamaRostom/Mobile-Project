@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/Hangman/HangmanBoard.dart';
+import 'package:flutter_application_1/screens/Hangman2/categories.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/lose_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/win_screen.dart';
 import 'package:flutter_application_1/screens/Home.dart';
-
 import 'package:flutter_application_1/screens/Tic_tac%20_toe/singleplayerAI.dart';
 import 'package:flutter_application_1/screens/scores.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/gamehome.dart';
 import 'package:flutter_application_1/screens/howtoplay.dart';
 import 'package:flutter_application_1/screens/PNames.dart';
-// import 'package:flutter_application_1/screens/Tic_tac_toe.dart';
 import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
-import 'package:flutter_application_1/screens/Hangman/Dictionary.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/Hangman/twoplayershang.dart';
@@ -50,28 +47,28 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/Players',
       routes: {
         '/': (context) => const HomeScreen(),
-        '/scores': (context) => const Scores(),
-        '/NoPlayers': (context) => const Players(),
-        '/TwoplayersHangman': (context) => const TwoplayersHangman(),
-        '/gamehome': (context) => const Gamehome(),
-        '/howtoplay': (context) => const HowToPlay(),
+        Scores.routeName: (context) => const Scores(),
+        Players.routeName: (context) => const Players(),
+        TwoplayersHangman.routeName: (context) => const TwoplayersHangman(),
+        Gamehome.routeName: (context) => const Gamehome(),
+        HowToPlay.routeName: (context) => const HowToPlay(),
         // '/HangmanBoard': (context) => const HangmanBoard(),
-        '/PNames': (context) => const PName(),
-        '/main_menu_screen': (context) => const RoomScreen(),
-        '/join_room_screen': (context) => const JoinRoomScreen(),
-        '/create_room_screen': (context) => const CreateRoomScreen(),
-        '/singleplayerAI': (context) => const SinglepalyerAI(),
-        '/Twoplayers': (context) => const Twoplayers(),
+        PName.routeName: (context) => const PName(),
+        RoomScreen.routeName: (context) => const RoomScreen(),
+        JoinRoomScreen.routeName: (context) => const JoinRoomScreen(),
+        CreateRoomScreen.routeName: (context) => const CreateRoomScreen(),
+        SinglepalyerAI.routeName: (context) => const SinglepalyerAI(),
+        Twoplayers.routeName: (context) => const Twoplayers(),
         // '/Tic_tac_toe': (context) => const Tictactoe(),
-        '/Login': (context) => const Login(),
-        '/Signup': (context) => const Signup(),
-        '/Dictionary': (context) => const Dictionary(),
-        '/SeeMoreGames': (context) => const SeeMoreGames(),
+        Login.routeName: (context) => const Login(),
+        Signup.routeName: (context) => const Signup(),
+        Categories.routeName: (context) => const Categories(),
+        SeeMoreGames.routeName: (context) => const SeeMoreGames(),
 
-        GameScreen.routeName : (context) => const GameScreen(),
-        LoseScreen.routeName : (context) =>const LoseScreen(),
-        WinScreen.routeName : (context) => const WinScreen(),
-        TypeWordScreen.routeName : (context) => const TypeWordScreen(),
+        GameScreen.routeName: (context) => const GameScreen(),
+        LoseScreen.routeName: (context) => const LoseScreen(),
+        WinScreen.routeName: (context) => const WinScreen(),
+        TypeWordScreen.routeName: (context) => const TypeWordScreen(),
       },
     );
   }
