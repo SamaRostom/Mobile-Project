@@ -4,7 +4,7 @@ import 'package:flutter_application_1/widgets/custom_button.dart';
 import 'package:flutter_application_1/widgets/custom_text.dart';
 
 class JoinRoomScreen extends StatefulWidget {
-  // static String routeName = '/join-room';
+  static String routeName = '/joinroom-screen';
   const JoinRoomScreen({Key? key}) : super(key: key);
 
   @override
