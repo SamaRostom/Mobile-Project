@@ -9,39 +9,55 @@ import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Scores extends ConsumerStatefulWidget {
+  static const routeName = "/scores-screen";
+
   const Scores({super.key});
 
   @override
   ConsumerState<Scores> createState() => ScoresState();
 }
 
-class ScoresState extends ConsumerState<Scores>{
-
-   int r = 1;
-   var rank = Data.topRanks;
-   String? rr;
-   String? rankdata(){
-    (r) < 3 ? rr = rank[r-1] + r.toString():rr = r.toString();
+class ScoresState extends ConsumerState<Scores> {
+  int r = 1;
+  var rank = Data.topRanks;
+  String? rr;
+  String? rankdata() {
+    (r) < 3 ? rr = rank[r - 1] + r.toString() : rr = r.toString();
     r++;
     return rr;
-   } 
-   List<DataRow> _createRows(QuerySnapshot snapshot) {
+  }
 
-    List<DataRow> newScore = snapshot.docs.map((DocumentSnapshot documentSnapshot) => DataRow(
-      color: MaterialStateColor.resolveWith((states) {
-                if(Data.loggedin && documentSnapshot['email'] == ref.watch(newUserDataProivder)!.email){
-                  return Colors.cyan;
-                }
-                else{
-                  return Colors.transparent;
-                }
-              }),
-      cells: [
-              DataCell(Text(rankdata()??"0", style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text(documentSnapshot['email'],style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text(DateFormat('yyyy-MM-dd').format((documentSnapshot['date'] as Timestamp).toDate()) ,style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),)),
-              DataCell(Text('   ${documentSnapshot['score']}',style: GoogleFonts.kanit(fontSize: 20,color: Colors.white),))
-            ]))
+  List<DataRow> _createRows(QuerySnapshot snapshot) {
+    List<DataRow> newScore = snapshot.docs
+        .map((DocumentSnapshot documentSnapshot) => DataRow(
+                color: MaterialStateColor.resolveWith((states) {
+                  if (Data.loggedin &&
+                      documentSnapshot['email'] ==
+                          ref.watch(newUserDataProivder)!.email) {
+                    return Colors.cyan;
+                  } else {
+                    return Colors.transparent;
+                  }
+                }),
+                cells: [
+                  DataCell(Text(
+                    rankdata() ?? "0",
+                    style: GoogleFonts.kanit(fontSize: 20, color: Colors.white),
+                  )),
+                  DataCell(Text(
+                    documentSnapshot['email'],
+                    style: GoogleFonts.kanit(fontSize: 20, color: Colors.white),
+                  )),
+                  DataCell(Text(
+                    DateFormat('yyyy-MM-dd').format(
+                        (documentSnapshot['date'] as Timestamp).toDate()),
+                    style: GoogleFonts.kanit(fontSize: 20, color: Colors.white),
+                  )),
+                  DataCell(Text(
+                    '   ${documentSnapshot['score']}',
+                    style: GoogleFonts.kanit(fontSize: 20, color: Colors.white),
+                  ))
+                ]))
         .toList();
     return newScore;
   }
@@ -51,101 +67,91 @@ class ScoresState extends ConsumerState<Scores>{
     return SafeArea(
       child: Scaffold(
         body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('Scores').where('typeofgame', isEqualTo:ref.watch(typeofgameProivder)).orderBy('score', descending: true).snapshots(),
-          builder: (context, snapshot) {
-            if(snapshot.hasData){
-              final allScores = snapshot.data!;
-              return Column(
-                // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                // mainAxisSize: MainAxisSize.max,
-                children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.arrow_back),
-                        color: Colors.white,
-                        onPressed: () {Navigator.pop(context); },
-                      ),
-                          Column(
-                          children:  [
+            stream: FirebaseFirestore.instance
+                .collection('Scores')
+                .where('typeofgame', isEqualTo: ref.watch(typeofgameProivder))
+                .orderBy('score', descending: true)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final allScores = snapshot.data!;
+                return Column(
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  // mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.arrow_back),
+                          color: Colors.white,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        Column(children: [
                           Text(
                             'High Scores',
                             textAlign: TextAlign.center,
-                            style:
-                            GoogleFonts.patrickHand
-                            (
-                              fontSize: 60,
-                              color: Colors.white
-                            ),   
+                            style: GoogleFonts.patrickHand(
+                                fontSize: 60, color: Colors.white),
                           ),
                         ]),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      DataTable(
-                        columnSpacing: 5,
-                        columns: [
-                          DataColumn(
-                            label: Text('Rank',style: GoogleFonts.patrickHand
-                            (
-                              fontSize: 20,
-                              color: Colors.white
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 60,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        DataTable(
+                          columnSpacing: 5,
+                          columns: [
+                            DataColumn(
+                              label: Text(
+                                'Rank',
+                                style: GoogleFonts.patrickHand(
+                                    fontSize: 20, color: Colors.white),
+                              ),
                             ),
+                            DataColumn(
+                              label: Text(
+                                '        Email',
+                                style: GoogleFonts.patrickHand(
+                                    fontSize: 20, color: Colors.white),
+                              ),
                             ),
-                          ),
-                          DataColumn(
-                            label: Text('        Email',style: GoogleFonts.patrickHand
-                            (
-                              fontSize: 20,
-                              color: Colors.white
-                            ),),
-                          ),
-                          DataColumn(
-                            label: Text('     Date',style: GoogleFonts.patrickHand
-                            (
-                              fontSize: 20,
-                              color: Colors.white
-                            ),),
-                          ),
-                          DataColumn(
-                            label: Text('Score',style: GoogleFonts.patrickHand
-                            (
-                              fontSize: 20,
-                              color: Colors.white
-                            ),),
-                          ),
-                        ], 
-                        rows: _createRows(allScores),
-                        )  
-                    ],
-                  ),
-                ],
-                
-              );
-            }
-            else {
-              return const LoadingWidget();
-            }
-          }
-        ),
+                            DataColumn(
+                              label: Text(
+                                '     Date',
+                                style: GoogleFonts.patrickHand(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Score',
+                                style: GoogleFonts.patrickHand(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                            ),
+                          ],
+                          rows: _createRows(allScores),
+                        )
+                      ],
+                    ),
+                  ],
+                );
+              } else {
+                return const LoadingWidget();
+              }
+            }),
       ),
     );
   }
 }
-
-
-
-
-
-
-
