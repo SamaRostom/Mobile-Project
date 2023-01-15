@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Hangman/HangmanBoard.dart';
+import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
+import 'package:flutter_application_1/screens/Hangman2/lose_screen.dart';
+import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
+import 'package:flutter_application_1/screens/Hangman2/win_screen.dart';
 import 'package:flutter_application_1/screens/Home.dart';
 
 import 'package:flutter_application_1/screens/Tic_tac%20_toe/singleplayerAI.dart';
@@ -20,11 +24,6 @@ import 'screens/Tic_tac _toe/join_room_screen.dart';
 import 'screens/Tic_tac _toe/room_screen.dart';
 import 'screens/Tic_tac _toe/twoplayers.dart';
 import 'screens/seemoregames.dart';
-// import 'firebase_options.dart';
-
-// void main() {
-//   runApp(const MyApp());
-// }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,7 +55,7 @@ class MyApp extends StatelessWidget {
         '/TwoplayersHangman': (context) => const TwoplayersHangman(),
         '/gamehome': (context) => const Gamehome(),
         '/howtoplay': (context) => const HowToPlay(),
-        '/HangmanBoard': (context) => const HangmanBoard(),
+        // '/HangmanBoard': (context) => const HangmanBoard(),
         '/PNames': (context) => const PName(),
         '/main_menu_screen': (context) => const RoomScreen(),
         '/join_room_screen': (context) => const JoinRoomScreen(),
@@ -68,6 +67,11 @@ class MyApp extends StatelessWidget {
         '/Signup': (context) => const Signup(),
         '/Dictionary': (context) => const Dictionary(),
         '/SeeMoreGames': (context) => const SeeMoreGames(),
+
+        GameScreen.routeName : (context) => const GameScreen(),
+        LoseScreen.routeName : (context) =>const LoseScreen(),
+        WinScreen.routeName : (context) => const WinScreen(),
+        TypeWordScreen.routeName : (context) => const TypeWordScreen(),
       },
     );
   }
