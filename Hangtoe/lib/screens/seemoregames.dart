@@ -5,6 +5,8 @@ import '../models/seemoregames_model.dart';
 import '../services/seemoregames_service.dart';
 
 class SeeMoreGames extends StatefulWidget {
+  static const routeName = "/seemoregames-screen";
+
   const SeeMoreGames({super.key});
 
   @override
@@ -73,8 +75,7 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
                                     )))
                           ]),
                     ));
-              }
-              ),
+              }),
         ),
       ),
     );
