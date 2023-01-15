@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../providers/score_provider.dart';
 import '../providers/user_provider.dart';
 
 class PName extends ConsumerStatefulWidget {
@@ -117,7 +119,14 @@ class _PNameState extends ConsumerState<PName> {
                         if (_formKey.currentState!.validate()) {
                           ref.read(nickname1Proivder.notifier).state = _play1Controller.text;
                           ref.read(nickname2Proivder.notifier).state = _play2Controller.text;
-                          Navigator.pushNamed(context, '/Twoplayers');
+                          if(ref.watch(typeofgameProivder) == "hangman"){
+                            // Navigator.pushNamed(context, '/TypeWordScreen');
+                            Navigator.pushReplacementNamed(context,TypeWordScreen.routeName);
+                          }
+                          else{
+                            Navigator.pushNamed(context, '/Twoplayers');
+                          }
+                          
                         }
                       },
                       child: Text('Play',
