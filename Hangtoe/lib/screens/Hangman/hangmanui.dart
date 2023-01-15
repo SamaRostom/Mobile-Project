@@ -9,6 +9,8 @@ const TextStyle activeWordStyle = TextStyle(
 );
 
 class HangmanPage extends StatefulWidget {
+  static const routeName = "/hangmanpage-screen";
+
   final HangmanGame obj;
 
   HangmanPage(this.obj);
@@ -99,8 +101,7 @@ class _HangmanPageState extends State<HangmanPage> {
         child: const Text('New Game'),
         onPressed: newGame,
       );
-    } 
-    else {
+    } else {
       final Set<String> lettersGuessed = widget.obj.lettersGuessed;
 
       return Wrap(
@@ -153,7 +154,7 @@ class _HangmanPageState extends State<HangmanPage> {
                 child: Text(activeWord, style: activeWordStyle),
               ),
             ),
-            
+
             // Controls
             Expanded(
               child: Center(
