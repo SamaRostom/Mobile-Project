@@ -111,7 +111,7 @@ class Data {
   // static List<String> categories = ["Animals","Sports","Countries"];
   // static const List<String> wordList = ["DOG","COW","CAT","HORSE","DONKEY"];
   // ignore: prefer_typing_uninitialized_variables
-  static var cc;
+  static var category;
   static List<String> animals = ["DOG", "COW", "CAT", "HORSE", "DONKEY"];
   static List<String> sports = [
     "Football",
@@ -199,7 +199,6 @@ class Data {
 //   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 //   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 // ];
-
   static const List<String> wordList = [
     "PLENTY",
     "ACHIEVE",
