@@ -3,6 +3,7 @@ import 'package:flutter_application_1/Utils/constants.dart';
 import 'package:flutter_application_1/Utils/data.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils/data.dart' as val;
+import 'Hangman2/game_screen.dart';
 
 class Gamehome extends StatefulWidget {
   const Gamehome({super.key});
@@ -107,8 +108,9 @@ class _GamehomeState extends State<Gamehome> {
                     ),
                     onPressed: () {
                       if (Data.chosed == 'hangman') {
-                        Navigator.pushNamed(context, '/Dictionary');
-                      } else {
+                        // Navigator.pushNamed(context, '/Categories');
+                        Navigator.pushReplacementNamed(context, GameScreen.routeName);
+                      } else { 
                         if (Data.type == "Oneplayer") {
                           if(Data.loggedin){
                             Navigator.pushNamed(context, '/singleplayerAI');
