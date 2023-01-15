@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 
+import '../../Utils/data.dart';
+
 class LoseScreen extends StatelessWidget {
   static const String routeName = '/lose-screen';
 
@@ -69,7 +71,7 @@ class LoseScreen extends StatelessWidget {
               // splashColor: theme.primaryColor.withOpacity(0.3),
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.circular(5.0)),
-                onPressed: () => Navigator.pushReplacementNamed(context, word=="" ? GameScreen.routeName : TypeWordScreen.routeName,arguments: "")  ,
+                onPressed: () => Navigator.pushReplacementNamed(context, Data.type == "Oneplayer" ? GameScreen.routeName : TypeWordScreen.routeName,arguments: "")  ,
               child: FittedBox(
                 child: Text("Play Again", style: theme.textTheme.headline5),
               ),
