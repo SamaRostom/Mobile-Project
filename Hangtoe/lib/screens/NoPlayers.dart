@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/providers/hangman_provider.dart';
 import 'package:flutter_application_1/providers/score_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -69,6 +70,8 @@ class _PlayersState extends ConsumerState<Players> {
                     onPressed: () {
                       Data.type = "Oneplayer";
                       // final userData = ref.watch(playernameProivder);
+                      // ref.read(wordProivder.notifier).state = Data.cc[2].toUpperCase();
+                      // String word = Data.cc[0].toUpperCase();
                       Navigator.pushNamed(context, '/gamehome');
 
                       Data.noofplayers = 1;
