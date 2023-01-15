@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
+import 'package:flutter_application_1/screens/Tic_tac%20_toe/twoplayers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -44,7 +45,7 @@ class _PNameState extends ConsumerState<PName> {
               icon: const Icon(Icons.arrow_back),
               color: Colors.white,
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               },
             ),
             const SizedBox(
@@ -125,10 +126,9 @@ class _PNameState extends ConsumerState<PName> {
                               _play2Controller.text;
                           if (ref.watch(typeofgameProivder) == "hangman") {
                             // Navigator.pushNamed(context, '/TypeWordScreen');
-                            Navigator.pushReplacementNamed(
-                                context, TypeWordScreen.routeName);
+                            Navigator.pushNamed(context, TypeWordScreen.routeName);
                           } else {
-                            Navigator.pushNamed(context, '/Twoplayers');
+                            Navigator.pushNamed(context, Twoplayers.routeName);
                           }
                         }
                       },

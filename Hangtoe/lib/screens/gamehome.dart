@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/constants.dart';
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/screens/NoPlayers.dart';
+import 'package:flutter_application_1/screens/Tic_tac%20_toe/singleplayerAI.dart';
+import 'package:flutter_application_1/screens/howtoplay.dart';
+import 'package:flutter_application_1/screens/scores.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils/data.dart' as val;
 import 'Hangman2/game_screen.dart';
@@ -41,7 +45,7 @@ class _GamehomeState extends State<Gamehome> {
                   icon: const Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.of(context).pop();
                   },
                 ),
                 const SizedBox(
@@ -110,12 +114,11 @@ class _GamehomeState extends State<Gamehome> {
                     ),
                     onPressed: () {
                       if (Data.chosed == 'hangman') {
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamed(
                             context, GameScreen.routeName);
-                        Navigator.pushNamed(context, '/Categories');
                         if (Data.type == "Oneplayer") {
                           if (Data.loggedin) {
-                            Navigator.pushReplacementNamed(
+                            Navigator.pushNamed(
                                 context, GameScreen.routeName);
                           } else {
                             error("Login", "you need to log in to play");
@@ -124,13 +127,13 @@ class _GamehomeState extends State<Gamehome> {
                               ..showSnackBar(val.snackBar);
                           }
                         } else if (Data.type == "Twoplayer") {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                               context, GameScreen.routeName);
                         }
                       } else {
                         if (Data.type == "Oneplayer") {
                           if (Data.loggedin) {
-                            Navigator.pushNamed(context, '/singleplayerAI');
+                            Navigator.pushNamed(context, SinglepalyerAI.routeName);
                           } else {
                             error("Login", "you need to log in to play");
                             // TextButton(
@@ -150,9 +153,10 @@ class _GamehomeState extends State<Gamehome> {
                               ..showSnackBar(val.snackBar);
                           }
                         } else if (Data.type == "Twoplayer") {
-                          Navigator.pushNamed(context, '/Twoplayers');
+                          Navigator.pushNamed(context, NoPlayers.routeName);
                         } else if (Data.type == "Room") {
                           Navigator.pushNamed(context, '/main_menu_screen');
+                          // Navigator.pushReplacementNamed(context, mainmenuscreen.routeName);
                         }
                       }
                     },
@@ -182,7 +186,7 @@ class _GamehomeState extends State<Gamehome> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/howtoplay');
+                      Navigator.pushNamed(context, HowToPlay.routeName);
                     },
                     child: const Text(
                       'How to play',
@@ -210,7 +214,7 @@ class _GamehomeState extends State<Gamehome> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/scores');
+                      Navigator.pushNamed(context, Scores.routeName);
                     },
                     child: const Text(
                       'High Scores',

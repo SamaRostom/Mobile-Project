@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils/validations.dart';
@@ -154,7 +155,7 @@ class _SignupState extends ConsumerState<Signup> {
                       color: Colors.white),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/Login');
+                  Navigator.pushNamed(context, Login.routeName);
                 },
               )
             ],

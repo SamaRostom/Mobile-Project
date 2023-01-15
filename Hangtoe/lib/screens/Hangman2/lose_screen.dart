@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/Hangman2/categories.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -72,8 +73,9 @@ import 'package:flutter_application_1/providers/user_provider.dart';
               // splashColor: theme.primaryColor.withOpacity(0.3),
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.circular(5.0)),
-                onPressed: () => Navigator.pushNamed(context,Data.type == "Oneplayer" ? '/Categories':TypeWordScreen.routeName,arguments: ""),
-                // Navigator.pushReplacementNamed(context, Data.type == "Oneplayer" ? GameScreen.routeName : TypeWordScreen.routeName,arguments: "")  ,
+                onPressed: () => 
+                // Navigator.pushNamed(context,Data.type == "Oneplayer" ? '/Categories':TypeWordScreen.routeName,arguments: ""),
+                Navigator.pushNamed(context, Data.type == "Oneplayer" ? Categories.routeName : TypeWordScreen.routeName,arguments: ""),
               child: FittedBox(
                 child: Text("Play Again", style: theme.textTheme.headline5),
               ),

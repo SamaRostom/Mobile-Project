@@ -77,7 +77,7 @@ class _TypeWordScreenState extends ConsumerState<TypeWordScreen> {
 
   }
   void _submitWord(){
-    Navigator.pushReplacementNamed(context, GameScreen.routeName);
+    Navigator.pushNamed(context, GameScreen.routeName);
     ref.read(wordProivder.notifier).state = _wordController.text.toLowerCase()??"";
   }
 

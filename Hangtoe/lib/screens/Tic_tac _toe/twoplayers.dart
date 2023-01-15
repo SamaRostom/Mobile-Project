@@ -199,7 +199,7 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
             color: Colors.white,
 
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context).pop();
             },
           ),
           Expanded(

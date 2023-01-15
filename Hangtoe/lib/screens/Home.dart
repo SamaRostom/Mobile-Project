@@ -3,6 +3,9 @@ import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/providers/score_provider.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
+import 'package:flutter_application_1/screens/Login.dart';
+import 'package:flutter_application_1/screens/NoPlayers.dart';
+import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/user_provider.dart';
@@ -52,7 +55,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           fontSize: 30, color: Colors.indigo),
                     ),
                     onTap: () {
-                      Navigator.pushNamed(context, '/Signup');
+                      Navigator.pushNamed(context, Signup.routeName);
                     },
                   ),
                   ListTile(
@@ -66,7 +69,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           fontSize: 30, color: Colors.indigo),
                     ),
                     onTap: () {
-                      Navigator.pushNamed(context, '/Login');
+                      Navigator.pushNamed(context, Login.routeName);
                     },
                   ),
                 ],
@@ -202,7 +205,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                     onPressed: () {
                       ref.read(typeofgameProivder.notifier).state = "hangman";
-                      Navigator.pushNamed(context, '/NoPlayers');
+                      Navigator.pushNamed(context, NoPlayers.routeName);
                       // Navigator.pushReplacementNamed(context, TypeWordScreen.routeName);
                       Data.chosed = "hangman";
                     },
@@ -234,7 +237,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                     onPressed: () {
                       ref.read(typeofgameProivder.notifier).state = "xo";
-                      Navigator.pushNamed(context, '/NoPlayers');
+                      Navigator.pushNamed(context, NoPlayers.routeName);
                       Data.chosed = "xo";
                     },
                     child: const Text(

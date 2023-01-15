@@ -55,7 +55,7 @@ class _WinScreenState extends ConsumerState<WinScreen> {
               height: 30,
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushReplacementNamed(
+              onPressed: () => Navigator.pushNamed(
                   context,
                   Data.type == "Oneplayer"
                       ? GameScreen.routeName

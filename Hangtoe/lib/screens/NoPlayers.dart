@@ -3,23 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/providers/hangman_provider.dart';
 import 'package:flutter_application_1/providers/score_provider.dart';
+import 'package:flutter_application_1/screens/PNames.dart';
+import 'package:flutter_application_1/screens/gamehome.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-class Players extends ConsumerStatefulWidget {
-  static const routeName = "/players-screen";
+class NoPlayers extends ConsumerStatefulWidget {
+  static const routeName = "/noplayers-screen";
 
-  const Players({super.key});
+  const NoPlayers({super.key});
 
   @override
 
   // ignore: library_private_types_in_public_api
 
-  ConsumerState<Players> createState() => _PlayersState();
+  ConsumerState<NoPlayers> createState() => _PlayersState();
 }
 
-class _PlayersState extends ConsumerState<Players> {
+class _PlayersState extends ConsumerState<NoPlayers> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,7 +36,7 @@ class _PlayersState extends ConsumerState<Players> {
               icon: const Icon(Icons.arrow_back),
               color: Colors.white,
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               },
             ),
             Image.asset(
@@ -74,7 +76,7 @@ class _PlayersState extends ConsumerState<Players> {
                       // final userData = ref.watch(playernameProivder);
                       // ref.read(wordProivder.notifier).state = Data.cc[2].toUpperCase();
                       // String word = Data.cc[0].toUpperCase();
-                      Navigator.pushNamed(context, '/gamehome');
+                      Navigator.pushNamed(context, Gamehome.routeName);
 
                       Data.noofplayers = 1;
                     },
@@ -109,7 +111,7 @@ class _PlayersState extends ConsumerState<Players> {
                     ),
                     onPressed: () {
                       Data.type = "Twoplayer";
-                      Navigator.pushNamed(context, '/PNames');
+                      Navigator.pushNamed(context, PName.routeName);
 
                       Data.noofplayers = 2;
                     },
@@ -146,6 +148,7 @@ class _PlayersState extends ConsumerState<Players> {
                           onPressed: () {
                             Data.type = "Room";
                             Navigator.pushNamed(context, '/main_menu_screen');
+                            // Navigator.pushReplacementNamed(context, mainmenuscreen.routeName);
 
                             Data.player = 2;
                           },

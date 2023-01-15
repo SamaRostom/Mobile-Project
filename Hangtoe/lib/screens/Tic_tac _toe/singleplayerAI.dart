@@ -191,7 +191,7 @@ class _SinglepalyerAIState extends ConsumerState<SinglepalyerAI> {
           icon: const Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).pop();
           },
         ),
         Center(

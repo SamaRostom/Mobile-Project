@@ -35,7 +35,7 @@ class _CategoriesState extends ConsumerState<Categories> {
                   icon: const Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.of(context).pop();
                   },
                 ),
                 Text(
@@ -61,8 +61,7 @@ class _CategoriesState extends ConsumerState<Categories> {
                     ),
                     onPressed: () {
                       Data.category = "animals";
-                      Navigator.pushReplacementNamed(
-                          context, GameScreen.routeName);
+                      Navigator.pushNamed(context, GameScreen.routeName);
                       // Data.cc = Data.animals;
                     },
                     child: const Text(
@@ -92,8 +91,7 @@ class _CategoriesState extends ConsumerState<Categories> {
                     ),
                     onPressed: () {
                       Data.category = "sports";
-                      Navigator.pushReplacementNamed(
-                          context, GameScreen.routeName);
+                      Navigator.pushNamed(context, GameScreen.routeName);
                       // Data.cc = Data.sports;
                     },
                     child: const Text(
@@ -123,8 +121,7 @@ class _CategoriesState extends ConsumerState<Categories> {
                     ),
                     onPressed: () {
                       Data.category = "countries";
-                      Navigator.pushReplacementNamed(
-                          context, GameScreen.routeName);
+                      Navigator.pushNamed(context, GameScreen.routeName);
                     },
                     child: const Text(
                       'Countries',

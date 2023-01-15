@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/screens/seemoregames.dart';
 import 'package:flutter_application_1/widgets/loading_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,7 +33,7 @@ class _HowToPlayState extends State<HowToPlay> {
                   icon: const Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.of(context).pop();
                   },
                 ),
                 Text(
@@ -108,7 +109,7 @@ class _HowToPlayState extends State<HowToPlay> {
               children: [
                 OutlinedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/SeeMoreGames');
+                    Navigator.pushNamed(context, SeeMoreGames.routeName);
                   },
                   child: const Text(
                     'See more games',

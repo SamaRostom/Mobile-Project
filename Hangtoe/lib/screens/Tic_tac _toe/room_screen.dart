@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/Tic_tac%20_toe/create_room_screen.dart';
+import 'package:flutter_application_1/screens/Tic_tac%20_toe/join_room_screen.dart';
 import 'package:flutter_application_1/widgets/responsive.dart';
 import 'package:flutter_application_1/widgets/custom_button.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +30,7 @@ class RoomScreen extends StatelessWidget {
               icon: const Icon(Icons.arrow_back),
               color: Colors.white,
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               },
             ),
             const SizedBox(height: 100),
@@ -39,7 +41,7 @@ class RoomScreen extends StatelessWidget {
             CustomButton(
               // onTap: () => createRoom(context),
               onTap: () {
-                Navigator.pushNamed(context, '/create_room_screen');
+                Navigator.pushNamed(context, CreateRoomScreen.routeName);
               },
               text: 'Create Room',
             ),
@@ -47,7 +49,7 @@ class RoomScreen extends StatelessWidget {
             CustomButton(
               // onTap: () => joinRoom(context),
               onTap: () {
-                Navigator.pushNamed(context, '/join_room_screen');
+                Navigator.pushNamed(context, JoinRoomScreen.routeName);
               },
               text: 'Join Room',
             ),

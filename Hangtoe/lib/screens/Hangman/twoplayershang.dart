@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/screens/PNames.dart';
+import 'package:flutter_application_1/screens/gamehome.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +36,7 @@ class _TwoplayersHangmanState extends ConsumerState<TwoplayersHangman> {
               icon: const Icon(Icons.arrow_back),
               color: Colors.white,
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               },
             ),
             Image.asset(
@@ -72,7 +74,7 @@ class _TwoplayersHangmanState extends ConsumerState<TwoplayersHangman> {
                     onPressed: () {
                       Data.type = "Oneplayer";
                       // final userData = ref.watch(playernameProivder);
-                      Navigator.pushNamed(context, '/gamehome');
+                      Navigator.pushNamed(context, Gamehome.routeName);
 
                       Data.noofplayers = 1;
                     },
@@ -107,7 +109,7 @@ class _TwoplayersHangmanState extends ConsumerState<TwoplayersHangman> {
                     ),
                     onPressed: () {
                       Data.type = "Twoplayer";
-                      Navigator.pushNamed(context, '/PNames');
+                      Navigator.pushNamed(context, PName.routeName);
 
                       Data.noofplayers = 2;
                     },
