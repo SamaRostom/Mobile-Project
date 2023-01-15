@@ -1,12 +1,9 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/hangman_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import '../http/random_word.dart';
 import '../../Utils/data.dart';
-import '../../models/Hangman2/random_word.dart';
 import 'win_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/Hangman2/alphabet_letter.dart';
