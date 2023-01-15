@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/providers/score_provider.dart';
+import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
+import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/user_provider.dart';
@@ -120,7 +122,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
                   //     child: FlutterLogo(),
                   //   ),),
                   Image.asset(
-                      'assets/4.png',
+                      'assets/homepic.png',
                       width: 200,
                       height: 130,
                       ),
@@ -182,6 +184,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>{
                       onPressed: () {
                         ref.read(typeofgameProivder.notifier).state = "hangman";
                         Navigator.pushNamed(context, '/NoPlayers');
+                        // Navigator.pushReplacementNamed(context, TypeWordScreen.routeName);
                         Data.chosed="hangman";
                       }, 
                       child: const Text('Hangman',style: TextStyle(fontSize: 20,),),
