@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 
+import '../../Utils/data.dart';
+
 class WinScreen extends ConsumerStatefulWidget {
   static const routeName = "/win-screen";
 
@@ -29,9 +31,8 @@ class _WinScreenState extends ConsumerState<WinScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              ref.watch(nickname1Proivder) + "\nWIN\n",
-              style: theme.textTheme.headline1!
-                  .copyWith(color: theme.primaryColor),
+              "${ref.watch(nickname1Proivder)}\nWIN\n",
+              style: theme.textTheme.headline1!.copyWith(color: Colors.white),
             ),
             Text(
               "Your score: $score",
@@ -51,8 +52,11 @@ class _WinScreenState extends ConsumerState<WinScreen> {
               height: 30,
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushReplacementNamed(context,
-                  word == "" ? GameScreen.routeName : TypeWordScreen.routeName,
+              onPressed: () => Navigator.pushReplacementNamed(
+                  context,
+                  Data.type == "Oneplayer"
+                      ? GameScreen.routeName
+                      : TypeWordScreen.routeName,
                   arguments: ""),
               child: FittedBox(
                 child: Text("Play Again",
