@@ -8,6 +8,8 @@ import '../providers/score_provider.dart';
 import '../providers/user_provider.dart';
 
 class PName extends ConsumerStatefulWidget {
+  static const routeName = "/pname-screen";
+
   const PName({super.key});
 
   @override
@@ -117,16 +119,17 @@ class _PNameState extends ConsumerState<PName> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ref.read(nickname1Proivder.notifier).state = _play1Controller.text;
-                          ref.read(nickname2Proivder.notifier).state = _play2Controller.text;
-                          if(ref.watch(typeofgameProivder) == "hangman"){
+                          ref.read(nickname1Proivder.notifier).state =
+                              _play1Controller.text;
+                          ref.read(nickname2Proivder.notifier).state =
+                              _play2Controller.text;
+                          if (ref.watch(typeofgameProivder) == "hangman") {
                             // Navigator.pushNamed(context, '/TypeWordScreen');
-                            Navigator.pushReplacementNamed(context,TypeWordScreen.routeName);
-                          }
-                          else{
+                            Navigator.pushReplacementNamed(
+                                context, TypeWordScreen.routeName);
+                          } else {
                             Navigator.pushNamed(context, '/Twoplayers');
                           }
-                          
                         }
                       },
                       child: Text('Play',
