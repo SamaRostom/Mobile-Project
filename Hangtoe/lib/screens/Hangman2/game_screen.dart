@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/hangman_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../Utils/data.dart';
+import '../../providers/score_provider.dart';
+import '../../services/score_service.dart';
 import 'win_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/Hangman2/alphabet_letter.dart';
@@ -171,7 +173,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     try{
       if(Data.type == "Oneplayer"){
         var random = Random();
-        ref.read(wordProivder.notifier).state = Data.wordList[random.nextInt(Data.wordList.length)];
+        ref.read(wordProivder.notifier).state = Data.animals[random.nextInt(Data.animals.length)];
       }
       // String routeWord = (ModalRoute.of(context)!.settings.arguments as String);
       String routeWord = ref.watch(wordProivder);
@@ -261,9 +263,15 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     "guessedWord" : game.word
   });
 
+  int? x;
   //win game
   void win() {
     checkHighScore();
+    x = game.score! + ref.watch(scoreProivder);
+    if(Data.type == "Oneplayer" && (x! > ref.watch(scoreProivder))) {
+      ref.read(scoreProivder.notifier).state = x!;
+      ScoreService.saveScore(ref);
+    }
     Navigator.pushReplacementNamed(context, WinScreen.routeName,arguments: {
       "score": game.score,
       // "word" : (ModalRoute.of(context)!.settings.arguments as String),
