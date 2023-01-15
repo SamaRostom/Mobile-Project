@@ -9,6 +9,8 @@ import '../../providers/score_provider.dart';
 // import 'package:flutter_application_1/drawing.dart';
 
 class Twoplayers extends ConsumerStatefulWidget {
+  static const routeName = "/twoplayers-screen";
+
   const Twoplayers({super.key});
 
   @override
@@ -215,10 +217,13 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(ref.watch(nickname1Proivder),style: const TextStyle(
+                    Text(
+                      ref.watch(nickname1Proivder),
+                      style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),),
+                          color: Colors.white),
+                    ),
                     const Text(
                       'Player X',
                       style: TextStyle(
@@ -245,10 +250,13 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(ref.watch(nickname2Proivder),style: const TextStyle(
+                    Text(
+                      ref.watch(nickname2Proivder),
+                      style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),),
+                          color: Colors.white),
+                    ),
                     const Text('     Player O',
                         style: TextStyle(
                             fontSize: 20,
