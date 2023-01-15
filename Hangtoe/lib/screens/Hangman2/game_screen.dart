@@ -173,7 +173,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     try{
       if(Data.type == "Oneplayer"){
         var random = Random();
-        ref.read(wordProivder.notifier).state = Data.animals[random.nextInt(Data.animals.length)];
+        ref.read(wordProivder.notifier).state = Data.wordList[random.nextInt(Data.wordList.length)];
+          if(Data.category == "animals") {
+            ref.read(wordProivder.notifier).state = Data.animals[random.nextInt(Data.animals.length)];
+          }else if(Data.category == "sports"){
+            ref.read(wordProivder.notifier).state = Data.sports[random.nextInt(Data.sports.length)];
+          }else if(Data.category == "countries"){
+            ref.read(wordProivder.notifier).state = Data.countries[random.nextInt(Data.countries.length)];
+          }
       }
       // String routeWord = (ModalRoute.of(context)!.settings.arguments as String);
       String routeWord = ref.watch(wordProivder);
