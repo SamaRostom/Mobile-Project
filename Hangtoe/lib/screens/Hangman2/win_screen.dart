@@ -3,7 +3,6 @@ import 'package:flutter_application_1/providers/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
-
 import '../../Utils/data.dart';
 
 class WinScreen extends ConsumerStatefulWidget {
@@ -31,13 +30,15 @@ class _WinScreenState extends ConsumerState<WinScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "${ref.watch(nickname1Proivder)}\nWIN\n",
-              style: theme.textTheme.headline1!.copyWith(color: Colors.white),
+              ref.watch(nickname1Proivder) + "\nWIN",
+              textAlign: TextAlign.center,
+              style: theme.textTheme.headline2!
+                  .copyWith(color: Colors.white, fontSize: 50.0),
             ),
             Text(
               "Your score: $score",
-              style: theme.textTheme.headline1!
-                  .copyWith(color: theme.primaryColor, fontSize: 28),
+              style: theme.textTheme.headline2!
+                  .copyWith(color: Colors.white, fontSize: 28),
             ),
             const SizedBox(
               height: 10,
@@ -45,8 +46,10 @@ class _WinScreenState extends ConsumerState<WinScreen> {
             Text(
               "Word : $guessedWord",
               textAlign: TextAlign.center,
-              style: theme.textTheme.headline1!
-                  .copyWith(color: theme.primaryColor, fontSize: 24.0),
+              style: theme.textTheme.headline1!.copyWith(
+                  color: Colors.white,
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 30,
