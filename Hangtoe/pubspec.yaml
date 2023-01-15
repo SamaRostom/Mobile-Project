@@ -77,10 +77,13 @@ flutter:
     - assets/tic.png
     - assets/icons8.png
     - assets/icons.png
+    - assets/0.png
     - assets/1.png
     - assets/2.png
     - assets/3.png
     - assets/4.png
+    - assets/5.png
+    - assets/homepic.png
     - assets/xo.png
     - assets/xo1.png
     - assets/Login.png
