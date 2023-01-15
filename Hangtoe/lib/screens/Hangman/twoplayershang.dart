@@ -8,6 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 // import '../providers/user_provider.dart';
 
 class TwoplayersHangman extends ConsumerStatefulWidget {
+  static const routeName = "/twoplayershangman-screen";
+
   const TwoplayersHangman({super.key});
 
   @override
@@ -150,9 +152,9 @@ class _TwoplayersHangmanState extends ConsumerState<TwoplayersHangman> {
             //             fontSize: 20,
             //           ),
             //         ),
-                  // ),
-                // ),
-              // ],
+            // ),
+            // ),
+            // ],
             // ),
           ],
         ),
