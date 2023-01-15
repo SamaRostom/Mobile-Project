@@ -109,8 +109,22 @@ class _GamehomeState extends State<Gamehome> {
                     onPressed: () {
                       if (Data.chosed == 'hangman') {
                         // Navigator.pushNamed(context, '/Categories');
-                        Navigator.pushReplacementNamed(context, GameScreen.routeName);
-                      } else { 
+                        if (Data.type == "Oneplayer") {
+                          if(Data.loggedin){
+                            Navigator.pushReplacementNamed(context, GameScreen.routeName);
+                          }
+                          else{
+                            error("Login", "you need to log in to play");
+                            ScaffoldMessenger.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(val.snackBar);
+                          }
+                        } 
+                        else if (Data.type == "Twoplayer") {
+                          Navigator.pushReplacementNamed(context, GameScreen.routeName);
+                        } 
+                      } 
+                      else { 
                         if (Data.type == "Oneplayer") {
                           if(Data.loggedin){
                             Navigator.pushNamed(context, '/singleplayerAI');
