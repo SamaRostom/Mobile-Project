@@ -11,6 +11,8 @@ import '../../providers/user_provider.dart';
 import '../../services/user_service.dart';
 
 class SinglepalyerAI extends ConsumerStatefulWidget {
+  static const routeName = "/singlepalyerai-screen";
+
   const SinglepalyerAI({super.key});
 
   @override
