@@ -8,6 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Categories extends ConsumerStatefulWidget {
+  static const routeName = "/categories-screen";
+
   const Categories({super.key});
 
   // ignore: library_private_types_in_public_api
@@ -17,7 +19,6 @@ class Categories extends ConsumerStatefulWidget {
 }
 
 class _CategoriesState extends ConsumerState<Categories> {
-   
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,24 +29,21 @@ class _CategoriesState extends ConsumerState<Categories> {
               height: 200,
             ),
             Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
                   icon: const Icon(Icons.arrow_back),
                   color: Colors.white,
-                  onPressed: () {Navigator.pop(context); },
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
-                   Text(
-                      'Choose A Category',
-                      style: 
-                      GoogleFonts.kanit
-                      (
-                        fontSize: 40,
-                        color: Colors.white
-                      ),
-                    ),
-                ],
-              ),
+                Text(
+                  'Choose A Category',
+                  style: GoogleFonts.kanit(fontSize: 40, color: Colors.white),
+                ),
+              ],
+            ),
             const SizedBox(
               height: 50,
             ),
@@ -63,8 +61,9 @@ class _CategoriesState extends ConsumerState<Categories> {
                     ),
                     onPressed: () {
                       Data.category = "animals";
-                      Navigator.pushReplacementNamed(context, GameScreen.routeName);
-                          // Data.cc = Data.animals;
+                      Navigator.pushReplacementNamed(
+                          context, GameScreen.routeName);
+                      // Data.cc = Data.animals;
                     },
                     child: const Text(
                       'Animals',
@@ -93,8 +92,9 @@ class _CategoriesState extends ConsumerState<Categories> {
                     ),
                     onPressed: () {
                       Data.category = "sports";
-                      Navigator.pushReplacementNamed(context, GameScreen.routeName); 
-                          // Data.cc = Data.sports;
+                      Navigator.pushReplacementNamed(
+                          context, GameScreen.routeName);
+                      // Data.cc = Data.sports;
                     },
                     child: const Text(
                       'Sports',
@@ -106,8 +106,7 @@ class _CategoriesState extends ConsumerState<Categories> {
                 ),
               ],
             ),
-
-                    const SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -124,7 +123,8 @@ class _CategoriesState extends ConsumerState<Categories> {
                     ),
                     onPressed: () {
                       Data.category = "countries";
-                      Navigator.pushReplacementNamed(context, GameScreen.routeName);
+                      Navigator.pushReplacementNamed(
+                          context, GameScreen.routeName);
                     },
                     child: const Text(
                       'Countries',
