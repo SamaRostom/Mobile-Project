@@ -5,6 +5,7 @@ import '../Utils/validations.dart';
 import '../services/user_service.dart';
 
 class Signup extends ConsumerStatefulWidget {
+  static const routeName = "/signup-screen";
   const Signup({super.key});
 
   @override
