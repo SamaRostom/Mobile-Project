@@ -6,6 +6,8 @@ import '../Utils/data.dart' as val;
 import 'Hangman2/game_screen.dart';
 
 class Gamehome extends StatefulWidget {
+  static const routeName = "/gamehome-screen";
+
   const Gamehome({super.key});
 
   @override
@@ -108,29 +110,28 @@ class _GamehomeState extends State<Gamehome> {
                     ),
                     onPressed: () {
                       if (Data.chosed == 'hangman') {
-                        Navigator.pushReplacementNamed(context, GameScreen.routeName);
+                        Navigator.pushReplacementNamed(
+                            context, GameScreen.routeName);
                         Navigator.pushNamed(context, '/Categories');
                         if (Data.type == "Oneplayer") {
-                          if(Data.loggedin){
-                            Navigator.pushReplacementNamed(context, GameScreen.routeName);
-                          }
-                          else{
+                          if (Data.loggedin) {
+                            Navigator.pushReplacementNamed(
+                                context, GameScreen.routeName);
+                          } else {
                             error("Login", "you need to log in to play");
                             ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()
                               ..showSnackBar(val.snackBar);
                           }
-                        } 
-                        else if (Data.type == "Twoplayer") {
-                          Navigator.pushReplacementNamed(context, GameScreen.routeName);
-                        } 
-                      } 
-                      else { 
+                        } else if (Data.type == "Twoplayer") {
+                          Navigator.pushReplacementNamed(
+                              context, GameScreen.routeName);
+                        }
+                      } else {
                         if (Data.type == "Oneplayer") {
-                          if(Data.loggedin){
+                          if (Data.loggedin) {
                             Navigator.pushNamed(context, '/singleplayerAI');
-                          }
-                          else{
+                          } else {
                             error("Login", "you need to log in to play");
                             // TextButton(
                             //   child: const Text(
