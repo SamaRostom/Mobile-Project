@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/user_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 
-class WinScreen extends StatelessWidget {
+class WinScreen extends ConsumerStatefulWidget {
   static const routeName = "/win-screen";
 
   const WinScreen({super.key});
+  @override
+  ConsumerState<WinScreen> createState() => _WinScreenState();
+}
 
+class _WinScreenState extends ConsumerState<WinScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -18,15 +24,14 @@ class WinScreen extends StatelessWidget {
     final String guessedWord = data['guessedWord'];
 
     return Scaffold(
-      // backgroundColor: theme.accentColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "You win",
-              style:
-                  theme.textTheme.headline1!.copyWith(color: theme.primaryColor),
+              ref.watch(nickname1Proivder) + "\nWIN\n",
+              style: theme.textTheme.headline1!
+                  .copyWith(color: theme.primaryColor),
             ),
             Text(
               "Your score: $score",
@@ -46,9 +51,6 @@ class WinScreen extends StatelessWidget {
               height: 30,
             ),
             ElevatedButton(
-              // splashColor: theme.primaryColor.withOpacity(0.3),
-              // shape: RoundedRectangleBorder(
-              //     borderRadius: BorderRadius.circular(5.0)),
               onPressed: () => Navigator.pushReplacementNamed(context,
                   word == "" ? GameScreen.routeName : TypeWordScreen.routeName,
                   arguments: ""),
@@ -57,24 +59,18 @@ class WinScreen extends StatelessWidget {
                     style: theme.textTheme.headline6!
                         .copyWith(color: Colors.black)),
               ),
-              // color: theme.primaryColor,
-              // padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
             ),
             const SizedBox(
               height: 20,
             ),
             ElevatedButton(
-              // splashColor: theme.primaryColor.withOpacity(0.3),
-              // shape: RoundedRectangleBorder(
-              //     borderRadius: BorderRadius.circular(5.0)),
-              onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil("/", (route) => false),
+              onPressed: () => Navigator.of(context)
+                  .pushNamedAndRemoveUntil("/", (route) => false),
               child: FittedBox(
                 child: Text("Main Menu",
                     style: theme.textTheme.headline6!
                         .copyWith(color: Colors.black)),
               ),
-              // color: theme.primaryColor,
-              // padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
             ),
             const SizedBox(
               height: 20,
