@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../services/user_service.dart';
 
 class Login extends ConsumerStatefulWidget {
+  static const routeName = "/login-screen";
+
   const Login({super.key});
   @override
   ConsumerState<Login> createState() => _LoginState();
