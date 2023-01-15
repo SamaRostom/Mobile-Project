@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/hangman_provider.dart';
 import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TypeWordScreen extends StatefulWidget {
+class TypeWordScreen extends ConsumerStatefulWidget {
   static const routeName = "/type-word-screen";
 
   const TypeWordScreen({super.key});
   @override
   // ignore: library_private_types_in_public_api
-  _TypeWordScreenState createState() => _TypeWordScreenState();
+  ConsumerState<TypeWordScreen> createState() => _TypeWordScreenState();
 }
 
-class _TypeWordScreenState extends State<TypeWordScreen> {
+class _TypeWordScreenState extends ConsumerState<TypeWordScreen> {
   final TextEditingController _wordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -74,6 +76,9 @@ class _TypeWordScreenState extends State<TypeWordScreen> {
     );
 
   }
-  void _submitWord() => Navigator.pushReplacementNamed(context, GameScreen.routeName,arguments: _wordController.text.toLowerCase()??"");
+  void _submitWord(){
+    Navigator.pushReplacementNamed(context, GameScreen.routeName);
+    ref.read(wordProivder.notifier).state = _wordController.text.toLowerCase()??"";
+  }
 
 }
