@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/providers/score_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-
-import '../providers/user_provider.dart';
 
 class Players extends ConsumerStatefulWidget {
   const Players({super.key});
@@ -122,6 +121,7 @@ class _PlayersState extends ConsumerState<Players> {
             const SizedBox(
               height: 25,
             ),
+            ref.watch(typeofgameProivder) == "xo"?
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -139,10 +139,10 @@ class _PlayersState extends ConsumerState<Players> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
-                      Data.type = "Room";
-                      Navigator.pushNamed(context, '/main_menu_screen');
+                        Data.type = "Room";
+                        Navigator.pushNamed(context, '/main_menu_screen');
 
-                      Data.player = 2;
+                        Data.player = 2;
                     },
                     child: const Text(
                       'Rooms',
@@ -153,7 +153,7 @@ class _PlayersState extends ConsumerState<Players> {
                   ),
                 ),
               ],
-            ),
+            ):Container()
           ],
         ),
       ),
