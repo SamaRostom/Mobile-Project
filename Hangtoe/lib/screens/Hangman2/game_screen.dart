@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/hangman_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import '../http/random_word.dart';
+import '../../Utils/data.dart';
+import '../../models/Hangman2/random_word.dart';
 import 'win_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/Hangman2/alphabet_letter.dart';
@@ -34,7 +37,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   List<GuessLetterModel> guessedLetters = [];
   //alphabet
   List<AlphabetLetter> clickAlphabetLetters =[];
-
+  // List<String> wordList = ["dart", "flutter", "mobile", "development"];
   //------------------| Start timer |---------------------
   void startTime(){
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -47,6 +50,16 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       });
     });
   }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   var random = new Random();
+  //   ref.read(wordProivder.notifier).state = wordList[random.nextInt(wordList.length)];
+  // }
+
+
+
   //=======================================================
 
   @override
@@ -159,6 +172,10 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   //----------------| Get random word or word from user typing|---------------------
   Future getWord(BuildContext context) async {
     try{
+      if(Data.type == "Oneplayer"){
+        var random = Random();
+        ref.read(wordProivder.notifier).state = Data.wordList[random.nextInt(Data.wordList.length)];
+      }
       // String routeWord = (ModalRoute.of(context)!.settings.arguments as String);
       String routeWord = ref.watch(wordProivder);
       if(routeWord==""){
