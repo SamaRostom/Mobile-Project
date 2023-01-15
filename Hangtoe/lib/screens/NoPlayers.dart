@@ -8,6 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Players extends ConsumerStatefulWidget {
+  static const routeName = "/players-screen";
+
   const Players({super.key});
 
   @override
@@ -124,39 +126,40 @@ class _PlayersState extends ConsumerState<Players> {
             const SizedBox(
               height: 25,
             ),
-            ref.watch(typeofgameProivder) == "xo"?
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 60, //height of button
+            ref.watch(typeofgameProivder) == "xo"
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 60, //height of button
 
-                  width: 200, //width of button
+                        width: 200, //width of button
 
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
 
-                          //to set border radius to button
+                                //to set border radius to button
 
-                          borderRadius: BorderRadius.circular(20)),
-                    ),
-                    onPressed: () {
-                        Data.type = "Room";
-                        Navigator.pushNamed(context, '/main_menu_screen');
+                                borderRadius: BorderRadius.circular(20)),
+                          ),
+                          onPressed: () {
+                            Data.type = "Room";
+                            Navigator.pushNamed(context, '/main_menu_screen');
 
-                        Data.player = 2;
-                    },
-                    child: const Text(
-                      'Rooms',
-                      style: TextStyle(
-                        fontSize: 20,
+                            Data.player = 2;
+                          },
+                          child: const Text(
+                            'Rooms',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-              ],
-            ):Container()
+                    ],
+                  )
+                : Container()
           ],
         ),
       ),
