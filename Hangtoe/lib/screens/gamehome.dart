@@ -108,7 +108,8 @@ class _GamehomeState extends State<Gamehome> {
                     ),
                     onPressed: () {
                       if (Data.chosed == 'hangman') {
-                        // Navigator.pushNamed(context, '/Categories');
+                        Navigator.pushReplacementNamed(context, GameScreen.routeName);
+                        Navigator.pushNamed(context, '/Categories');
                         if (Data.type == "Oneplayer") {
                           if(Data.loggedin){
                             Navigator.pushReplacementNamed(context, GameScreen.routeName);
