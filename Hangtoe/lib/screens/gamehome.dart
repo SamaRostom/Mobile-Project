@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/constants.dart';
 import 'package:flutter_application_1/Utils/data.dart';
+import 'package:flutter_application_1/screens/Hangman2/categories.dart';
+import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/Tic_tac%20_toe/singleplayerAI.dart';
 import 'package:flutter_application_1/screens/howtoplay.dart';
@@ -125,12 +127,12 @@ class _GamehomeState extends State<Gamehome> {
                     ),
                     onPressed: () {
                       if (Data.chosed == 'hangman') {
-                        Navigator.pushNamed(
-                            context, GameScreen.routeName);
+                        // Navigator.pushNamed(
+                        //     context, GameScreen.routeName);
                         if (Data.type == "Oneplayer") {
                           if (Data.loggedin) {
                             Navigator.pushNamed(
-                                context, GameScreen.routeName);
+                                context, Categories.routeName);
                           } else {
                             error("Login", "you need to log in to play");
                             ScaffoldMessenger.of(context)
@@ -139,7 +141,7 @@ class _GamehomeState extends State<Gamehome> {
                           }
                         } else if (Data.type == "Twoplayer") {
                           Navigator.pushNamed(
-                              context, GameScreen.routeName);
+                              context, TypeWordScreen.routeName);
                         }
                       } else {
                         if (Data.type == "Oneplayer") {
