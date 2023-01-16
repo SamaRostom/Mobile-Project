@@ -7,6 +7,7 @@ import 'package:flutter_application_1/screens/howtoplay.dart';
 import 'package:flutter_application_1/screens/scores.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils/data.dart' as val;
+import '../Utils/size_config.dart';
 import 'Hangman2/game_screen.dart';
 
 class Gamehome extends StatefulWidget {
@@ -27,58 +28,68 @@ class _GamehomeState extends State<Gamehome> {
   //       return"Tic Tac Toe";
   //    }
   // }
-
+  
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
         body: Column(
           // crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisSize: MainAxisSize.max,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                IconButton(
-                  // alignment: Alignment.topLeft,
-                  icon: const Icon(Icons.arrow_back),
-                  color: Colors.white,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                const SizedBox(
-                  height: 160,
-                ),
-                Data.chosed == 'hangman'
-                    ? Text(
-                        'HANGMAN',
-                        style: GoogleFonts.patrickHand(
-                            fontSize: 70, color: Colors.white),
-                        // TextStyle(
-                        //   fontSize: 50,
-                        //   color: Colors.white,
-                        //   // fontWeight: FontWeight.w300,
-                        //   letterSpacing: 3.0,
-                        //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
-                        //   fontFamily: 'FiraMono',
-                        // ),
-                      )
-                    : Text(
-                        'TICTACTOE',
-                        style: GoogleFonts.patrickHand(
-                            fontSize: 60, color: Colors.white),
-                        // TextStyle(
-                        //   fontSize: 50,
-                        //   color: Colors.white,
-                        //   // fontWeight: FontWeight.w300,
-                        //   letterSpacing: 3.0,
-                        //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
-                        //   fontFamily: 'FiraMono',
-                        // ),
-                      ),
-              ],
+            SizedBox(
+              height: getProportionateScreenHeight(30),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right:40.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  IconButton(
+                    // alignment: Alignment.topLeft,
+                    icon: Icon(Icons.arrow_back, size: getProportionateScreenWidth(20),),
+                    color: Colors.white,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  SizedBox(
+                    width: getProportionateScreenWidth(15),
+                  ),
+                  Data.chosed == 'hangman'
+                      ? Text(
+                          'HANGMAN',
+                          style: GoogleFonts.patrickHand(
+                              fontSize: getProportionateScreenWidth(70), color: Colors.white),
+                          // TextStyle(
+                          //   fontSize: 50,
+                          //   color: Colors.white,
+                          //   // fontWeight: FontWeight.w300,
+                          //   letterSpacing: 3.0,
+                          //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
+                          //   fontFamily: 'FiraMono',
+                          // ),
+                        )
+                      : Text(
+                          'TICTACTOE',
+                          style: GoogleFonts.patrickHand(
+                              fontSize: getProportionateScreenWidth(60), color: Colors.white),
+                          // TextStyle(
+                          //   fontSize: 50,
+                          //   color: Colors.white,
+                          //   // fontWeight: FontWeight.w300,
+                          //   letterSpacing: 3.0,
+                          //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
+                          //   fontFamily: 'FiraMono',
+                          // ),
+                        ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(20),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -87,25 +98,25 @@ class _GamehomeState extends State<Gamehome> {
                 Data.chosed == 'hangman'
                     ? Image.asset(
                         'assets/gallow.png',
-                        width: 200,
-                        height: 200,
+                        width: getProportionateScreenWidth(200),
+                        height: getProportionateScreenHeight(200),
                       )
                     : Image.asset(
                         'assets/xo1.png',
-                        width: 150,
-                        height: 150,
+                        width: getProportionateScreenWidth(200),
+                        height: getProportionateScreenHeight(200),
                       ),
               ],
             ),
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: getProportionateScreenHeight(80),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 70, //height of button
-                  width: 180, //width of button
+                  height: getProportionateScreenHeight(80), //height of button
+                  width: getProportionateScreenWidth(170), //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -160,25 +171,25 @@ class _GamehomeState extends State<Gamehome> {
                         }
                       }
                     },
-                    child: const Text(
+                    child: Text(
                       'Play',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize:  getProportionateScreenWidth(20),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: getProportionateScreenHeight(20),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 70, //height of button
-                  width: 180, //width of button
+                  height: getProportionateScreenHeight(80), //height of button
+                  width: getProportionateScreenWidth(170), //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -188,38 +199,38 @@ class _GamehomeState extends State<Gamehome> {
                     onPressed: () {
                       Navigator.pushNamed(context, HowToPlay.routeName);
                     },
-                    child: const Text(
+                    child: Text(
                       'How to play',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize:  getProportionateScreenWidth(20),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: getProportionateScreenHeight(20),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 70, //height of button
-                  width: 180, //width of button
+                  height: getProportionateScreenHeight(80), //height of button
+                  width: getProportionateScreenWidth(170), //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           //to set border radius to button
-                          borderRadius: BorderRadius.circular(20)),
+                          borderRadius: BorderRadius.circular(15)),
                     ),
                     onPressed: () {
                       Navigator.pushNamed(context, Scores.routeName);
                     },
-                    child: const Text(
+                    child: Text(
                       'High Scores',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: getProportionateScreenWidth(20),
                       ),
                     ),
                   ),
