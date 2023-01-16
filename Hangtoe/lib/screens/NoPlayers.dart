@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Utils/size_config.dart';
+
 class NoPlayers extends ConsumerStatefulWidget {
   static const routeName = "/noplayers-screen";
 
@@ -41,27 +43,31 @@ class _PlayersState extends ConsumerState<NoPlayers> {
             ),
             Image.asset(
               'assets/Friends.png',
-              width: 200,
-              height: 200,
+              width: getProportionateScreenWidth(200),
+              height: getProportionateScreenWidth(200),
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: getProportionateScreenHeight(30),
             ),
-            Text(
-              "Choose The Number Of Players To Start The Game",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.patrickHand(fontSize: 35, color: Colors.white),
+            SizedBox(
+              width: getProportionateScreenWidth(15),
+              height: getProportionateScreenHeight(70),
+              child: Text(
+                '''Choose The Number Of Players To 
+   Start The Game''',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.patrickHand(fontSize: getProportionateScreenWidth(22), color: Colors.white),
+              ),
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: getProportionateScreenHeight(50),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 60, //height of button
-
-                  width: 200, //width of button
+                  height: getProportionateScreenHeight(80), //height of button
+                  width: getProportionateScreenWidth(170), //width of button
 
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -90,16 +96,15 @@ class _PlayersState extends ConsumerState<NoPlayers> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 25,
+            SizedBox(
+              height: getProportionateScreenHeight(20),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 60, //height of button
-
-                  width: 200, //width of button
+                  height: getProportionateScreenHeight(80), //height of button
+                  width: getProportionateScreenWidth(170), //width of button
 
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -115,7 +120,7 @@ class _PlayersState extends ConsumerState<NoPlayers> {
 
                       Data.noofplayers = 2;
                     },
-                    child: const Text(
+                    child:  const Text(
                       '2 Players',
                       style: TextStyle(
                         fontSize: 20,
@@ -125,17 +130,16 @@ class _PlayersState extends ConsumerState<NoPlayers> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 25,
+            SizedBox(
+              height: getProportionateScreenHeight(20),
             ),
             ref.watch(typeofgameProivder) == "xo"
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: 60, //height of button
-
-                        width: 200, //width of button
+                        height: getProportionateScreenHeight(80), //height of button
+                        width: getProportionateScreenWidth(170), //width of button
 
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
