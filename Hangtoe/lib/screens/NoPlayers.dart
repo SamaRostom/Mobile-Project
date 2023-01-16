@@ -26,6 +26,7 @@ class NoPlayers extends ConsumerStatefulWidget {
 class _PlayersState extends ConsumerState<NoPlayers> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
         body: ListView(
@@ -51,7 +52,7 @@ class _PlayersState extends ConsumerState<NoPlayers> {
             ),
             SizedBox(
               width: getProportionateScreenWidth(15),
-              height: getProportionateScreenHeight(70),
+              height: getProportionateScreenHeight(90),
               child: Text(
                 '''Choose The Number Of Players To 
    Start The Game''',
@@ -86,10 +87,10 @@ class _PlayersState extends ConsumerState<NoPlayers> {
 
                       Data.noofplayers = 1;
                     },
-                    child: const Text(
+                    child: Text(
                       '1 Player',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: getProportionateScreenWidth(20),
                       ),
                     ),
                   ),
@@ -120,10 +121,10 @@ class _PlayersState extends ConsumerState<NoPlayers> {
 
                       Data.noofplayers = 2;
                     },
-                    child:  const Text(
+                    child: Text(
                       '2 Players',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: getProportionateScreenWidth(20),
                       ),
                     ),
                   ),
@@ -156,10 +157,10 @@ class _PlayersState extends ConsumerState<NoPlayers> {
 
                             Data.player = 2;
                           },
-                          child: const Text(
+                          child: Text(
                             'Rooms',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: getProportionateScreenWidth(20),
                             ),
                           ),
                         ),
