@@ -7,6 +7,8 @@ import 'package:flutter_application_1/screens/Hangman2/game_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../Utils/size_config.dart';
+
 class Categories extends ConsumerStatefulWidget {
   static const routeName = "/categories-screen";
 
@@ -21,12 +23,13 @@ class Categories extends ConsumerStatefulWidget {
 class _CategoriesState extends ConsumerState<Categories> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
         body: Column(
           children: [
-            const SizedBox(
-              height: 200,
+            SizedBox(
+              height: getProportionateScreenHeight(180),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -40,19 +43,19 @@ class _CategoriesState extends ConsumerState<Categories> {
                 ),
                 Text(
                   'Choose A Category',
-                  style: GoogleFonts.kanit(fontSize: 40, color: Colors.white),
+                  style: GoogleFonts.kanit(fontSize: getProportionateScreenWidth(30), color: Colors.white),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: getProportionateScreenHeight(90),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 80, //height of button
-                  width: 200, //width of button
+                  height: getProportionateScreenHeight(70), //height of button
+                  width: getProportionateScreenWidth(190), //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -64,10 +67,10 @@ class _CategoriesState extends ConsumerState<Categories> {
                       Navigator.pushNamed(context, GameScreen.routeName);
                       // Data.cc = Data.animals;
                     },
-                    child: const Text(
+                    child: Text(
                       'Animals',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: getProportionateScreenWidth(20),
                       ),
                     ),
                   ),
@@ -81,8 +84,8 @@ class _CategoriesState extends ConsumerState<Categories> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 80, //height of button
-                  width: 200, //width of button
+                  height: getProportionateScreenHeight(70), //height of button
+                  width: getProportionateScreenWidth(190), //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -94,25 +97,25 @@ class _CategoriesState extends ConsumerState<Categories> {
                       Navigator.pushNamed(context, GameScreen.routeName);
                       // Data.cc = Data.sports;
                     },
-                    child: const Text(
+                    child: Text(
                       'Sports',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: getProportionateScreenWidth(20),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: getProportionateScreenHeight(20),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 80, //height of button
-                  width: 200, //width of button
+                  height: getProportionateScreenHeight(70), //height of button
+                  width: getProportionateScreenWidth(190), //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -123,10 +126,10 @@ class _CategoriesState extends ConsumerState<Categories> {
                       Data.category = "countries";
                       Navigator.pushNamed(context, GameScreen.routeName);
                     },
-                    child: const Text(
+                    child: Text(
                       'Countries',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: getProportionateScreenWidth(20),
                       ),
                     ),
                   ),

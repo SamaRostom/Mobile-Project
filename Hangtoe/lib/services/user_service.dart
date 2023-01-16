@@ -8,6 +8,7 @@ import '../Utils/constants.dart';
 import '../Utils/data.dart' as val;
 import '../Utils/data.dart';
 import '../providers/user_provider.dart';
+import '../screens/Login.dart';
 import '../widgets/loading_widget.dart';
 
 class UserService {
@@ -34,7 +35,8 @@ class UserService {
               ref.read(newUserDataProivder.notifier).state = user;
               Navigator.of(context).pushNamed('/');
           });
-        Navigator.of(context).pushNamed('/Login');
+          Navigator.pushNamed(context, Login.routeName);
+        // Navigator.of(context).pushNamed('/Login');
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           Navigator.of(context).pop();
@@ -123,7 +125,7 @@ class UserService {
   static logOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Data.loggedin = false;
-    Navigator.of(context).pushReplacementNamed('/Login');
+    Navigator.pushNamed(context, Login.routeName);
   }
 
   static void updateScore(WidgetRef ref) async {

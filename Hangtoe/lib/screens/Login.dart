@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../Utils/size_config.dart';
 import '../services/user_service.dart';
 
 class Login extends ConsumerStatefulWidget {
@@ -31,6 +32,7 @@ class _LoginState extends ConsumerState<Login> {
   Widget build(BuildContext context) {
     // ignore: no_leading_underscores_for_local_identifiers
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    SizeConfig().init(context);
     return Scaffold(
       key: _scaffoldKey,
       body: ListView(
@@ -39,13 +41,13 @@ class _LoginState extends ConsumerState<Login> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 100,
+              SizedBox(
+                height: getProportionateScreenHeight(100),
               ),
               Text(
                 'Login',
                 style:
-                    GoogleFonts.patrickHand(fontSize: 75, color: Colors.white),
+                    GoogleFonts.patrickHand(fontSize: getProportionateScreenWidth(75), color: Colors.white),
               ),
             ],
           ),
@@ -53,7 +55,7 @@ class _LoginState extends ConsumerState<Login> {
             key: _formKey,
             child: Column(
               children: [
-                Image.asset('assets/Login.png', width: 250),
+                Image.asset('assets/Login.png', width: getProportionateScreenWidth(250)),
                 TextFormField(
                   controller: _emailController,
                   validator: (val) {
@@ -69,7 +71,7 @@ class _LoginState extends ConsumerState<Login> {
                     prefixIcon: Icon(Icons.email, color: Colors.white),
                   ),
                 ),
-                const SizedBox(height: 50),
+                SizedBox(height: getProportionateScreenHeight(50)),
                 TextFormField(
                   controller: _passwordController,
                   validator: (value) {
@@ -85,7 +87,7 @@ class _LoginState extends ConsumerState<Login> {
                     prefixIcon: Icon(Icons.lock, color: Colors.white),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: getProportionateScreenHeight(20)),
                 ButtonBar(
                   children: <Widget>[
                     ElevatedButton(
@@ -95,36 +97,36 @@ class _LoginState extends ConsumerState<Login> {
                               _passwordController);
                         }
                       },
-                      child: const Text(
+                      child: Text(
                         'Login',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(fontSize: getProportionateScreenWidth(20), color: Colors.white),
                       ),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/');
                       },
-                      child: const Text('Cancel',
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                      child: Text('Cancel',
+                          style: TextStyle(fontSize: getProportionateScreenWidth(20), color: Colors.white)),
                     ),
                   ],
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: getProportionateScreenHeight(20)),
           Row(
             // ignore: sort_child_properties_last
             children: <Widget>[
-              const Text(
+              Text(
                 'Create a new account',
-                style: TextStyle(fontSize: 23, color: Colors.white),
+                style: TextStyle(fontSize: getProportionateScreenWidth(23), color: Colors.white),
               ),
               TextButton(
-                child: const Text(
+                child: Text(
                   'Sign up',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: getProportionateScreenWidth(20),
                       decoration: TextDecoration.underline,
                       color: Colors.white),
                 ),

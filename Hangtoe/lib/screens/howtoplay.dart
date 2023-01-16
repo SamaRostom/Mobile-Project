@@ -4,6 +4,7 @@ import 'package:flutter_application_1/screens/seemoregames.dart';
 import 'package:flutter_application_1/widgets/loading_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Utils/size_config.dart';
 import '../models/seemoregames_model.dart';
 import '../services/seemoregames_service.dart';
 
@@ -19,12 +20,13 @@ class HowToPlay extends StatefulWidget {
 class _HowToPlayState extends State<HowToPlay> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
         body: ListView(
           children: [
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: getProportionateScreenHeight(30),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -36,32 +38,38 @@ class _HowToPlayState extends State<HowToPlay> {
                     Navigator.of(context).pop();
                   },
                 ),
+                SizedBox(
+                    width: getProportionateScreenWidth(10),
+                  ),
                 Text(
                   'How to play',
                   style: GoogleFonts.patrickHand(
-                      fontSize: 60, color: Colors.white),
+                      fontSize: getProportionateScreenWidth(60), color: Colors.white),
                   //  TextStyle(
                   //     fontSize: 50,
                   //     color: Colors.white,
                   //     letterSpacing: 3.0,
                   //   ),
                 ),
+                SizedBox(
+                    width: getProportionateScreenWidth(2),
+                  ),
                 //const IconButton(Icons.lightbulb,color: Color.fromARGB(255, 255, 234, 49), size: 50.0, onPressed(){})
                 IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.lightbulb,
-                    size: 50.0,
+                    size: getProportionateScreenWidth(50.0),
                   ),
                   color: const Color.fromARGB(255, 255, 234, 49),
                   onPressed: () {},
                 ),
               ],
             ),
-            const SizedBox(
-              height: 70,
+            SizedBox(
+              height: getProportionateScreenHeight(70),
             ),
             Row(
-              // mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Data.chosed == 'hangman'
                     ? Text(
@@ -78,7 +86,7 @@ class _HowToPlayState extends State<HowToPlay> {
           otherwise the correct letter 
           is found and the player wins.''',
                         style: GoogleFonts.kanit(
-                            fontSize: 25, color: Colors.white),
+                            fontSize: getProportionateScreenWidth(20), color: Colors.white),
                         // TextStyle(
                         //       fontSize: 25,
                         //       color: Colors.white,
@@ -96,13 +104,16 @@ class _HowToPlayState extends State<HowToPlay> {
       row wins the game.
           ''',
                         style: GoogleFonts.kanit(
-                            fontSize: 25, color: Colors.white),
+                            fontSize: getProportionateScreenWidth(20), color: Colors.white),
                         // TextStyle(
                         //       fontSize: 25,
                         //       color: Colors.white,
                         //     ),
                       )
               ],
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(70),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -111,10 +122,10 @@ class _HowToPlayState extends State<HowToPlay> {
                   onPressed: () {
                     Navigator.pushNamed(context, SeeMoreGames.routeName);
                   },
-                  child: const Text(
+                  child: Text(
                     'See more games',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: getProportionateScreenWidth(20),
                     ),
                   ),
                 ),

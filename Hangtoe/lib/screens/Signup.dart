@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../Utils/size_config.dart';
 import '../Utils/validations.dart';
 import '../services/user_service.dart';
 
@@ -31,6 +32,7 @@ class _SignupState extends ConsumerState<Signup> {
   Widget build(BuildContext context) {
     // final double height = MediaQuery.of(context).size.height;
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+    SizeConfig().init(context);
     return Scaffold(
       key: scaffoldKey,
       body: ListView(
@@ -39,13 +41,13 @@ class _SignupState extends ConsumerState<Signup> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 150,
+              SizedBox(
+                height: getProportionateScreenHeight(150),
               ),
               Text(
                 'Signup',
                 style:
-                    GoogleFonts.patrickHand(fontSize: 75, color: Colors.white),
+                    GoogleFonts.patrickHand(fontSize: getProportionateScreenWidth(75), color: Colors.white),
               ),
             ],
           ),
@@ -53,8 +55,8 @@ class _SignupState extends ConsumerState<Signup> {
             key: _formKey,
             child: Column(
               children: [
-                Image.asset('assets/Signup.png', width: 200),
-                const SizedBox(height: 20),
+                Image.asset('assets/Signup.png', width: getProportionateScreenWidth(200)),
+                SizedBox(height: getProportionateScreenHeight(20)),
                 //username
                 TextFormField(
                   controller: _nameController,
@@ -71,7 +73,7 @@ class _SignupState extends ConsumerState<Signup> {
                     prefixIcon: Icon(Icons.person, color: Colors.white),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: getProportionateScreenHeight(20)),
                 //email
                 TextFormField(
                   autofocus: true,
@@ -89,7 +91,7 @@ class _SignupState extends ConsumerState<Signup> {
                     prefixIcon: Icon(Icons.email, color: Colors.white),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: getProportionateScreenHeight(20)),
 
                 //password
                 TextFormField(
@@ -108,7 +110,7 @@ class _SignupState extends ConsumerState<Signup> {
                     prefixIcon: Icon(Icons.lock, color: Colors.white),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: getProportionateScreenHeight(20)),
                 ButtonBar(
                   children: <Widget>[
                     //signup button
@@ -119,18 +121,18 @@ class _SignupState extends ConsumerState<Signup> {
                               _emailController, _passwordController);
                         }
                       },
-                      child: const Text(
+                      child: Text(
                         'Signup',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(fontSize: getProportionateScreenWidth(20), color: Colors.white),
                       ),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/');
                       },
-                      child: const Text(
+                      child: Text(
                         'Cancel',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(fontSize: getProportionateScreenWidth(20), color: Colors.white),
                       ),
                     )
                   ],
@@ -138,19 +140,19 @@ class _SignupState extends ConsumerState<Signup> {
               ],
             ),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: getProportionateScreenHeight(20)),
           Row(
             // ignore: sort_child_properties_last
             children: <Widget>[
-              const Text(
+              Text(
                 'Already have an account?',
-                style: TextStyle(fontSize: 23, color: Colors.white),
+                style: TextStyle(fontSize: getProportionateScreenWidth(23), color: Colors.white),
               ),
               TextButton(
-                child: const Text(
+                child: Text(
                   'Login',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: getProportionateScreenWidth(20),
                       decoration: TextDecoration.underline,
                       color: Colors.white),
                 ),

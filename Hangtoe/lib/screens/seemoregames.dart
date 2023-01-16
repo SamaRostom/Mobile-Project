@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/loading_widget.dart';
 
+import '../Utils/size_config.dart';
 import '../models/seemoregames_model.dart';
 import '../services/seemoregames_service.dart';
 
@@ -36,6 +37,7 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -52,7 +54,7 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
               itemBuilder: (context, index) {
                 return Container(
                     padding: const EdgeInsets.all(2),
-                    height: 140,
+                    height: getProportionateScreenHeight(140), 
                     child: Card(
                       elevation: 5,
                       child: Row(
@@ -60,7 +62,7 @@ class _SeeMoreGamesState extends State<SeeMoreGames> {
                           children: <Widget>[
                             Image.network(
                               des[index].thumbnail,
-                              width: 200,
+                              width: getProportionateScreenWidth(200),
                             ),
                             Expanded(
                                 child: Container(
