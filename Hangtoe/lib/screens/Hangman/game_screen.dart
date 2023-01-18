@@ -271,7 +271,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   //====================================================================================
 
   //lose game
-  void lose() => Navigator.pushNamed(context, LoseScreen.routeName,arguments: {
+  void lose() => Navigator.pushReplacementNamed(context, LoseScreen.routeName,arguments: {
     "score": game.score,
     // "word" : (ModalRoute.of(context)!.settings.arguments as String),
     "word" : (ref.watch(wordProivder)),
@@ -287,7 +287,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       ref.read(scoreProivder.notifier).state = x!;
       ScoreService.saveScore(ref);
     }
-    Navigator.pushNamed(context, WinScreen.routeName,arguments: {
+    Navigator.pushReplacementNamed(context, WinScreen.routeName,arguments: {
       "score": game.score,
       // "word" : (ModalRoute.of(context)!.settings.arguments as String),
       "word" : (ref.watch(wordProivder)),
