@@ -16,9 +16,7 @@ import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/Hangman/twoplayershang.dart';
-import 'screens/Tic_tac _toe/create_room_screen.dart';
-import 'screens/Tic_tac _toe/join_room_screen.dart';
-// import 'screens/Tic_tac _toe/room_screen.dart';
+
 import 'screens/Tic_tac _toe/twoplayers.dart';
 import 'screens/seemoregames.dart';
 
@@ -54,12 +52,9 @@ class MyApp extends StatelessWidget {
         HowToPlay.routeName: (context) => const HowToPlay(),
         // '/HangmanBoard': (context) => const HangmanBoard(),
         PName.routeName: (context) => const PName(),
-        // RoomScreen.routeName: (context) => const RoomScreen(),
-        JoinRoomScreen.routeName: (context) => const JoinRoomScreen(),
-        // CreateRoomScreen.routeName: (context) => const CreateRoomScreen(),
+
         SinglepalyerAI.routeName: (context) => const SinglepalyerAI(),
         Twoplayers.routeName: (context) => const Twoplayers(),
-        // '/Tic_tac_toe': (context) => const Tictactoe(),
         Login.routeName: (context) => const Login(),
         Signup.routeName: (context) => const Signup(),
         Categories.routeName: (context) => const Categories(),
