@@ -51,7 +51,7 @@ class _LoseScreenState extends ConsumerState<LoseScreen> {
               "Word : $guessedWord",
               textAlign: TextAlign.center,
               style: theme.textTheme.headline1!
-                  .copyWith(color: Colors.white, fontSize: 24.0),
+                  .copyWith(color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 30,
