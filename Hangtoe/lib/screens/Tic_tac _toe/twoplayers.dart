@@ -1,12 +1,7 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../providers/score_provider.dart';
-
-// import 'package:flutter_application_1/drawing.dart';
 
 class Twoplayers extends ConsumerStatefulWidget {
   static const routeName = "/twoplayers-screen";
@@ -14,38 +9,27 @@ class Twoplayers extends ConsumerStatefulWidget {
   const Twoplayers({super.key});
 
   @override
-
-  // ignore: library_private_types_in_public_api
   ConsumerState<Twoplayers> createState() => _TwoplayersState();
 }
 
 class _TwoplayersState extends ConsumerState<Twoplayers> {
   List<String> displayElement = ['', '', '', '', '', '', '', '', ''];
-
   int oScore = 0;
-
   int xScore = 0;
-
   int filledBoxes = 0;
-
   bool oTurn = false;
-
   String lastvalue = "X";
 
   void _tapped(int index) {
     setState(() {
       if (oTurn && displayElement[index] == '') {
         displayElement[index] = 'O';
-
         filledBoxes++;
       } else if (!oTurn && displayElement[index] == '') {
         displayElement[index] = 'X';
-
         filledBoxes++;
       }
-
       oTurn = !oTurn;
-
       _checkWinner();
     });
   }
@@ -120,7 +104,6 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
                 child: const Text("Play Again"),
                 onPressed: () {
                   _clearBoard();
-
                   Navigator.of(context).pop();
                 },
               )
@@ -164,22 +147,17 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
         displayElement[i] = '';
       }
     });
-
     filledBoxes = 0;
   }
 
   void _clearScoreBoard() {
     setState(() {
-      // xScore = 0;
-      // oScore = 0;
       ref.read(scoreOProivder.notifier).state = 0;
       ref.read(scoreXProivder.notifier).state = 0;
-
       for (int i = 0; i < 9; i++) {
         displayElement[i] = '';
       }
     });
-
     filledBoxes = 0;
   }
 
@@ -192,19 +170,14 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           IconButton(
-            // alignment: Alignment.topLeft,
-
             icon: const Icon(Icons.arrow_back),
-
             color: Colors.white,
-
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
           Expanded(
             // creating the ScoreBoard
-
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -226,7 +199,6 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
                           color: Colors.white),
                     ),
                     Text(
-                      // xScore.toString(),
                       ref.watch(scoreXProivder).toString(),
                       style: const TextStyle(fontSize: 20, color: Colors.white),
                     ),
@@ -298,7 +270,6 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     //to set border radius to button
-
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
