@@ -23,7 +23,7 @@ class _TypeWordScreenState extends ConsumerState<TypeWordScreen> {
         children: [
           Text(
             "Type the word",
-            style: Theme.of(context).textTheme.headline6!.copyWith(fontSize: 28),
+            style: Theme.of(context).textTheme.headline6!.copyWith(fontSize: 28, color: Colors.white),
           ),
           const SizedBox(
             height: 30,
@@ -34,17 +34,17 @@ class _TypeWordScreenState extends ConsumerState<TypeWordScreen> {
               child: TextField(
                 controller: _wordController,
                 onSubmitted: (str )=> _submitWord(),
-                cursorColor: Colors.black,
+                cursorColor: Colors.white,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50.0),
                         borderSide: const BorderSide(
-                            color: Colors.black,
+                            color: Colors.white,
                                 // Theme.of(context).primaryColor.withOpacity(0.3),
                             width: 2.0)),
                     labelText: "Type word",
                     labelStyle: const TextStyle(
-                        color: Colors.black
+                        color: Colors.white
                         // Theme.of(context).primaryColor.withOpacity(0.5)
                         ),
                         // color: Colors.blueGrey,
@@ -53,7 +53,7 @@ class _TypeWordScreenState extends ConsumerState<TypeWordScreen> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50.0),
                         borderSide:
-                            const BorderSide(color: Colors.black, width: 2.0))),
+                            const BorderSide(color: Colors.white, width: 2.0))),
                 style: TextStyle(color: Theme.of(context).primaryColor),
               )),const SizedBox(height: 50,),
           Container(
@@ -65,7 +65,7 @@ class _TypeWordScreenState extends ConsumerState<TypeWordScreen> {
               onPressed: _submitWord,
               child: FittedBox(
                 child: Text("Confirm",
-                    style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.grey[900])),
+                    style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.white)),
               ),
               // color: Theme.of(context).primaryColor,
               // padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
