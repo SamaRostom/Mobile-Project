@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
-import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
+import 'package:flutter_application_1/screens/Hangman/type_word_screen.dart';
 import 'package:flutter_application_1/screens/Tic_tac%20_toe/twoplayers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
