@@ -1,44 +1,43 @@
-// To parse this JSON data, do
-//
-//     final seeMoreGamesModel = seeMoreGamesModelFromJson(jsonString);
+// ignore_for_file: constant_identifier_names
 
 import 'dart:convert';
 
-// List<SeeMoreGamesModel?>? seeMoreGamesModelFromJson(String str) => json.decode(str) == null ? [] : List<SeeMoreGamesModel?>.from(json.decode(str)!.map((x) => SeeMoreGamesModel.fromJson(x)));
+List<SeeMoreGamesModel> seeMoreGamesModelFromJson(String str) =>
+    List<SeeMoreGamesModel>.from(
+        json.decode(str).map((x) => SeeMoreGamesModel.fromJson(x)));
 
-// String seeMoreGamesModelToJson(List<SeeMoreGamesModel>? data) => json.encode(data == null ? [] : List<dynamic>.from(data.map((x) => x.toJson())));
-List<SeeMoreGamesModel> seeMoreGamesModelFromJson(String str) => List<SeeMoreGamesModel>.from(json.decode(str).map((x) => SeeMoreGamesModel.fromJson(x)));
-
-String seeMoreGamesModelToJson(List<SeeMoreGamesModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String seeMoreGamesModelToJson(List<SeeMoreGamesModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class SeeMoreGamesModel {
-    SeeMoreGamesModel({
-        required this.id,
-        required this.title,
-        required this.thumbnail,
-        required this.shortDescription,
-        required this.gameUrl,
-        required this.genre,
-        required this.platform,
-        required this.publisher,
-        required this.developer,
-        required this.releaseDate,
-        required this.freetogameProfileUrl,
-    });
+  SeeMoreGamesModel({
+    required this.id,
+    required this.title,
+    required this.thumbnail,
+    required this.shortDescription,
+    required this.gameUrl,
+    required this.genre,
+    required this.platform,
+    required this.publisher,
+    required this.developer,
+    required this.releaseDate,
+    required this.freetogameProfileUrl,
+  });
 
-    int id;
-    String title;
-    String thumbnail;
-    String shortDescription;
-    String gameUrl;
-    Genre genre;
-    Platform platform;
-    String publisher;
-    String developer;
-    String releaseDate;
-    String freetogameProfileUrl;
+  int id;
+  String title;
+  String thumbnail;
+  String shortDescription;
+  String gameUrl;
+  Genre genre;
+  Platform platform;
+  String publisher;
+  String developer;
+  String releaseDate;
+  String freetogameProfileUrl;
 
-    factory SeeMoreGamesModel.fromJson(Map<String, dynamic> json) => SeeMoreGamesModel(
+  factory SeeMoreGamesModel.fromJson(Map<String, dynamic> json) =>
+      SeeMoreGamesModel(
         id: json["id"],
         title: json["title"],
         thumbnail: json["thumbnail"],
@@ -50,9 +49,9 @@ class SeeMoreGamesModel {
         developer: json["developer"],
         releaseDate: json["release_date"],
         freetogameProfileUrl: json["freetogame_profile_url"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "title": title,
         "thumbnail": thumbnail,
@@ -64,47 +63,65 @@ class SeeMoreGamesModel {
         "developer": developer,
         "release_date": releaseDate,
         "freetogame_profile_url": freetogameProfileUrl,
-    };
+      };
 }
 
-enum Genre { SHOOTER, MMOARPG, ARPG, STRATEGY, MMORPG, FIGHTING, ACTION_RPG, BATTLE_ROYALE, MOBA, CARD_GAME, SPORTS, MMOFPS, MMO, RACING, SOCIAL, GENRE_MMORPG, FANTASY }
+enum Genre {
+  SHOOTER,
+  MMOARPG,
+  ARPG,
+  STRATEGY,
+  MMORPG,
+  FIGHTING,
+  ACTION_RPG,
+  BATTLE_ROYALE,
+  MOBA,
+  CARD_GAME,
+  SPORTS,
+  MMOFPS,
+  MMO,
+  RACING,
+  SOCIAL,
+  GENRE_MMORPG,
+  FANTASY
+}
 
 final genreValues = EnumValues({
-    "Action RPG": Genre.ACTION_RPG,
-    "ARPG": Genre.ARPG,
-    "Battle Royale": Genre.BATTLE_ROYALE,
-    "Card Game": Genre.CARD_GAME,
-    "Fantasy": Genre.FANTASY,
-    "Fighting": Genre.FIGHTING,
-    " MMORPG": Genre.GENRE_MMORPG,
-    "MMO": Genre.MMO,
-    "MMOARPG": Genre.MMOARPG,
-    "MMOFPS": Genre.MMOFPS,
-    "MMORPG": Genre.MMORPG,
-    "MOBA": Genre.MOBA,
-    "Racing": Genre.RACING,
-    "Shooter": Genre.SHOOTER,
-    "Social": Genre.SOCIAL,
-    "Sports": Genre.SPORTS,
-    "Strategy": Genre.STRATEGY
+  "Action RPG": Genre.ACTION_RPG,
+  "ARPG": Genre.ARPG,
+  "Battle Royale": Genre.BATTLE_ROYALE,
+  "Card Game": Genre.CARD_GAME,
+  "Fantasy": Genre.FANTASY,
+  "Fighting": Genre.FIGHTING,
+  " MMORPG": Genre.GENRE_MMORPG,
+  "MMO": Genre.MMO,
+  "MMOARPG": Genre.MMOARPG,
+  "MMOFPS": Genre.MMOFPS,
+  "MMORPG": Genre.MMORPG,
+  "MOBA": Genre.MOBA,
+  "Racing": Genre.RACING,
+  "Shooter": Genre.SHOOTER,
+  "Social": Genre.SOCIAL,
+  "Sports": Genre.SPORTS,
+  "Strategy": Genre.STRATEGY
 });
 
 enum Platform { PC_WINDOWS, WEB_BROWSER, PC_WINDOWS_WEB_BROWSER }
 
 final platformValues = EnumValues({
-    "PC (Windows)": Platform.PC_WINDOWS,
-    "PC (Windows), Web Browser": Platform.PC_WINDOWS_WEB_BROWSER,
-    "Web Browser": Platform.WEB_BROWSER
+  "PC (Windows)": Platform.PC_WINDOWS,
+  "PC (Windows), Web Browser": Platform.PC_WINDOWS_WEB_BROWSER,
+  "Web Browser": Platform.WEB_BROWSER
 });
 
 class EnumValues<T> {
-    Map<String, T> map;
-    Map<T, String>? reverseMap;
+  Map<String, T> map;
+  Map<T, String>? reverseMap;
 
-    EnumValues(this.map);
+  EnumValues(this.map);
 
-    Map<T, String>? get reverse {
-        reverseMap ??= map.map((k, v) => MapEntry(v, k));
-        return reverseMap;
-    }
+  Map<T, String>? get reverse {
+    reverseMap ??= map.map((k, v) => MapEntry(v, k));
+    return reverseMap;
+  }
 }

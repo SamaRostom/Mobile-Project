@@ -16,7 +16,6 @@ class Categories extends ConsumerStatefulWidget {
 
   // ignore: library_private_types_in_public_api
   @override
-  // _ConsumerCategoriesState createState() => _CategoriesState();
   ConsumerState<Categories> createState() => _CategoriesState();
 }
 
@@ -43,7 +42,9 @@ class _CategoriesState extends ConsumerState<Categories> {
                 ),
                 Text(
                   'Choose A Category',
-                  style: GoogleFonts.kanit(fontSize: getProportionateScreenWidth(30), color: Colors.white),
+                  style: GoogleFonts.kanit(
+                      fontSize: getProportionateScreenWidth(30),
+                      color: Colors.white),
                 ),
               ],
             ),
@@ -65,7 +66,6 @@ class _CategoriesState extends ConsumerState<Categories> {
                     onPressed: () {
                       Data.category = "animals";
                       Navigator.pushNamed(context, GameScreen.routeName);
-                      // Data.cc = Data.animals;
                     },
                     child: Text(
                       'Animals',
@@ -95,7 +95,6 @@ class _CategoriesState extends ConsumerState<Categories> {
                     onPressed: () {
                       Data.category = "sports";
                       Navigator.pushNamed(context, GameScreen.routeName);
-                      // Data.cc = Data.sports;
                     },
                     child: Text(
                       'Sports',

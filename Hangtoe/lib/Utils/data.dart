@@ -15,20 +15,6 @@ class Data {
   static int numOfRows = 5;
   static List<String> topRanks = ["🥇", "🥈", "🥉"];
   static var type;
-  // static List<List<String>> hscoreslist = [
-  //   ['1', 'Player','20-Mar-31','7'],
-  //   ['2', 'Ahmed','20-Apr-1','6'],
-  //   ['3', 'Noor','20-May-12','5'],
-  //   ['4', 'Pl','20-Mar-26','2'],
-  //   ['5', 'Sara','20-Feb-12','1'],
-  // ];
-  // static List<List<String>> tscoreslist = [
-  //   ['1', 'play','20-Mar-31','7'],
-  //   ['2', 'Ahmed','20-Apr-1','4'],
-  //   ['3', 'Noor','20-May-12','3'],
-  //   ['4', 'Pl','20-Mar-26','1'],
-  //   ['5', 'Sara','20-Feb-12','1'],
-  // ];
 
   // ignore: non_constant_identifier_names
   static List<Map> Hangscore = [
@@ -106,10 +92,6 @@ class Data {
       'typeofgame': 'xo'
     },
   ];
-
-  // Random rnd = Random();
-  // static List<String> categories = ["Animals","Sports","Countries"];
-  // static const List<String> wordList = ["DOG","COW","CAT","HORSE","DONKEY"];
   // ignore: prefer_typing_uninitialized_variables
   static var category;
   static List<String> animals = ["DOG", "COW", "CAT", "HORSE", "DONKEY"];
@@ -195,10 +177,6 @@ class Data {
 
   static const String victoryImage = 'assets/victory.png';
 
-// static List<String> alphabet = const [
-//   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-//   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-// ];
   static const List<String> wordList = [
     "PLENTY",
     "ACHIEVE",

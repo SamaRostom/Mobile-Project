@@ -2,41 +2,10 @@ import 'package:flutter/material.dart';
 import '../Utils/data.dart' as val;
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
-// class constants{
-//   Future<void> _showMyDialog(BuildContext context,String alertMessage) async {
-//   return showDialog<void>(
-//     context: context,
-//     barrierDismissible: false, // user must tap button!
-//     builder: (BuildContext context) {
-//       return AlertDialog(
-//         title: const Text('Alert'),
-//         content: SingleChildScrollView(
-//           child: ListBody(
-//             children:<Widget>[
-//               Text(alertMessage),
-//             ],
-//           ),
-//         ),
-//         actions: <Widget>[
-//           TextButton(
-//             child: const Text('Ok'),
-//             onPressed: () {
-//               Navigator.of(context).pop();
-//             },
-//           ),
-//         ],
-//       );
-//     },
-//   );
-// }
-
-// }
-
-
+// ignore: must_be_immutable
 class DialogExample extends StatelessWidget {
   String? alertMessage;
   DialogExample(this.alertMessage, {super.key});
-  
 
   @override
   Widget build(BuildContext context) {

@@ -112,10 +112,8 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
         });
 
     if (winner == 'O') {
-      // oScore++;
       ref.read(scoreOProivder.notifier).state += 1;
     } else if (winner == 'X') {
-      // xScore++;
       ref.read(scoreXProivder.notifier).state += 1;
     }
   }

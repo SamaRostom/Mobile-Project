@@ -13,47 +13,52 @@ import '../widgets/loading_widget.dart';
 
 class UserService {
   //Register Page
-  Future signUp(WidgetRef ref,BuildContext context, TextEditingController nameController, TextEditingController emailController,
+  Future signUp(
+      WidgetRef ref,
+      BuildContext context,
+      TextEditingController nameController,
+      TextEditingController emailController,
       TextEditingController passwordController) async {
-      try {
-        showDialog(
-            barrierDismissible: false,
-            context: context,
-            builder: (context) {
-              return const Center(
-                child: LoadingWidget(),
-              );
-            });
-        final credential =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim(),
-        );
-        UserService.saveUser(nameController.text);
-        UserService().getNewUserData().then((value) {
-            UserModel user = UserModel.fromSnapshot(value);
-              ref.read(newUserDataProivder.notifier).state = user;
-              Navigator.of(context).pushNamed('/');
+    try {
+      showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (context) {
+            return const Center(
+              child: LoadingWidget(),
+            );
           });
-          Navigator.pushNamed(context, Login.routeName);
-        // Navigator.of(context).pushNamed('/Login');
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'weak-password') {
-          Navigator.of(context).pop();
-          error("Error!", "The password provided is too weak.");
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(val.snackBar);
-        } else if (e.code == 'email-already-in-use') {
-          Navigator.of(context).pop();
-          error("Error!", "The account already exists for that email.");
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(val.snackBar);
-        }
-      } catch (e) {
-        print(e);
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      UserService.saveUser(nameController.text);
+      UserService().getNewUserData().then((value) {
+        UserModel user = UserModel.fromSnapshot(value);
+        ref.read(newUserDataProivder.notifier).state = user;
+        Navigator.of(context).pushNamed('/');
+      });
+      // ignore: use_build_context_synchronously
+      Navigator.pushNamed(context, Login.routeName);
+      // Navigator.of(context).pushNamed('/Login');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        Navigator.of(context).pop();
+        error("Error!", "The password provided is too weak.");
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(val.snackBar);
+      } else if (e.code == 'email-already-in-use') {
+        Navigator.of(context).pop();
+        error("Error!", "The account already exists for that email.");
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(val.snackBar);
       }
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future signIn(
@@ -83,18 +88,18 @@ class UserService {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-          Navigator.of(context).pop();
-          error("Error!", "No user found for that email.");
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(val.snackBar);
-        } else if (e.code == 'wrong-password') {
-          Navigator.of(context).pop();
-          error("Error!", "Wrong password provided for that user.");
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(val.snackBar);
-        }
+        Navigator.of(context).pop();
+        error("Error!", "No user found for that email.");
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(val.snackBar);
+      } else if (e.code == 'wrong-password') {
+        Navigator.of(context).pop();
+        error("Error!", "Wrong password provided for that user.");
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(val.snackBar);
+      }
     }
   }
 
@@ -106,7 +111,7 @@ class UserService {
     Map<String, dynamic> userData = {
       "email": user.email,
       "score": 0,
-      "username":username,
+      "username": username,
     };
     final userRef = db.collection("Users").doc(user.uid);
     if ((await userRef.get()).exists) {
@@ -125,6 +130,7 @@ class UserService {
   static logOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Data.loggedin = false;
+    // ignore: use_build_context_synchronously
     Navigator.pushNamed(context, Login.routeName);
   }
 
@@ -146,5 +152,3 @@ class UserService {
     update.update({"score": score});
   }
 }
-
-

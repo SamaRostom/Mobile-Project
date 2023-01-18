@@ -44,20 +44,27 @@ class ScoresState extends ConsumerState<Scores> {
                 cells: [
                   DataCell(Text(
                     rankdata() ?? "0",
-                    style: GoogleFonts.kanit(fontSize: getProportionateScreenWidth(15), color: Colors.white),
+                    style: GoogleFonts.kanit(
+                        fontSize: getProportionateScreenWidth(15),
+                        color: Colors.white),
                   )),
                   DataCell(Text(
                     documentSnapshot['email'],
-                    style: GoogleFonts.kanit(fontSize: getProportionateScreenWidth(15), color: Colors.white),
+                    style: GoogleFonts.kanit(
+                        fontSize: getProportionateScreenWidth(15),
+                        color: Colors.white),
                   )),
-                  DataCell(Text("    "+
-                    DateFormat('yyyy-MM-dd').format(
-                        (documentSnapshot['date'] as Timestamp).toDate()),
-                    style: GoogleFonts.kanit(fontSize: getProportionateScreenWidth(15), color: Colors.white),
+                  DataCell(Text(
+                    "    ${DateFormat('yyyy-MM-dd').format((documentSnapshot['date'] as Timestamp).toDate())}",
+                    style: GoogleFonts.kanit(
+                        fontSize: getProportionateScreenWidth(15),
+                        color: Colors.white),
                   )),
                   DataCell(Text(
                     '      ${documentSnapshot['score']}',
-                    style: GoogleFonts.kanit(fontSize: getProportionateScreenWidth(15), color: Colors.white),
+                    style: GoogleFonts.kanit(
+                        fontSize: getProportionateScreenWidth(15),
+                        color: Colors.white),
                   ))
                 ]))
         .toList();
@@ -79,8 +86,6 @@ class ScoresState extends ConsumerState<Scores> {
               if (snapshot.hasData) {
                 final allScores = snapshot.data!;
                 return Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  // mainAxisSize: MainAxisSize.max,
                   children: [
                     SizedBox(
                       height: getProportionateScreenHeight(30),
@@ -100,7 +105,8 @@ class ScoresState extends ConsumerState<Scores> {
                             'High Scores',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.patrickHand(
-                                fontSize: getProportionateScreenWidth(60), color: Colors.white),
+                                fontSize: getProportionateScreenWidth(60),
+                                color: Colors.white),
                           ),
                         ]),
                       ],
@@ -119,28 +125,32 @@ class ScoresState extends ConsumerState<Scores> {
                               label: Text(
                                 'Rank',
                                 style: GoogleFonts.patrickHand(
-                                    fontSize: getProportionateScreenWidth(20), color: Colors.white),
+                                    fontSize: getProportionateScreenWidth(20),
+                                    color: Colors.white),
                               ),
                             ),
                             DataColumn(
                               label: Text(
                                 '        Email',
                                 style: GoogleFonts.patrickHand(
-                                    fontSize: getProportionateScreenWidth(20), color: Colors.white),
+                                    fontSize: getProportionateScreenWidth(20),
+                                    color: Colors.white),
                               ),
                             ),
                             DataColumn(
                               label: Text(
                                 '     Date',
                                 style: GoogleFonts.patrickHand(
-                                    fontSize: getProportionateScreenWidth(20), color: Colors.white),
+                                    fontSize: getProportionateScreenWidth(20),
+                                    color: Colors.white),
                               ),
                             ),
                             DataColumn(
                               label: Text(
                                 '    Score',
                                 style: GoogleFonts.patrickHand(
-                                    fontSize: getProportionateScreenWidth(20), color: Colors.white),
+                                    fontSize: getProportionateScreenWidth(20),
+                                    color: Colors.white),
                               ),
                             ),
                           ],

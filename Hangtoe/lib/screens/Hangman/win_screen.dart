@@ -20,7 +20,7 @@ class _WinScreenState extends ConsumerState<WinScreen> {
 
     final data =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    final String word = data['word'];
+    // final String word = data['word'];
     final int score = data['score'];
     final String guessedWord = data['guessedWord'];
 
@@ -30,7 +30,7 @@ class _WinScreenState extends ConsumerState<WinScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              ref.watch(nickname1Proivder) + "\nWIN",
+              "${ref.watch(nickname1Proivder)}\nWIN",
               textAlign: TextAlign.center,
               style: theme.textTheme.headline2!
                   .copyWith(color: Colors.white, fontSize: 50.0),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Utils/data.dart';
+// import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/screens/Hangman/type_word_screen.dart';
 import 'package:flutter_application_1/screens/Tic_tac%20_toe/twoplayers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -125,8 +125,8 @@ class _PNameState extends ConsumerState<PName> {
                           ref.read(nickname2Proivder.notifier).state =
                               _play2Controller.text;
                           if (ref.watch(typeofgameProivder) == "hangman") {
-                            // Navigator.pushNamed(context, '/TypeWordScreen');
-                            Navigator.pushNamed(context, TypeWordScreen.routeName);
+                            Navigator.pushNamed(
+                                context, TypeWordScreen.routeName);
                           } else {
                             Navigator.pushNamed(context, Twoplayers.routeName);
                           }

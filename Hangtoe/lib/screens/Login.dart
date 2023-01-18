@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -46,8 +46,9 @@ class _LoginState extends ConsumerState<Login> {
               ),
               Text(
                 'Login',
-                style:
-                    GoogleFonts.patrickHand(fontSize: getProportionateScreenWidth(75), color: Colors.white),
+                style: GoogleFonts.patrickHand(
+                    fontSize: getProportionateScreenWidth(75),
+                    color: Colors.white),
               ),
             ],
           ),
@@ -55,7 +56,8 @@ class _LoginState extends ConsumerState<Login> {
             key: _formKey,
             child: Column(
               children: [
-                Image.asset('assets/Login.png', width: getProportionateScreenWidth(250)),
+                Image.asset('assets/Login.png',
+                    width: getProportionateScreenWidth(250)),
                 TextFormField(
                   controller: _emailController,
                   validator: (val) {
@@ -99,7 +101,9 @@ class _LoginState extends ConsumerState<Login> {
                       },
                       child: Text(
                         'Login',
-                        style: TextStyle(fontSize: getProportionateScreenWidth(20), color: Colors.white),
+                        style: TextStyle(
+                            fontSize: getProportionateScreenWidth(20),
+                            color: Colors.white),
                       ),
                     ),
                     ElevatedButton(
@@ -107,7 +111,9 @@ class _LoginState extends ConsumerState<Login> {
                         Navigator.pushNamed(context, '/');
                       },
                       child: Text('Cancel',
-                          style: TextStyle(fontSize: getProportionateScreenWidth(20), color: Colors.white)),
+                          style: TextStyle(
+                              fontSize: getProportionateScreenWidth(20),
+                              color: Colors.white)),
                     ),
                   ],
                 ),
@@ -120,7 +126,9 @@ class _LoginState extends ConsumerState<Login> {
             children: <Widget>[
               Text(
                 'Create a new account',
-                style: TextStyle(fontSize: getProportionateScreenWidth(23), color: Colors.white),
+                style: TextStyle(
+                    fontSize: getProportionateScreenWidth(23),
+                    color: Colors.white),
               ),
               TextButton(
                 child: Text(

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/Utils/size_config.dart';
 import 'package:flutter_application_1/providers/score_provider.dart';
-import 'package:flutter_application_1/screens/Hangman/game_screen.dart';
-import 'package:flutter_application_1/screens/Hangman/type_word_screen.dart';
+// import 'package:flutter_application_1/screens/Hangman/game_screen.dart';
+// import 'package:flutter_application_1/screens/Hangman/type_word_screen.dart';
 import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/user_provider.dart';
-import '../services/score_service.dart';
-import '../Utils/constants.dart';
+// import '../services/score_service.dart';
+// import '../Utils/constants.dart';
 import '../services/user_service.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -107,13 +107,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ],
               )),
         body: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisSize: MainAxisSize.max,
           children: [
             Container(
               height: getProportionateScreenHeight(120), //height of button
-                  width: getProportionateScreenWidth(300), //width of button
-                  color: Colors.transparent,
+              width: getProportionateScreenWidth(300), //width of button
+              color: Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -122,53 +120,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   SizedBox(
                     height: getProportionateScreenHeight(50),
                   ),
-                  // Container(
-                  //   width: getProportionateScreenWidth(200),
-                  //   height: getProportionateScreenHeight(130),
-                  //   child: 
-                    Text(
-                      'HANGTOE',
-                      style: GoogleFonts.patrickHand(
-                          // textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: getProportionateScreenWidth(65),
-                          // fontWeight: FontWeight.w700,
-                          color: Colors.white),
-                      // TextStyle(
-                      //   fontSize: 60,
-                      //   color: Colors.white,
-                      //   // fontWeight: FontWeight.w300,
-                      //   letterSpacing: 3.0,
-                      //   // fonts.asset('fonts/FiraMono-Bold.ttf'),
-                      //   fontFamily: 'FiraMono',
-
-                      // ),)
-                    ),
-                  // ),
+                  Text(
+                    'HANGTOE',
+                    style: GoogleFonts.patrickHand(
+                        fontSize: getProportionateScreenWidth(65),
+                        color: Colors.white),
+                  ),
                 ],
               ),
             ),
             SizedBox(
-                    height: getProportionateScreenHeight(30),
-                  ),
+              height: getProportionateScreenHeight(30),
+            ),
             Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  // Padding(
-                  //   padding: const EdgeInsets.all(50),
-                  //   child: const AnimatedRotation(
-                  //     turns: 5,
-                  //     duration: Duration(seconds: 2),
-                  //     child: FlutterLogo(),
-                  //   ),),
-                  Image.asset(
-                    'assets/homepic.png',
-                    width: getProportionateScreenWidth(200),
-                    height: getProportionateScreenHeight(130),
-                  ),
-                ],
-              ),
-             SizedBox(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Image.asset(
+                  'assets/homepic.png',
+                  width: getProportionateScreenWidth(200),
+                  height: getProportionateScreenHeight(130),
+                ),
+              ],
+            ),
+            SizedBox(
               height: getProportionateScreenHeight(20),
             ),
             Data.loggedin
@@ -176,42 +151,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Welcome  ' + ref.watch(newUserDataProivder)!.username,
+                        'Welcome  ${ref.watch(newUserDataProivder)!.username}',
                         style: GoogleFonts.kanit(
-                            fontSize:  getProportionateScreenWidth(25), color: Colors.white),
+                            fontSize: getProportionateScreenWidth(25),
+                            color: Colors.white),
                       ),
                     ],
                   )
-                :  SizedBox(
+                : SizedBox(
                     height: getProportionateScreenHeight(50),
                   ),
-
-            // Container(
-            //       height: getProportionateScreenHeight(50), //height of button
-            //       width: getProportionateScreenWidth(100), //width of button
-            //       color: Colors.transparent,
-            //   child: 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Lets play',
-                    style: GoogleFonts.kanit(fontSize:  getProportionateScreenWidth(25), color: Colors.white),
-                    // TextStyle(
-                    //   fontSize: 20,
-                    //   color: Colors.white,
-                    // ),
-                  ),
-                  SizedBox(width: getProportionateScreenWidth(5)),
-                   Icon(
-                    Icons.gamepad_outlined,
-                    color: const Color.fromARGB(255, 177, 96, 209),
-                    size:  getProportionateScreenWidth(30),
-                  )
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Lets play',
+                  style: GoogleFonts.kanit(
+                      fontSize: getProportionateScreenWidth(25),
+                      color: Colors.white),
+                ),
+                SizedBox(width: getProportionateScreenWidth(5)),
+                Icon(
+                  Icons.gamepad_outlined,
+                  color: const Color.fromARGB(255, 177, 96, 209),
+                  size: getProportionateScreenWidth(30),
+                )
+              ],
+            ),
             // ),
-             SizedBox(
+            SizedBox(
               height: getProportionateScreenHeight(50),
             ),
             Row(
@@ -222,7 +190,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   width: getProportionateScreenWidth(170), //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      //primary: Colors.transparent,
                       shape: RoundedRectangleBorder(
                         //to set border radius to button
                         borderRadius: BorderRadius.circular(20),
@@ -231,10 +198,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     onPressed: () {
                       ref.read(typeofgameProivder.notifier).state = "hangman";
                       Navigator.pushNamed(context, NoPlayers.routeName);
-                      // Navigator.pushReplacementNamed(context, TypeWordScreen.routeName);
                       Data.chosed = "hangman";
                     },
-                    child:  Text(
+                    child: Text(
                       'Hangman',
                       style: TextStyle(
                         fontSize: getProportionateScreenWidth(20),
@@ -252,10 +218,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               children: [
                 SizedBox(
                   height: getProportionateScreenHeight(80), //height of button
-                  width: getProportionateScreenWidth(170),  //width of button
+                  width: getProportionateScreenWidth(170), //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      //primary: Colors.transparent,
                       shape: RoundedRectangleBorder(
                           //to set border radius to button
                           borderRadius: BorderRadius.circular(20)),
@@ -265,10 +230,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Navigator.pushNamed(context, NoPlayers.routeName);
                       Data.chosed = "xo";
                     },
-                    child:  Text(
+                    child: Text(
                       'Tic Tac Toe',
                       style: TextStyle(
-                        fontSize:  getProportionateScreenWidth(20),
+                        fontSize: getProportionateScreenWidth(20),
                       ),
                     ),
                   ),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/screens/seemoregames.dart';
-import 'package:flutter_application_1/widgets/loading_widget.dart';
+// import 'package:flutter_application_1/widgets/loading_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../Utils/size_config.dart';
-import '../models/seemoregames_model.dart';
-import '../services/seemoregames_service.dart';
+// import '../models/seemoregames_model.dart';
+// import '../services/seemoregames_service.dart';
 
 class HowToPlay extends StatefulWidget {
   static const routeName = "/howtoplay-screen";
@@ -39,22 +38,17 @@ class _HowToPlayState extends State<HowToPlay> {
                   },
                 ),
                 SizedBox(
-                    width: getProportionateScreenWidth(10),
-                  ),
+                  width: getProportionateScreenWidth(10),
+                ),
                 Text(
                   'How to play',
                   style: GoogleFonts.patrickHand(
-                      fontSize: getProportionateScreenWidth(60), color: Colors.white),
-                  //  TextStyle(
-                  //     fontSize: 50,
-                  //     color: Colors.white,
-                  //     letterSpacing: 3.0,
-                  //   ),
+                      fontSize: getProportionateScreenWidth(60),
+                      color: Colors.white),
                 ),
                 SizedBox(
-                    width: getProportionateScreenWidth(2),
-                  ),
-                //const IconButton(Icons.lightbulb,color: Color.fromARGB(255, 255, 234, 49), size: 50.0, onPressed(){})
+                  width: getProportionateScreenWidth(2),
+                ),
                 IconButton(
                   icon: Icon(
                     Icons.lightbulb,
@@ -86,11 +80,8 @@ class _HowToPlayState extends State<HowToPlay> {
           otherwise the correct letter 
           is found and the player wins.''',
                         style: GoogleFonts.kanit(
-                            fontSize: getProportionateScreenWidth(20), color: Colors.white),
-                        // TextStyle(
-                        //       fontSize: 25,
-                        //       color: Colors.white,
-                        //     ),
+                            fontSize: getProportionateScreenWidth(20),
+                            color: Colors.white),
                       )
                     : Text(
                         '''
@@ -104,11 +95,8 @@ class _HowToPlayState extends State<HowToPlay> {
       row wins the game.
           ''',
                         style: GoogleFonts.kanit(
-                            fontSize: getProportionateScreenWidth(20), color: Colors.white),
-                        // TextStyle(
-                        //       fontSize: 25,
-                        //       color: Colors.white,
-                        //     ),
+                            fontSize: getProportionateScreenWidth(20),
+                            color: Colors.white),
                       )
               ],
             ),
