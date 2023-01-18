@@ -145,8 +145,6 @@ class _SinglepalyerAIState extends ConsumerState<SinglepalyerAI> {
     }
     if (winner != -1) {
       if (winner == 1) {
-        // ref.read(newUserDataProivder.notifier).state!.score +=5;
-        // ref.watch(newUserDataProivder)!.score += 5;
         score += 5;
         if (score > ref.watch(scoreProivder)) {
           ref.read(scoreProivder.notifier).state = score;
@@ -167,7 +165,6 @@ class _SinglepalyerAIState extends ConsumerState<SinglepalyerAI> {
 
   void resetGame() {
     if (Navigator.canPop(context)) Navigator.pop(context);
-    // UserService.updateScore(ref);
     ScoreService.saveScore(ref);
     setState(() {
       buttonsList = doInit();
