@@ -39,14 +39,22 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   // List<String> wordList = ["dart", "flutter", "mobile", "development"];
   //------------------| Start timer |---------------------
   void startTime(){
+    ref.read(timeProivder.notifier).state = game.time!;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if(game.time!<=0) {
+        if(ref.watch(timeProivder)<=0) {
           lose();
         } else {
-          game.time = game.time! - 1;
+          ref.read(timeProivder.notifier).state = ref.watch(timeProivder) - 1;
         }
-      });
+
+
+      // setState(() {
+      //   if(game.time!<=0) {
+      //     lose();
+      //   } else {
+      //     game.time = game.time! - 1;
+      //   }
+      // });
     });
   }
 
@@ -106,7 +114,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                         Expanded(
                           flex: 2,
                           child: Text(
-                            "0:${game.time!<10 ? "0":""}${game.time}",
+                            "0:${ref.watch(timeProivder)<10 ? "0":""}${ref.watch(timeProivder)}",
                             style: theme.textTheme.headline5,
                           ),
                         ),
@@ -239,7 +247,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       for (int i = 0; i < game.word!.length; i++){
         if(game.word![i].toUpperCase() == title){
           guessedLetters[i].isGuessed = true;
-          game.score = game.score! + game.time!;
+          game.score = game.score! + ref.watch(timeProivder);
           isContains = true;
         }
       }
@@ -254,7 +262,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       }
 
       //reset time
-      game.time = 30;
+      ref.read(timeProivder.notifier).state = 30;
 
       //win the game
       if(guessedLetters.where((element) => element.isGuessed==false).isEmpty) win();
