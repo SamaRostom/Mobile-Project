@@ -60,6 +60,7 @@ class _LoginState extends ConsumerState<Login> {
                     width: getProportionateScreenWidth(250)),
                 TextFormField(
                   controller: _emailController,
+                  style: const TextStyle(color: Colors.white),
                   validator: (val) {
                     if (val != null && val.isNotEmpty) {
                       return null;
@@ -76,6 +77,7 @@ class _LoginState extends ConsumerState<Login> {
                 SizedBox(height: getProportionateScreenHeight(50)),
                 TextFormField(
                   controller: _passwordController,
+                  style: const TextStyle(color: Colors.white),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter a password';
