@@ -60,6 +60,7 @@ class _SignupState extends ConsumerState<Signup> {
                 //username
                 TextFormField(
                   controller: _nameController,
+                  style: const TextStyle(color: Colors.white),
                   validator: (val) {
                     if (val != null && val.isNotEmpty) {
                       return null;
@@ -78,6 +79,7 @@ class _SignupState extends ConsumerState<Signup> {
                 TextFormField(
                   autofocus: true,
                   controller: _emailController,
+                  style: const TextStyle(color: Colors.white),
                   validator: (val) {
                     if (val != null && isEmail(val)) {
                       return null;
@@ -97,6 +99,7 @@ class _SignupState extends ConsumerState<Signup> {
                 TextFormField(
                   autofocus: true,
                   controller: _passwordController,
+                  style: const TextStyle(color: Colors.white),
                   validator: (val) {
                     if (val != null && isPassword(val)) {
                       return null;
