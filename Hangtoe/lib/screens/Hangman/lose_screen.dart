@@ -35,7 +35,7 @@ import 'package:flutter_application_1/providers/user_provider.dart';
             const SizedBox(
               height: 30,
             ),
-            Text("\nHARD LUCK!\n"+ref.watch(nickname1Proivder)+"\nLOSE",
+            Text("\nHARD LUCK!\n"+ref.watch(nickname1Proivder)+" LOSE",
               textAlign: TextAlign.center,
               style:theme.textTheme.headline1!.copyWith(color: Colors.white,fontSize: 50.0),
             ),
