@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/constants.dart';
 import 'package:flutter_application_1/Utils/data.dart';
-import 'package:flutter_application_1/screens/Hangman2/categories.dart';
-import 'package:flutter_application_1/screens/Hangman2/type_word_screen.dart';
+import 'package:flutter_application_1/screens/Hangman/categories.dart';
+import 'package:flutter_application_1/screens/Hangman/type_word_screen.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/Tic_tac%20_toe/singleplayerAI.dart';
 import 'package:flutter_application_1/screens/howtoplay.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_application_1/screens/scores.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils/data.dart' as val;
 import '../Utils/size_config.dart';
-import 'Hangman2/game_screen.dart';
+import 'Hangman/game_screen.dart';
 
 class Gamehome extends StatefulWidget {
   static const routeName = "/gamehome-screen";
