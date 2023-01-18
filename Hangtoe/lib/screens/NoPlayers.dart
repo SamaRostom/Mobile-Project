@@ -17,9 +17,6 @@ class NoPlayers extends ConsumerStatefulWidget {
   const NoPlayers({super.key});
 
   @override
-
-  // ignore: library_private_types_in_public_api
-
   ConsumerState<NoPlayers> createState() => _PlayersState();
 }
 
@@ -30,10 +27,6 @@ class _PlayersState extends ConsumerState<NoPlayers> {
     return SafeArea(
       child: Scaffold(
         body: ListView(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-
-          // mainAxisSize: MainAxisSize.max,
-
           children: <Widget>[
             IconButton(
               icon: const Icon(Icons.arrow_back),
@@ -57,7 +50,9 @@ class _PlayersState extends ConsumerState<NoPlayers> {
                 '''Choose The Number Of Players To 
    Start The Game''',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.patrickHand(fontSize: getProportionateScreenWidth(22), color: Colors.white),
+                style: GoogleFonts.patrickHand(
+                    fontSize: getProportionateScreenWidth(22),
+                    color: Colors.white),
               ),
             ),
             SizedBox(
@@ -69,22 +64,15 @@ class _PlayersState extends ConsumerState<NoPlayers> {
                 SizedBox(
                   height: getProportionateScreenHeight(80), //height of button
                   width: getProportionateScreenWidth(170), //width of button
-
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-
                           //to set border radius to button
-
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
                       Data.type = "Oneplayer";
-                      // final userData = ref.watch(playernameProivder);
-                      // ref.read(wordProivder.notifier).state = Data.cc[2].toUpperCase();
-                      // String word = Data.cc[0].toUpperCase();
                       Navigator.pushNamed(context, Gamehome.routeName);
-
                       Data.noofplayers = 1;
                     },
                     child: Text(
@@ -98,7 +86,7 @@ class _PlayersState extends ConsumerState<NoPlayers> {
               ],
             ),
             SizedBox(
-              height: getProportionateScreenHeight(20),
+              height: getProportionateScreenHeight(40),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -110,15 +98,12 @@ class _PlayersState extends ConsumerState<NoPlayers> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-
                           //to set border radius to button
-
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     onPressed: () {
                       Data.type = "Twoplayer";
                       Navigator.pushNamed(context, PName.routeName);
-
                       Data.noofplayers = 2;
                     },
                     child: Text(
@@ -134,40 +119,6 @@ class _PlayersState extends ConsumerState<NoPlayers> {
             SizedBox(
               height: getProportionateScreenHeight(20),
             ),
-            ref.watch(typeofgameProivder) == "xo"
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: getProportionateScreenHeight(80), //height of button
-                        width: getProportionateScreenWidth(170), //width of button
-
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-
-                                //to set border radius to button
-
-                                borderRadius: BorderRadius.circular(20)),
-                          ),
-                          onPressed: () {
-                            Data.type = "Room";
-                            Navigator.pushNamed(context, '/main_menu_screen');
-                            // Navigator.pushReplacementNamed(context, mainmenuscreen.routeName);
-
-                            Data.player = 2;
-                          },
-                          child: Text(
-                            'Rooms',
-                            style: TextStyle(
-                              fontSize: getProportionateScreenWidth(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                : Container()
           ],
         ),
       ),
