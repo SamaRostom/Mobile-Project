@@ -15,8 +15,6 @@ import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'screens/Hangman/twoplayershang.dart';
-
 import 'screens/Tic_tac _toe/twoplayers.dart';
 import 'screens/seemoregames.dart';
 
@@ -37,29 +35,22 @@ class MyApp extends StatelessWidget {
       title: 'Hangtoe',
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF421b9b),
-        //scaffoldBackgroundColor: const Color.fromARGB(255, 132, 81, 250),
-        // scaffoldBackgroundColor: Color.fromARGB(255, 160, 120, 247),
       ),
-      // home: const HomeScreen(),
       initialRoute: Login.routeName,
-      // initialRoute: '/Players',
       routes: {
         '/': (context) => const HomeScreen(),
         Scores.routeName: (context) => const Scores(),
         NoPlayers.routeName: (context) => const NoPlayers(),
-        TwoplayersHangman.routeName: (context) => const TwoplayersHangman(),
         Gamehome.routeName: (context) => const Gamehome(),
         HowToPlay.routeName: (context) => const HowToPlay(),
         // '/HangmanBoard': (context) => const HangmanBoard(),
         PName.routeName: (context) => const PName(),
-
         SinglepalyerAI.routeName: (context) => const SinglepalyerAI(),
         Twoplayers.routeName: (context) => const Twoplayers(),
         Login.routeName: (context) => const Login(),
         Signup.routeName: (context) => const Signup(),
         Categories.routeName: (context) => const Categories(),
         SeeMoreGames.routeName: (context) => const SeeMoreGames(),
-
         GameScreen.routeName: (context) => const GameScreen(),
         LoseScreen.routeName: (context) => const LoseScreen(),
         WinScreen.routeName: (context) => const WinScreen(),
