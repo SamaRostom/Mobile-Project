@@ -208,12 +208,6 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // Padding(
-
-                // padding: const EdgeInsets.all(30.0),
-
-                // child:
-
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -238,15 +232,6 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
                     ),
                   ],
                 ),
-
-                // ),
-
-                // Padding(
-
-                // padding: const EdgeInsets.all(30.0),
-
-                // child:
-
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -263,7 +248,6 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
                             fontWeight: FontWeight.normal,
                             color: Colors.white)),
                     Text(
-                      // oScore.toString(),
                       ref.watch(scoreOProivder).toString(),
                       style: const TextStyle(fontSize: 20, color: Colors.white),
                     ),
@@ -278,7 +262,6 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
             // Creating the Board for Tic tac toe
 
             flex: 4,
-
             child: GridView.builder(
                 itemCount: 9,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -313,12 +296,6 @@ class _TwoplayersState extends ConsumerState<Twoplayers> {
             children: <Widget>[
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  //   color: Colors.indigo[50],
-
-                  // textColor: Colors.black,
-
-                  //primary: Colors.transparent,
-
                   shape: RoundedRectangleBorder(
                     //to set border radius to button
 
