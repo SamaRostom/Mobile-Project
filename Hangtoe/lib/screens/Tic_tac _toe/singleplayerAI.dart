@@ -7,9 +7,6 @@ import 'package:flutter_application_1/widgets/custom_dailog.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../providers/user_provider.dart';
-import '../../services/user_service.dart';
-
 class SinglepalyerAI extends ConsumerStatefulWidget {
   static const routeName = "/singlepalyerai-screen";
 
@@ -238,7 +235,7 @@ class _SinglepalyerAIState extends ConsumerState<SinglepalyerAI> {
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 252, 251, 252),
+            backgroundColor: const Color.fromARGB(255, 252, 251, 252),
             padding: const EdgeInsets.all(20.0), // Background color
           ),
           onPressed: resetGame,
