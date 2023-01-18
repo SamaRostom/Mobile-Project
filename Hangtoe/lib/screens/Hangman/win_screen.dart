@@ -32,13 +32,13 @@ class _WinScreenState extends ConsumerState<WinScreen> {
             Text(
               "${ref.watch(nickname1Proivder)}\nWIN",
               textAlign: TextAlign.center,
-              style: theme.textTheme.headline2!
+              style: theme.textTheme.headline1!
                   .copyWith(color: Colors.white, fontSize: 50.0),
             ),
             Text(
               "Your score: $score",
-              style: theme.textTheme.headline2!
-                  .copyWith(color: Colors.white, fontSize: 28),
+              style: theme.textTheme.headline1!
+                  .copyWith(color: Colors.white, fontSize: 24.0),
             ),
             const SizedBox(
               height: 10,
@@ -46,10 +46,8 @@ class _WinScreenState extends ConsumerState<WinScreen> {
             Text(
               "Word : $guessedWord",
               textAlign: TextAlign.center,
-              style: theme.textTheme.headline1!.copyWith(
-                  color: Colors.white,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold),
+              style: theme.textTheme.headline1!
+                  .copyWith(color: Colors.white, fontSize: 24.0),
             ),
             const SizedBox(
               height: 30,
@@ -63,7 +61,7 @@ class _WinScreenState extends ConsumerState<WinScreen> {
                   arguments: ""),
               child: FittedBox(
                 child: Text("Play Again",
-                    style: theme.textTheme.headline6!
+                    style: theme.textTheme.headline5!
                         .copyWith(color: Colors.black)),
               ),
             ),
@@ -75,7 +73,7 @@ class _WinScreenState extends ConsumerState<WinScreen> {
                   .pushNamedAndRemoveUntil("/", (route) => false),
               child: FittedBox(
                 child: Text("Main Menu",
-                    style: theme.textTheme.headline6!
+                    style: theme.textTheme.headline5!
                         .copyWith(color: Colors.black)),
               ),
             ),
