@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/data.dart';
 import 'package:flutter_application_1/Utils/size_config.dart';
 import 'package:flutter_application_1/providers/score_provider.dart';
-// import 'package:flutter_application_1/screens/Hangman/game_screen.dart';
-// import 'package:flutter_application_1/screens/Hangman/type_word_screen.dart';
 import 'package:flutter_application_1/screens/Login.dart';
 import 'package:flutter_application_1/screens/NoPlayers.dart';
 import 'package:flutter_application_1/screens/Signup.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/user_provider.dart';
-// import '../services/score_service.dart';
-// import '../Utils/constants.dart';
 import '../services/user_service.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {

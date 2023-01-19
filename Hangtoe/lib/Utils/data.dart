@@ -16,6 +16,31 @@ class Data {
   static List<String> topRanks = ["🥇", "🥈", "🥉"];
   static var type;
 
+  static String hangDescr =  '''
+          In the game of Hangman, 
+          a clue word is given by 
+          the program that the player
+          has to guess , letter by 
+          letter and if the player 
+          selects an incorrect letter, 
+          one part of the hangman body 
+          is drawn. If the full body 
+          is drawn the player loses, 
+          otherwise the correct letter 
+          is found and the player wins.''';
+
+  static String xoDescr = '''
+      Tic-tac-toe is a puzzle game 
+      for two players, X and O, 
+      who take turns marking the 
+      spaces in a 3×3 grid. The 
+      player who succeeds in placing 
+      three of their marks in a 
+      horizontal, vertical, or diagonal 
+      row wins the game.
+          ''';        
+
+
   // ignore: non_constant_identifier_names
   static List<Map> Hangscore = [
     {

@@ -48,15 +48,12 @@ class _HowToPlayState extends State<HowToPlay> {
                 ),
                 SizedBox(
                   width: getProportionateScreenWidth(2),
-                ),
-                IconButton(
-                  icon: Icon(
+                ), 
+                  Icon(
                     Icons.lightbulb,
                     size: getProportionateScreenWidth(50.0),
+                    color: const Color.fromARGB(255, 255, 234, 49),
                   ),
-                  color: const Color.fromARGB(255, 255, 234, 49),
-                  onPressed: () {},
-                ),
               ],
             ),
             SizedBox(
@@ -67,33 +64,13 @@ class _HowToPlayState extends State<HowToPlay> {
               children: [
                 Data.chosed == 'hangman'
                     ? Text(
-                        '''
-          In the game of Hangman, 
-          a clue word is given by 
-          the program that the player
-          has to guess , letter by 
-          letter and if the player 
-          selects an incorrect letter, 
-          one part of the hangman body 
-          is drawn. If the full body 
-          is drawn the player loses, 
-          otherwise the correct letter 
-          is found and the player wins.''',
+                       Data.hangDescr,
                         style: GoogleFonts.kanit(
                             fontSize: getProportionateScreenWidth(20),
                             color: Colors.white),
                       )
                     : Text(
-                        '''
-      Tic-tac-toe is a puzzle game 
-      for two players, X and O, 
-      who take turns marking the 
-      spaces in a 3×3 grid. The 
-      player who succeeds in placing 
-      three of their marks in a 
-      horizontal, vertical, or diagonal 
-      row wins the game.
-          ''',
+                        Data.xoDescr,
                         style: GoogleFonts.kanit(
                             fontSize: getProportionateScreenWidth(20),
                             color: Colors.white),

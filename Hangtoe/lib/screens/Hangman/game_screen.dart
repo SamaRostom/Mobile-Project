@@ -41,7 +41,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   void startTime(){
     ref.read(timeProivder.notifier).state = game.time!;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if(ref.watch(timeProivder)<=0) {
+        if(ref.watch(timeProivder)==0) {
           lose();
         } else {
           ref.read(timeProivder.notifier).state = ref.watch(timeProivder) - 1;

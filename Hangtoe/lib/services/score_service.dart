@@ -1,8 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/score_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import '../Utils/data.dart';
+import '../Utils/size_config.dart';
 import '../models/scores_model.dart';
+import '../providers/user_provider.dart';
 
 
 
@@ -47,6 +53,57 @@ Future<void> delete(String id) async {
         finalScoreUserRef.docs.first.reference.update(userData);
       }
     }
+  }
+
+   static int r = 1;
+  static var rank = Data.topRanks;
+  static String? rr;
+   static String? rankdata() {
+    (r) <= 3 ? rr = rank[r - 1] + r.toString() : rr = r.toString();
+    r++;
+    return rr;
+  }
+
+  static List<DataRow> createRows(WidgetRef ref,QuerySnapshot snapshot) {
+    List<DataRow> newScore = snapshot.docs
+        .map((DocumentSnapshot documentSnapshot) => DataRow(
+                color: MaterialStateColor.resolveWith((states) {
+                  if (Data.loggedin &&
+                      documentSnapshot['email'] ==
+                          ref.watch(newUserDataProivder)!.email) {
+                    return Colors.cyan;
+                  } else {
+                    return Colors.transparent;
+                  }
+                }),
+                cells: [
+                  DataCell(Text(
+                    rankdata() ?? "0",
+                    style: GoogleFonts.kanit(
+                        fontSize: getProportionateScreenWidth(15),
+                        color: Colors.white),
+                  )),
+                  DataCell(Text(
+                    documentSnapshot['email'],
+                    style: GoogleFonts.kanit(
+                        fontSize: getProportionateScreenWidth(15),
+                        color: Colors.white),
+                  )),
+                  DataCell(Text(
+                    "    ${DateFormat('yyyy-MM-dd').format((documentSnapshot['date'] as Timestamp).toDate())}",
+                    style: GoogleFonts.kanit(
+                        fontSize: getProportionateScreenWidth(15),
+                        color: Colors.white),
+                  )),
+                  DataCell(Text(
+                    '      ${documentSnapshot['score']}',
+                    style: GoogleFonts.kanit(
+                        fontSize: getProportionateScreenWidth(15),
+                        color: Colors.white),
+                  ))
+                ]))
+        .toList();
+    return newScore;
   }
 
 }

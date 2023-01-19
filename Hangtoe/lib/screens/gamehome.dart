@@ -10,7 +10,6 @@ import 'package:flutter_application_1/screens/scores.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils/data.dart' as val;
 import '../Utils/size_config.dart';
-// import 'Hangman/game_screen.dart';
 
 class Gamehome extends StatefulWidget {
   static const routeName = "/gamehome-screen";
